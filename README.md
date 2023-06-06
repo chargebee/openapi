@@ -2,7 +2,7 @@
 
 ### ⚠️ Early Access
 
-The Chargebee OpenAPI specification is currently part of our Early Access Program (EAP). Before using it, review the [terms and conditions for "Pre-Release Offerings"](https://www.chargebee.com/company/terms/#your_rights). We recommend against using this specification for production systems, especially for generating SDKs.
+The Chargebee OpenAPI specification is currently part of our Early Access Program (EAP). Before using it, review the [terms and conditions for "Pre-Release Offerings"](https://www.chargebee.com/company/terms/#your_rights). We strongly advise against utilizing this specification for generating SDKs, particularly if they are intended for use in production systems.
 
 ## Overview
 
