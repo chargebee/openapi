@@ -6,7 +6,7 @@ The Chargebee OpenAPI specification is currently part of our Early Access Progra
 
 ## Overview
 
-Good news for developers! We're breathing new life into the user experience of our API infrastructure. Taking the first steps on this exciting journey, we're proud to unveil the Chargebee API spec, now fully compliant with the [OpenAPI Specification v3.0.1](https://spec.openapis.org/oas/v3.0.1). This marks the beginning of a series of improvements!
+Good news for developers! We're breathing new life into the user experience of our API infrastructure. Taking the first steps on this exciting journey, we're proud to unveil the Chargebee OpenAPI Specification—a version of our [API spec](https://apidocs.chargebee.com/docs/api) now fully compliant with the [OpenAPI Specification v3.0.1](https://spec.openapis.org/oas/v3.0.1). This marks the beginning of a series of improvements!
 
 Using OpenAPI provides several advantages:
 - **Open API Tooling**: Use your preferred OpenAPI-based tools for experimentation, automated testing, and validation of API requests and responses.
