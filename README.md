@@ -10,7 +10,6 @@ Good news for developers! We're breathing new life into the user experience of o
 
 Using OpenAPI provides several advantages:
 - **Open API Tooling**: Use your preferred OpenAPI-based tools for experimentation, automated testing, and validation of API requests and responses.
-- **SDK Generation**: You're no longer limited to using Chargebee's official client libraries. You can utilize tools to generate client SDKs in any programming language you prefer.
 - **Ease of Understanding**: Since OpenAPI is a widely adopted standard, interacting with the API will be more straightforward.
 
 While this specification is in early access, we advise against using it for generating SDKs for production systems. We're still fine-tuning the specification, and it's possible to encounter bugs at this stage.
