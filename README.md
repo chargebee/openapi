@@ -21,15 +21,15 @@ Utilize the links below to download the OpenAPI specification files for the Char
 
 ### API v2 
 #### Product Catalog v2
-- [spec.yaml](https://api-assets.chargebee.com/v2-pcv2/index.yaml)
-- [spec.json](https://api-assets.chargebee.com/v2-pcv2/index.json)
+- [spec.yaml](https://openapi.chargebee.com/v2-pcv2/index.yaml)
+- [spec.json](https://openapi.chargebee.com/v2-pcv2/index.json)
 
 #### Product Catalog v1 
-- [spec.yaml](https://api-assets.chargebee.com/v2-pcv1/index.yaml)
-- [spec.json](https://api-assets.chargebee.com/v2-pcv1/index.json)
+- [spec.yaml](https://openapi.chargebee.com/v2-pcv1/index.yaml)
+- [spec.json](https://openapi.chargebee.com/v2-pcv1/index.json)
 
 ### API v1
-- [spec.yaml](https://api-assets.chargebee.com/v1/index.yaml)
-- [spec.json](https://api-assets.chargebee.com/v1/index.json)
+- [spec.yaml](https://openapi.chargebee.com/v1/index.yaml)
+- [spec.json](https://openapi.chargebee.com/v1/index.json)
 
 ---
