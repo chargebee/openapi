@@ -1,35 +1,39 @@
-# Chargebee OpenAPI Specification
+# Chargebee's OpenAPI Specification
 
-### ⚠️ Early Access
+This repository contains the OpenAPI specification of Chargebee’s public API.
+Chargebee uses the OpenAPI specification to generate the
+[API Docs](https://apidocs.chargebee.com) and the
+[client libraries](https://apidocs.chargebee.com/docs/api/#client_library).
 
-The Chargebee OpenAPI specification is currently part of our Early Access Program (EAP). Before using it, review the [terms and conditions for "Pre-Release Offerings"](https://www.chargebee.com/company/terms/#your_rights). We strongly advise against utilizing this specification for generating SDKs, particularly if they are intended for use in production systems.
+You can find the OpenAPI specification files for different API &
+[Product Catalog](https://www.chargebee.com/docs/2.0/product-catalog.html)
+versions as below:
 
-## Overview
+| File                                                                                                                                         | Description                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [chargebee_api_v2_pc_v2_spec.yaml](chargebee_api_v2_pc_v2_spec.yaml)<br>[chargebee_api_v2_pc_v2_spec.json](chargebee_api_v2_pc_v2_spec.json) | OpenAPI spec for API v2 and Product Catalog v2 |
+| [chargebee_api_v2_pc_v1_spec.yaml](chargebee_api_v2_pc_v1_spec.yaml)<br>[chargebee_api_v2_pc_v1_spec.json](chargebee_api_v2_pc_v1_spec.json) | OpenAPI spec for API v2 and Product Catalog v1 |
+| [chargebee_api_v1_spec.yaml](chargebee_api_v1_spec.yaml)<br>[chargebee_api_v1_spec.json](chargebee_api_v1_spec.json)                         | OpenAPI spec for API v1                        |
 
-Good news for developers! We're breathing new life into the user experience of our API infrastructure. Taking the first steps on this exciting journey, we're proud to unveil the Chargebee OpenAPI Specification—a version of our [API spec](https://apidocs.chargebee.com/docs/api) now fully compliant with the [OpenAPI Specification v3.0.1](https://spec.openapis.org/oas/v3.0.1). This marks the beginning of a series of improvements!
+## Documentation
 
-Using OpenAPI provides several advantages:
-- **Open API Tooling**: Use your preferred OpenAPI-based tools for experimentation, automated testing, and validation of API requests and responses.
-- **Ease of Understanding**: Since OpenAPI is a widely adopted standard, interacting with the API will be more straightforward.
+The complete API reference documentation is available on
+https://apidocs.chargebee.com
 
-While this specification is in early access, we advise against using it for generating SDKs for production systems. We're still fine-tuning the specification, and it's possible to encounter bugs at this stage.
+## Client Libraries
 
-Stay tuned for updates on when the specification will be generally available.
+You can find the client libraries / SDKs for different programming languages as
+below:
 
-## Download the OpenAPI Specification
-Utilize the links below to download the OpenAPI specification files for the Chargebee API version of your choice. Each file complies with [OAS v3.0.1](https://spec.openapis.org/oas/v3.0.1).
+1. Node.js — https://github.com/chargebee/chargebee-node
+2. PHP — https://github.com/chargebee/chargebee-php
+3. Python — https://github.com/chargebee/chargebee-python
+4. Java — https://github.com/chargebee/chargebee-java
+5. Ruby — https://github.com/chargebee/chargebee-ruby
+6. Go — https://github.com/chargebee/chargebee-go
+7. .NET — https://github.com/chargebee/chargebee-dotnet
 
-### API v2 
-#### Product Catalog v2
-- [spec.yaml](https://openapi.chargebee.com/v2-pcv2/index.yaml)
-- [spec.json](https://openapi.chargebee.com/v2-pcv2/index.json)
+## Feedback / Questions
 
-#### Product Catalog v1 
-- [spec.yaml](https://openapi.chargebee.com/v2-pcv1/index.yaml)
-- [spec.json](https://openapi.chargebee.com/v2-pcv1/index.json)
-
-### API v1
-- [spec.yaml](https://openapi.chargebee.com/v1/index.yaml)
-- [spec.json](https://openapi.chargebee.com/v1/index.json)
-
----
+We’d love to hear if you have any feedback or questions on our API or client
+libraries. Reach out to us on dx@chargebee.com.
