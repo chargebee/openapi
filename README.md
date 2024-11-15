@@ -9,12 +9,13 @@ You can find the OpenAPI specification files for different API &
 [Product Catalog](https://www.chargebee.com/docs/2.0/product-catalog.html)
 versions as below:
 
-| File                                                                                                                                         | Description                                    |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| [chargebee_api_v2_pc_v2_spec.yaml](chargebee_api_v2_pc_v2_spec.yaml)<br>[chargebee_api_v2_pc_v2_spec.json](chargebee_api_v2_pc_v2_spec.json) | OpenAPI spec for API v2 and Product Catalog v2 |
-| [chargebee_api_v2_pc_v1_spec.yaml](chargebee_api_v2_pc_v1_spec.yaml)<br>[chargebee_api_v2_pc_v1_spec.json](chargebee_api_v2_pc_v1_spec.json) | OpenAPI spec for API v2 and Product Catalog v1 |
-| [chargebee_api_v1_spec.yaml](chargebee_api_v1_spec.yaml)<br>[chargebee_api_v1_spec.json](chargebee_api_v1_spec.json)                         | OpenAPI spec for API v1                        |
-
+| File                                                                                                                                                       | Description                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| [chargebee_api_v2_pc_v2_spec.yaml](./spec/chargebee_api_v2_pc_v2_spec.yaml)<br>[chargebee_api_v2_pc_v2_spec.json](./spec/chargebee_api_v2_pc_v2_spec.json) | OpenAPI spec for API v2 and Product Catalog v2 |
+| [chargebee_api_v2_pc_v1_spec.yaml](./spec/chargebee_api_v2_pc_v1_spec.yaml)<br>[chargebee_api_v2_pc_v1_spec.json](./spec/chargebee_api_v2_pc_v1_spec.json) | OpenAPI spec for API v2 and Product Catalog v1 |
+| [chargebee_api_v1_spec.yaml](./spec/chargebee_api_v1_spec.yaml)<br>[chargebee_api_v1_spec.json](./spec/chargebee_api_v1_spec.json)                         | OpenAPI spec for API v1                        |
+| [chargebee_sdk_spec.yaml](./spec/chargebee_sdk_spec.yaml)<br>[chargebee_sdk_spec.json](./spec/chargebee_sdk_spec.json)                            | OpenAPI spec for generating client libraries.                |
+ 
 ## Documentation
 
 The complete API reference documentation is available on
