@@ -10,27 +10,27 @@
     "version" : "v1 (PC 1.0)",
     "x-cb-api-version" : 1,
     "x-cb-product-catalog-version" : 1,
-    "x-generated-on" : 1736417650586
+    "x-generated-on" : 1741256542880
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
     "description" : "Live Site",
     "variables" : {
       "protocol" : {
-        "enum" : [ "https" ],
-        "default" : "https"
+        "default" : "https",
+        "enum" : [ "https" ]
       },
       "site" : {
         "description" : "Name of the site",
         "default" : "demo"
       },
       "environment" : {
-        "enum" : [ "chargebee.com" ],
-        "default" : "chargebee.com"
+        "default" : "chargebee.com",
+        "enum" : [ "chargebee.com" ]
       },
       "port" : {
-        "enum" : [ "443" ],
-        "default" : "443"
+        "default" : "443",
+        "enum" : [ "443" ]
       }
     }
   }, {
@@ -38,20 +38,20 @@
     "description" : "Test Site",
     "variables" : {
       "protocol" : {
-        "enum" : [ "https" ],
-        "default" : "https"
+        "default" : "https",
+        "enum" : [ "https" ]
       },
       "site" : {
         "description" : "Name of the site",
         "default" : "demo"
       },
       "environment" : {
-        "enum" : [ "chargebee.com" ],
-        "default" : "chargebee.com"
+        "default" : "chargebee.com",
+        "enum" : [ "chargebee.com" ]
       },
       "port" : {
-        "enum" : [ "443" ],
-        "default" : "443"
+        "default" : "443",
+        "enum" : [ "443" ]
       }
     }
   } ],
@@ -2965,7 +2965,7 @@
                         "type" : "array",
                         "items" : {
                           "type" : "string",
-                          "description" : "null\n",
+                          "description" : "The proration_type parameter allows you to specify how each addon should be charged when you update a subscription in the middle of a billing period. This parameter provides three enum values: \\* full_term - full charge will be added for the partial term \\* partial_term - prorated charge will be calculated for the partial term. \\* none - No charge will be added for the partial term\n",
                           "deprecated" : false,
                           "enum" : [ "full_term", "partial_term", "none" ]
                         }
@@ -3840,15 +3840,15 @@
                         "type" : "string",
                         "description" : "Specifies if the customer is liable for tax \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n\n\\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "deprecated" : false,
-                        "enum" : [ "taxable", "exempt" ],
-                        "default" : "taxable"
+                        "default" : "taxable",
+                        "enum" : [ "taxable", "exempt" ]
                       },
                       "auto_collection" : {
                         "type" : "string",
                         "description" : "Whether payments needs to be collected automatically for this customer \\* on - Whenever an invoice is created, an automatic attempt to charge the customer's payment method is made. \\* off - Automatic collection of charges will not be made. All payments must be recorded offline.\n",
                         "deprecated" : false,
-                        "enum" : [ "on", "off" ],
-                        "default" : "on"
+                        "default" : "on",
+                        "enum" : [ "on", "off" ]
                       },
                       "allow_direct_debit" : {
                         "type" : "boolean",
@@ -6949,8 +6949,8 @@
                     "type" : "string",
                     "description" : "Whether payments needs to be collected automatically for this customer. \\* off - Automatic collection of charges will not be made. All payments must be recorded offline. \\* on - Whenever an invoice is created, an automatic attempt to charge the customer's payment method is made.\n",
                     "deprecated" : false,
-                    "enum" : [ "on", "off" ],
-                    "default" : "on"
+                    "default" : "on",
+                    "enum" : [ "on", "off" ]
                   },
                   "allow_direct_debit" : {
                     "type" : "boolean",
@@ -6962,8 +6962,8 @@
                     "type" : "string",
                     "description" : "Specifies if the customer is liable for tax. \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n\n\\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                     "deprecated" : false,
-                    "enum" : [ "taxable", "exempt" ],
-                    "default" : "taxable"
+                    "default" : "taxable",
+                    "enum" : [ "taxable", "exempt" ]
                   },
                   "invoice_notes" : {
                     "maxLength" : 2000,
@@ -8371,8 +8371,8 @@
                     "type" : "string",
                     "description" : "Whether payments needs to be collected automatically for this customer. \\* on - Whenever an invoice is created, an automatic attempt to charge the customer's payment method is made. \\* off - Automatic collection of charges will not be made. All payments must be recorded offline.\n",
                     "deprecated" : false,
-                    "enum" : [ "on", "off" ],
-                    "default" : "on"
+                    "default" : "on",
+                    "enum" : [ "on", "off" ]
                   },
                   "allow_direct_debit" : {
                     "type" : "boolean",
@@ -8390,8 +8390,8 @@
                     "type" : "string",
                     "description" : "Specifies if the customer is liable for tax. \\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero. \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
                     "deprecated" : false,
-                    "enum" : [ "taxable", "exempt" ],
-                    "default" : "taxable"
+                    "default" : "taxable",
+                    "enum" : [ "taxable", "exempt" ]
                   },
                   "meta_data" : {
                     "type" : "object",
@@ -15761,8 +15761,8 @@
                     "type" : "string",
                     "description" : "The order status. \\* voided - Order has been voided. Applicable only if you are using Chargebee's legacy order management system \\* complete - Order has been processed successfully. Applicable only if you are using Chargebee's legacy order management system \\* processing - Order is being processed. Applicable only if you are using Chargebee's legacy order management system \\* cancelled - Order has been cancelled. Applicable only if you are using Chargebee's legacy order management system \\* new - Order has been created. Applicable only if you are using Chargebee's legacy order management system.\n",
                     "deprecated" : false,
-                    "enum" : [ "new", "processing", "complete", "cancelled", "voided" ],
-                    "default" : "new"
+                    "default" : "new",
+                    "enum" : [ "new", "processing", "complete", "cancelled", "voided" ]
                   },
                   "shipping_address" : {
                     "type" : "object",
@@ -17880,8 +17880,8 @@
                         "type" : "string",
                         "description" : "Specifies if the customer is liable for tax \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n\n\\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "deprecated" : false,
-                        "enum" : [ "taxable", "exempt" ],
-                        "default" : "taxable"
+                        "default" : "taxable",
+                        "enum" : [ "taxable", "exempt" ]
                       }
                     },
                     "additionalProperties" : true,
@@ -20060,7 +20060,7 @@
                         "type" : "array",
                         "items" : {
                           "type" : "string",
-                          "description" : "null\n",
+                          "description" : "The proration_type parameter allows you to specify how each addon should be charged when you update a subscription in the middle of a billing period. This parameter provides three enum values: \\* full_term - full charge will be added for the partial term \\* partial_term - prorated charge will be calculated for the partial term. \\* none - No charge will be added for the partial term\n",
                           "deprecated" : false,
                           "enum" : [ "full_term", "partial_term", "none" ]
                         }
@@ -20437,8 +20437,8 @@
                         "type" : "string",
                         "description" : "Specifies if the customer is liable for tax \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n\n\\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "deprecated" : false,
-                        "enum" : [ "taxable", "exempt" ],
-                        "default" : "taxable"
+                        "default" : "taxable",
+                        "enum" : [ "taxable", "exempt" ]
                       }
                     },
                     "description" : "Parameters for customer\n",
@@ -20765,8 +20765,8 @@
                         "type" : "string",
                         "description" : "Specifies if the customer is liable for tax \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n\n\\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "deprecated" : false,
-                        "enum" : [ "taxable", "exempt" ],
-                        "default" : "taxable"
+                        "default" : "taxable",
+                        "enum" : [ "taxable", "exempt" ]
                       }
                     },
                     "description" : "Parameters for customer\n",
@@ -21684,8 +21684,8 @@
                     "type" : "string",
                     "description" : "Defines billing frequency in association with billing period. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* week - Charge based on week(s) \\* day - Charge based on day(s)\n",
                     "deprecated" : false,
-                    "enum" : [ "day", "week", "month", "year" ],
-                    "default" : "month"
+                    "default" : "month",
+                    "enum" : [ "day", "week", "month", "year" ]
                   },
                   "setup_cost" : {
                     "minimum" : 1,
@@ -22228,8 +22228,8 @@
                     "type" : "string",
                     "description" : "Defines billing frequency in association with billing period. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* week - Charge based on week(s) \\* day - Charge based on day(s)\n",
                     "deprecated" : false,
-                    "enum" : [ "day", "week", "month", "year" ],
-                    "default" : "month"
+                    "default" : "month",
+                    "enum" : [ "day", "week", "month", "year" ]
                   },
                   "setup_cost" : {
                     "minimum" : 1,
@@ -22751,8 +22751,8 @@
                     "type" : "string",
                     "description" : "Type of charge. \\* recurring - Charges are automatically applied in sync with the billing frequency of subscription. \\* non_recurring - Charged immediately and only once every time it is applied.\n",
                     "deprecated" : false,
-                    "enum" : [ "recurring", "non_recurring" ],
-                    "default" : "recurring"
+                    "default" : "recurring",
+                    "enum" : [ "recurring", "non_recurring" ]
                   },
                   "price" : {
                     "minimum" : 0,
@@ -22770,7 +22770,7 @@
                   },
                   "period_unit" : {
                     "type" : "string",
-                    "description" : "Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* not_applicable - not applicable for this addon \\* week - Charge based on week(s) \\* day - Charge based on Day(S)\n",
+                    "description" : "Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* week - Charge based on week(s) \\* day - Charge based on Day(S) \\* not_applicable - not applicable for this addon\n",
                     "deprecated" : false,
                     "enum" : [ "day", "week", "month", "year", "not_applicable" ]
                   },
@@ -22812,10 +22812,10 @@
                   },
                   "proration_type" : {
                     "type" : "string",
-                    "description" : "null\n",
+                    "description" : "Set configurations for proration of charges and credits when used in a subscription. \\* full_term - Updating a subscription will apply full charges or full credits for this Addon. \\* site_default - Updating a subscription will apply the site level default settings \\* partial_term - Updating a subscription will apply proration on charges or credits for this Addon.\n",
                     "deprecated" : false,
-                    "enum" : [ "site_default", "partial_term", "full_term" ],
-                    "default" : "site_default"
+                    "default" : "site_default",
+                    "enum" : [ "site_default", "partial_term", "full_term" ]
                   }
                 },
                 "additionalProperties" : true
@@ -23294,8 +23294,8 @@
                     "type" : "string",
                     "description" : "Type of charge. \\* recurring - Charges are automatically applied in sync with the billing frequency of subscription. \\* non_recurring - Charged immediately and only once every time it is applied.\n",
                     "deprecated" : false,
-                    "enum" : [ "recurring", "non_recurring" ],
-                    "default" : "recurring"
+                    "default" : "recurring",
+                    "enum" : [ "recurring", "non_recurring" ]
                   },
                   "price" : {
                     "minimum" : 0,
@@ -23313,7 +23313,7 @@
                   },
                   "period_unit" : {
                     "type" : "string",
-                    "description" : "Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* not_applicable - not applicable for this addon \\* week - Charge based on week(s) \\* day - Charge based on Day(S)\n",
+                    "description" : "Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* week - Charge based on week(s) \\* day - Charge based on Day(S) \\* not_applicable - not applicable for this addon\n",
                     "deprecated" : false,
                     "enum" : [ "day", "week", "month", "year", "not_applicable" ]
                   },
@@ -23355,10 +23355,10 @@
                   },
                   "proration_type" : {
                     "type" : "string",
-                    "description" : "null\n",
+                    "description" : "Set configurations for proration of charges and credits when used in a subscription. \\* full_term - Updating a subscription will apply full charges or full credits for this Addon. \\* site_default - Updating a subscription will apply the site level default settings \\* partial_term - Updating a subscription will apply proration on charges or credits for this Addon.\n",
                     "deprecated" : false,
-                    "enum" : [ "site_default", "partial_term", "full_term" ],
-                    "default" : "site_default"
+                    "default" : "site_default",
+                    "enum" : [ "site_default", "partial_term", "full_term" ]
                   }
                 },
                 "additionalProperties" : true
@@ -24057,8 +24057,8 @@
                     "type" : "string",
                     "description" : "The type of deduction. \\* fixed_amount - The specified amount will be deducted. \\* percentage - The specified percentage will be deducted. \\* offer_quantity - Applies a discount based on the number of free units offered in a per unit plan subscription without reducing the total quantity sold.\n",
                     "deprecated" : false,
-                    "enum" : [ "fixed_amount", "percentage", "offer_quantity" ],
-                    "default" : "percentage"
+                    "default" : "percentage",
+                    "enum" : [ "fixed_amount", "percentage", "offer_quantity" ]
                   },
                   "discount_amount" : {
                     "minimum" : 0,
@@ -24075,6 +24075,13 @@
                     "format" : "double",
                     "deprecated" : false
                   },
+                  "discount_quantity" : {
+                    "minimum" : 1,
+                    "type" : "integer",
+                    "description" : "Number of offered quantity for discount.\n",
+                    "format" : "int32",
+                    "deprecated" : false
+                  },
                   "apply_on" : {
                     "type" : "string",
                     "description" : "The amount on the invoice to which the coupon is applied. \\* invoice_amount - The coupon is applied to the invoice `sub_total`. \\* each_unit_of_specified_items - Discount will be applied to each unit of plan and addon items specified. \\* each_specified_item - The coupon is applied to the `invoice.line_item.amount` that corresponds to the plan or addon specified by `plan_ids` and `addon_ids`. \\* specified_items_total - Discount will be applied to the total of plan and addon items specified.\n",
@@ -24085,8 +24092,8 @@
                     "type" : "string",
                     "description" : "Specifies the time duration for which this coupon is attached to the subscription. \\* forever - The coupon is attached to the subscription and applied on the invoices until explicitly removed. \\* limited_period - The discount is attached to the subscription and applied on the invoices for a limited duration. This duration starts from the point it is applied to an invoice for the first time and expires after a period specified by `period` and `period_unit`. \\* one_time - The coupon stays attached to the subscription till it is applied on an invoice **once**. It is removed after that from the subscription.\n",
                     "deprecated" : false,
-                    "enum" : [ "one_time", "forever", "limited_period" ],
-                    "default" : "forever"
+                    "default" : "forever",
+                    "enum" : [ "one_time", "forever", "limited_period" ]
                   },
                   "duration_month" : {
                     "maximum" : 240,
@@ -25550,7 +25557,7 @@
         }, {
           "name" : "webhook_status",
           "in" : "query",
-          "description" : "Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.<br/> <b> Note </b>: To retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.\n* not_applicable - Webhook call is not applicable for this event.\n* re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s)\n* succeeded - Webhook call was successful.\n* not_configured - Webhook was not configured when this event occurred\n* scheduled - Webhook call has been scheduled.\n* failed - Webhook call has been suspended after the all retries have resulted in failure.\n* skipped - Skipped as specified in request",
+          "description" : "Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.<br/> <b> Note </b>: To retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.\n* re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s)\n* not_configured - Webhook was not configured when this event occurred\n* scheduled - Webhook call has been scheduled.\n* failed - Webhook call has been suspended after the all retries have resulted in failure.\n* not_applicable - Webhook call is not applicable for this event.\n* succeeded - Webhook call was successful.\n* disabled - Disabled as no longer used\n* skipped - Skipped as specified in request",
           "required" : false,
           "deprecated" : false,
           "style" : "form",
@@ -25563,7 +25570,7 @@
         }, {
           "name" : "event_type",
           "in" : "query",
-          "description" : "Specify it if you need to fetch events of a particular type.\n* subscription_cancelling - Sent when the customer's subscription is nearing it's scheduled cancellation date.\n* card_deleted - Sent when a card is deleted for a customer\n* card_expired - Sent when a card for a customer is expired\n* customer_deleted - Sent when a customer is deleted\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* customer_changed - Sent when a customer is changed\n* invoice_deleted - Event triggered when an invoice is deleted.\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* subscription_created - Sent when a new subscription is created.\n* card_expiring - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* card_updated - Sent when the card is updated for a customer.\n* payment_initiated - Sent when a payment is initiated via direct debit\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* subscription_deleted - Sent when a subscription has been deleted\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* subscription_trial_ending - Sent when the customer's trial period is about to end.\n* refund_initiated - Sent when a refund is initiated via direct debit\n* transaction_deleted - Triggered when a transaction is deleted. \n* subscription_trial_extended - Trial Extension\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* card_added - Sent when a card is added for a customer.\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* invoice_updated - Triggered when the invoice’s shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.\n* payment_refunded - Sent when a payment refund is made\n* payment_succeeded - Sent when the payment is successfully collected\n* payment_failed - Sent when attempt to charge customer's credit card fails\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the “Notify for Pending Invoices” option is enabled.\n* transaction_created - Triggered when a transaction is recorded",
+          "description" : "Specify it if you need to fetch events of a particular type.\n* subscription_cancelling - Sent when the customer's subscription is nearing it's scheduled cancellation date.\n* card_deleted - Sent when a card is deleted for a customer\n* card_expired - Sent when a card for a customer is expired\n* customer_deleted - Sent when a customer is deleted\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* customer_changed - Sent when a customer is changed\n* invoice_deleted - Event triggered when an invoice is deleted.\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* subscription_created - Sent when a new subscription is created.\n* card_updated - Sent when the card is updated for a customer.\n* payment_initiated - Sent when a payment is initiated via direct debit\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* subscription_deleted - Sent when a subscription has been deleted\n* subscription_trial_ending - Sent when the customer's trial period is about to end.\n* refund_initiated - Sent when a refund is initiated via direct debit\n* transaction_deleted - Triggered when a transaction is deleted. \n* card_added - Sent when a card is added for a customer.\n* payment_succeeded - Sent when the payment is successfully collected\n* payment_failed - Sent when attempt to charge customer's credit card fails\n* card_expiring - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* subscription_trial_extended - Trial Extension\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* invoice_updated - Triggered when the invoice’s shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.\n* payment_refunded - Sent when a payment refund is made\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the “Notify for Pending Invoices” option is enabled.\n* transaction_created - Triggered when a transaction is recorded",
           "required" : false,
           "deprecated" : false,
           "style" : "form",
@@ -26402,7 +26409,7 @@
         }, {
           "name" : "entity_type",
           "in" : "query",
-          "description" : "Type of the entity this comment generated for.\n* order - Entity that represents an order\n* customer - Entity that represents a customer\n* invoice - Invoice description\n* business_entity - Entity that represents item of type business entity\n* plan - Entity that represents a subscription plan\n* coupon - Entity that represents a discount coupon\n* subscription - Entity that represents a subscription of a customer\n* transaction - Entity that represents a transaction.\n* addon - Entity that represents an addon\n* credit_note - Credit note description\n* quote - Entity that represents a quote",
+          "description" : "Type of the entity this comment generated for.\n* omnichannel_transaction - Entity that represents omnichannel subscription transaction\n* order - Entity that represents an order\n* omnichannel_subscription - Entity that represents omnichannel subscription\n* customer - Entity that represents a customer\n* invoice - Invoice description\n* omnichannel_subscription_item - Entity that represents omnichannel subscription item\n* business_entity - Entity that represents item of type business entity\n* plan - Entity that represents a subscription plan\n* coupon - Entity that represents a discount coupon\n* subscription - Entity that represents a subscription of a customer\n* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes\n* recorded_purchase - Entity that represents recorded purchases\n* transaction - Entity that represents a transaction.\n* addon - Entity that represents an addon\n* credit_note - Credit note description\n* quote - Entity that represents a quote",
           "required" : false,
           "deprecated" : false,
           "style" : "form",
@@ -26410,7 +26417,7 @@
           "schema" : {
             "type" : "string",
             "deprecated" : false,
-            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction" ]
+            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change" ]
           }
         }, {
           "name" : "entity_id",
@@ -26664,9 +26671,9 @@
                 "properties" : {
                   "entity_type" : {
                     "type" : "string",
-                    "description" : "Type of the entity to create the comment for. \\* order - Entity that represents an order \\* customer - Entity that represents a customer \\* invoice - Invoice description \\* business_entity - Entity that represents item of type business entity \\* plan - Entity that represents a subscription plan \\* coupon - Entity that represents a discount coupon \\* subscription - Entity that represents a subscription of a customer \\* transaction - Entity that represents a transaction. \\* addon - Entity that represents an addon \\* credit_note - Credit note description \\* quote - Entity that represents a quote\n",
+                    "description" : "Type of the entity to create the comment for. \\* omnichannel_transaction - Entity that represents omnichannel subscription transaction \\* order - Entity that represents an order \\* omnichannel_subscription - Entity that represents omnichannel subscription \\* customer - Entity that represents a customer \\* invoice - Invoice description \\* omnichannel_subscription_item - Entity that represents omnichannel subscription item \\* business_entity - Entity that represents item of type business entity \\* plan - Entity that represents a subscription plan \\* coupon - Entity that represents a discount coupon \\* subscription - Entity that represents a subscription of a customer \\* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes \\* recorded_purchase - Entity that represents recorded purchases \\* transaction - Entity that represents a transaction. \\* addon - Entity that represents an addon \\* credit_note - Credit note description \\* quote - Entity that represents a quote\n",
                     "deprecated" : false,
-                    "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction" ]
+                    "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change" ]
                   },
                   "entity_id" : {
                     "maxLength" : 100,
@@ -29116,8 +29123,8 @@
             "type" : "string",
             "description" : "Type of charge \\* recurring - Charges are automatically applied in sync with the billing frequency of subscription. \\* non_recurring - Charged immediately and only once every time it is applied.\n",
             "deprecated" : false,
-            "enum" : [ "recurring", "non_recurring" ],
-            "default" : "recurring"
+            "default" : "recurring",
+            "enum" : [ "recurring", "non_recurring" ]
           },
           "price" : {
             "minimum" : 0,
@@ -29149,8 +29156,8 @@
             "type" : "string",
             "description" : "Status of the addon \\* active - Only active addons can be applied to subscriptions \\* deleted - Indicates the addon has been deleted. \\* archived - No new associations with subscriptions are allowed. Existing associations for recurring addons remain as-is and can be removed if required.\n",
             "deprecated" : false,
-            "enum" : [ "active", "archived", "deleted" ],
-            "default" : "active"
+            "default" : "active",
+            "enum" : [ "active", "archived", "deleted" ]
           },
           "archived_at" : {
             "pattern" : "^[0-9]{10}$",
@@ -29167,10 +29174,10 @@
           },
           "proration_type" : {
             "type" : "string",
-            "description" : "null\n",
+            "description" : "Set configurations for proration of charges and credits when used in a subscription \\* full_term - Updating a subscription will apply full charges or full credits for this Addon. \\* site_default - Updating a subscription will apply the site level default settings \\* partial_term - Updating a subscription will apply proration on charges or credits for this Addon.\n",
             "deprecated" : false,
-            "enum" : [ "site_default", "partial_term", "full_term" ],
-            "default" : "site_default"
+            "default" : "site_default",
+            "enum" : [ "site_default", "partial_term", "full_term" ]
           },
           "invoice_notes" : {
             "maxLength" : 2000,
@@ -29295,14 +29302,14 @@
       "ApiVersion" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "v1", "v2" ],
-        "default" : "v1"
+        "default" : "v1",
+        "enum" : [ "v1", "v2" ]
       },
       "AutoCollection" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "on", "off" ],
-        "default" : "on"
+        "default" : "on",
+        "enum" : [ "on", "off" ]
       },
       "Card" : {
         "required" : [ "customer_id", "expiry_month", "expiry_year", "gateway", "iin", "last4", "status" ],
@@ -29447,9 +29454,9 @@
           },
           "entity_type" : {
             "type" : "string",
-            "description" : "Type of the entity this comment generated for \\* order - Entity that represents an order \\* customer - Entity that represents a customer \\* invoice - Invoice description \\* business_entity - Entity that represents item of type business entity \\* plan - Entity that represents a subscription plan \\* coupon - Entity that represents a discount coupon \\* subscription - Entity that represents a subscription of a customer \\* transaction - Entity that represents a transaction. \\* addon - Entity that represents an addon \\* credit_note - Credit note description \\* quote - Entity that represents a quote\n",
+            "description" : "Type of the entity this comment generated for \\* omnichannel_transaction - Entity that represents omnichannel subscription transaction \\* invoice - Invoice description \\* plan - Entity that represents a subscription plan \\* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes \\* transaction - Entity that represents a transaction. \\* quote - Entity that represents a quote \\* order - Entity that represents an order \\* omnichannel_subscription - Entity that represents omnichannel subscription \\* customer - Entity that represents a customer \\* omnichannel_subscription_item - Entity that represents omnichannel subscription item \\* business_entity - Entity that represents item of type business entity \\* coupon - Entity that represents a discount coupon \\* subscription - Entity that represents a subscription of a customer \\* recorded_purchase - Entity that represents recorded purchases \\* addon - Entity that represents an addon \\* credit_note - Credit note description\n",
             "deprecated" : false,
-            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction" ]
+            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change" ]
           },
           "added_by" : {
             "maxLength" : 100,
@@ -29472,10 +29479,10 @@
           },
           "type" : {
             "type" : "string",
-            "description" : "Type of comment this is. \\* user - Comment generated by user either via API or Admin console. \\* system - Comment generated by Chargebee when any backend changes happen for an entity\n",
+            "description" : "Type of comment this is. \\* system - Comment generated by Chargebee when any backend changes happen for an entity \\* user - Comment generated by user either via API or Admin console.\n",
             "deprecated" : false,
-            "enum" : [ "user", "system" ],
-            "default" : "user"
+            "default" : "user",
+            "enum" : [ "user", "system" ]
           },
           "entity_id" : {
             "maxLength" : 100,
@@ -29574,8 +29581,8 @@
             "type" : "string",
             "description" : "The type of deduction \\* fixed_amount - The specified amount will be deducted. \\* percentage - The specified percentage will be deducted. \\* offer_quantity - Applies a discount based on the number of free units offered in a per unit plan subscription without reducing the total quantity sold.\n",
             "deprecated" : false,
-            "enum" : [ "fixed_amount", "percentage", "offer_quantity" ],
-            "default" : "percentage"
+            "default" : "percentage",
+            "enum" : [ "fixed_amount", "percentage", "offer_quantity" ]
           },
           "discount_percentage" : {
             "maximum" : 100,
@@ -29592,12 +29599,19 @@
             "format" : "int64",
             "deprecated" : false
           },
+          "discount_quantity" : {
+            "minimum" : 1,
+            "type" : "integer",
+            "description" : "Number of offered quantity for discount.\n",
+            "format" : "int32",
+            "deprecated" : false
+          },
           "duration_type" : {
             "type" : "string",
             "description" : "Specifies the time duration for which this coupon is attached to the subscription. \\* forever - The coupon is attached to the subscription and applied on the invoices until explicitly removed. \\* limited_period - The discount is attached to the subscription and applied on the invoices for a limited duration. This duration starts from the point it is applied to an invoice for the first time and expires after a period specified by `period` and `period_unit`. \\* one_time - The coupon stays attached to the subscription till it is applied on an invoice **once**. It is removed after that from the subscription.\n",
             "deprecated" : false,
-            "enum" : [ "one_time", "forever", "limited_period" ],
-            "default" : "forever"
+            "default" : "forever",
+            "enum" : [ "one_time", "forever", "limited_period" ]
           },
           "duration_month" : {
             "maximum" : 240,
@@ -29625,8 +29639,8 @@
             "type" : "string",
             "description" : "Status of the coupon. \\* active - Can be applied to a subscription. \\* expired - Cannot be applied to a subscription. A coupon may expire due to exceeding [max_redemptions](/docs/api/coupons?#coupon_max_redemptions) or [valid_till](/docs/api/coupons?#coupon_valid_till) date is past. Existing associations remain unaffected. \\* archived - Cannot be applied to a subscription. Existing associations remain unaffected.\n",
             "deprecated" : false,
-            "enum" : [ "active", "expired", "archived" ],
-            "default" : "active"
+            "default" : "active",
+            "enum" : [ "active", "expired", "archived" ]
           },
           "apply_on" : {
             "type" : "string",
@@ -29961,8 +29975,8 @@
             "type" : "string",
             "description" : "Whether payments needs to be collected automatically for this customer \\* on - Whenever an invoice is created, an automatic attempt to charge the customer's payment method is made. \\* off - Automatic collection of charges will not be made. All payments must be recorded offline.\n",
             "deprecated" : false,
-            "enum" : [ "on", "off" ],
-            "default" : "on"
+            "default" : "on",
+            "enum" : [ "on", "off" ]
           },
           "allow_direct_debit" : {
             "type" : "boolean",
@@ -29987,8 +30001,8 @@
             "type" : "string",
             "description" : "Specifies if the customer is liable for tax \\* taxable - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero. \\* exempt -\n\n* Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n* However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
             "deprecated" : false,
-            "enum" : [ "taxable", "exempt" ],
-            "default" : "taxable"
+            "default" : "taxable",
+            "enum" : [ "taxable", "exempt" ]
           },
           "billing_address" : {
             "type" : "object",
@@ -30163,8 +30177,8 @@
                 "type" : "string",
                 "description" : "Current status of the payment source. \\* expired - A payment source that has expired \\* invalid - The billing agreement cannot be used. It might become valid again either automatically or due to customer action. \\* expiring - A payment source that is expiring (like card's status based on its expiry date). \\* valid - A payment source that is valid and active.\n",
                 "deprecated" : false,
-                "enum" : [ "valid", "expiring", "expired", "invalid" ],
-                "default" : "valid"
+                "default" : "valid",
+                "enum" : [ "valid", "expiring", "expired", "invalid" ]
               },
               "reference_id" : {
                 "maxLength" : 200,
@@ -30236,7 +30250,7 @@
       "EntityType" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction" ]
+        "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change" ]
       },
       "Estimate" : {
         "required" : [ "amount", "amount_due", "collect_now", "created_at", "credits_applied", "price_type", "recurring", "sub_total" ],
@@ -30263,7 +30277,7 @@
           },
           "subscription_status" : {
             "type" : "string",
-            "description" : "Applicable only for subsctiption related estimates. The post-operation status of the subscription. \\* in_trial - The subscription is in trial. \\* active - The subscription is active and will be charged for automatically based on the items in it. \\* non_renewing - The subscription will be canceled at the end of the current term. \\* cancelled - The subscription has been canceled and is no longer in service. \\* future - The subscription is scheduled to start at a future date.\n",
+            "description" : "Applicable only for subsctiption related estimates. The post-operation status of the subscription. \\* in_trial - The subscription is in trial. \\* active - The subscription is active and will be charged for automatically based on the items in it. \\* non_renewing - The subscription will be canceled at the end of the current term. \\* transferred - The subscription has been transferred to another business entity within the organization. \\* cancelled - The subscription has been canceled and is no longer in service. \\* future - The subscription is scheduled to start at a future date.\n",
             "deprecated" : false,
             "enum" : [ "future", "in_trial", "active", "non_renewing", "cancelled", "transferred" ]
           },
@@ -30283,8 +30297,8 @@
             "type" : "string",
             "description" : "The price type of the invoice. \\* tax_inclusive - All amounts in the document are inclusive of tax. \\* tax_exclusive - All amounts in the document are exclusive of tax.\n",
             "deprecated" : false,
-            "enum" : [ "tax_exclusive", "tax_inclusive" ],
-            "default" : "tax_exclusive"
+            "default" : "tax_exclusive",
+            "enum" : [ "tax_exclusive", "tax_inclusive" ]
           },
           "amount" : {
             "minimum" : 0,
@@ -30500,8 +30514,8 @@
             "type" : "string",
             "description" : "Source of the event \\* hosted_page - Operation made through the Hosted Pages \\* admin_console - Operation made through the Chargebee admin UI \\* portal - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html) \\* system - Operation that are triggered by ChargeBee System \\* scheduled_job - Operation made through the Scheduled Jobs \\* none - If no source can be identified for an operation \\* api - Operation made through the API \\* bulk_operation - Operation that are triggerd through bulk operation. \\* migration - Deprecated \\* js_api - Operation made through the JS API\n",
             "deprecated" : false,
-            "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation" ],
-            "default" : "none"
+            "default" : "none",
+            "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation" ]
           },
           "user" : {
             "maxLength" : 150,
@@ -30525,7 +30539,7 @@
                 },
                 "webhook_status" : {
                   "type" : "string",
-                  "description" : "* **When the event resource is retrieved via API:** Represents the status of the webhook call made to this webhook.\n* **When the event resource is passed as part of a webhook call:** The `webhooks` object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.\n\\* scheduled - Webhook call has been scheduled. \\* not_applicable - Webhook call is not applicable for this event. \\* skipped - Skipped as specified in request \\* failed - Webhook call has been suspended after the all retries have resulted in failure. \\* re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s) \\* not_configured - Webhook was not configured when this event occurred \\* succeeded - Webhook call was successful.\n",
+                  "description" : "* **When the event resource is retrieved via API:** Represents the status of the webhook call made to this webhook.\n* **When the event resource is passed as part of a webhook call:** The `webhooks` object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.\n\\* scheduled - Webhook call has been scheduled. \\* not_applicable - Webhook call is not applicable for this event. \\* skipped - Skipped as specified in request \\* disabled - Disabled as no longer used \\* failed - Webhook call has been suspended after the all retries have resulted in failure. \\* re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s) \\* not_configured - Webhook was not configured when this event occurred \\* succeeded - Webhook call was successful.\n",
                   "deprecated" : false,
                   "enum" : [ "not_configured", "scheduled", "succeeded", "re_scheduled", "failed", "skipped", "not_applicable", "disabled" ]
                 }
@@ -30543,8 +30557,8 @@
             "type" : "string",
             "description" : "The Chargebee API Version used for rendering this event content. While processing webhooks, ensure this version is same as the API version used by your webhook server's client library. \\* v1 - Chargebee API version V1 \\* v2 - Chargebee API version V2\n",
             "deprecated" : false,
-            "enum" : [ "v1", "v2" ],
-            "default" : "v1"
+            "default" : "v1",
+            "enum" : [ "v1", "v2" ]
           },
           "content" : {
             "type" : "object",
@@ -30591,8 +30605,8 @@
             "type" : "string",
             "description" : "Indicating the current state of the hosted page resource. \\* created - Indicates the hosted page is just created. \\* requested - Indicates the hosted page is requested by the website \\* cancelled - Indicates the page is cancelled by the end user after requesting it. \\* succeeded - Indicates the hosted page is successfully submitted by the user and response is sent to the return url.\n",
             "deprecated" : false,
-            "enum" : [ "created", "requested", "succeeded", "cancelled" ],
-            "default" : "created"
+            "default" : "created",
+            "enum" : [ "created", "requested", "succeeded", "cancelled" ]
           },
           "pass_thru_content" : {
             "maxLength" : 2048,
@@ -30679,8 +30693,8 @@
             "type" : "string",
             "description" : "The price type of the invoice. \\* tax_inclusive - All amounts in the document are inclusive of tax. \\* tax_exclusive - All amounts in the document are exclusive of tax.\n",
             "deprecated" : false,
-            "enum" : [ "tax_exclusive", "tax_inclusive" ],
-            "default" : "tax_exclusive"
+            "default" : "tax_exclusive",
+            "enum" : [ "tax_exclusive", "tax_inclusive" ]
           },
           "start_date" : {
             "pattern" : "^[0-9]{10}$",
@@ -31013,8 +31027,8 @@
                   "type" : "string",
                   "description" : "The status of this order. \\* cancelled - Order has been cancelled. Applicable only if you are using Chargebee's legacy order management system \\* new - Order has been created. Applicable only if you are using Chargebee's legacy order management system. \\* voided - Order has been voided. Applicable only if you are using Chargebee's legacy order management system \\* complete - Order has been processed successfully. Applicable only if you are using Chargebee's legacy order management system \\* processing - Order is being processed. Applicable only if you are using Chargebee's legacy order management system\n",
                   "deprecated" : false,
-                  "enum" : [ "new", "processing", "complete", "cancelled", "voided" ],
-                  "default" : "new"
+                  "default" : "new",
+                  "enum" : [ "new", "processing", "complete", "cancelled", "voided" ]
                 },
                 "reference_id" : {
                   "maxLength" : 50,
@@ -31270,8 +31284,8 @@
             "type" : "string",
             "description" : "The status of this order. \\* cancelled - Order has been cancelled. Applicable only if you are using Chargebee's legacy order management system \\* new - Order has been created. Applicable only if you are using Chargebee's legacy order management system. \\* voided - Order has been voided. Applicable only if you are using Chargebee's legacy order management system \\* complete - Order has been processed successfully. Applicable only if you are using Chargebee's legacy order management system \\* processing - Order is being processed. Applicable only if you are using Chargebee's legacy order management system\n",
             "deprecated" : false,
-            "enum" : [ "new", "processing", "complete", "cancelled", "voided" ],
-            "default" : "new"
+            "default" : "new",
+            "enum" : [ "new", "processing", "complete", "cancelled", "voided" ]
           },
           "reference_id" : {
             "maxLength" : 50,
@@ -31475,8 +31489,8 @@
       "PaymentMethod" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "cash", "check", "chargeback", "bank_transfer", "other", "card", "amazon_payments", "paypal_express_checkout", "direct_debit" ],
-        "default" : "card"
+        "default" : "card",
+        "enum" : [ "cash", "check", "chargeback", "bank_transfer", "other", "card", "amazon_payments", "paypal_express_checkout", "direct_debit" ]
       },
       "Plan" : {
         "required" : [ "charge_model", "enabled_in_hosted_pages", "enabled_in_portal", "free_quantity", "id", "name", "period", "period_unit", "status" ],
@@ -31525,8 +31539,8 @@
             "type" : "string",
             "description" : "Defines billing frequency in association with billing period. \\* year - Charge based on year(s) \\* month - Charge based on month(s) \\* week - Charge based on week(s) \\* day - Charge based on day(s)\n",
             "deprecated" : false,
-            "enum" : [ "day", "week", "month", "year" ],
-            "default" : "month"
+            "default" : "month",
+            "enum" : [ "day", "week", "month", "year" ]
           },
           "trial_period" : {
             "minimum" : 1,
@@ -31566,8 +31580,8 @@
             "type" : "string",
             "description" : "The plan state \\* active - New subscriptions can be created with the plan. \\* deleted - Indicates the plan has been deleted. \\* archived - No new subscriptions allowed for the plan. Existing subscriptions on this plan will remain as-is and can be migrated to another active plan if required.\n",
             "deprecated" : false,
-            "enum" : [ "active", "archived", "deleted" ],
-            "default" : "active"
+            "default" : "active",
+            "enum" : [ "active", "archived", "deleted" ]
           },
           "archived_at" : {
             "pattern" : "^[0-9]{10}$",
@@ -31655,8 +31669,8 @@
             "type" : "string",
             "description" : "Indicates the current status of the portal session. \\* created - Indicates that the portal session is just created and not yet accessed by the user. \\* logged_out - Indicates that the portal session is logged out either by user or via API. \\* not_yet_activated - Indicates that the portal session is created and not yet activated for the customer to allow access to your website. This is applicable when you use Chargebee's authentication for your website \\* activated - Indicates that the portal session is activated for the customer to allow access to your website. This is applicable when you use Chargebee's authentication for your website. \\* logged_in - Indicates that the portal session URL has been accessed by the user and the session is active.\n",
             "deprecated" : false,
-            "enum" : [ "created", "logged_in", "logged_out", "not_yet_activated", "activated" ],
-            "default" : "created"
+            "default" : "created",
+            "enum" : [ "created", "logged_in", "logged_out", "not_yet_activated", "activated" ]
           },
           "created_at" : {
             "pattern" : "^[0-9]{10}$",
@@ -31753,8 +31767,8 @@
       "PriceType" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "tax_exclusive", "tax_inclusive" ],
-        "default" : "tax_exclusive"
+        "default" : "tax_exclusive",
+        "enum" : [ "tax_exclusive", "tax_inclusive" ]
       },
       "ProrationType" : {
         "type" : "string",
@@ -31790,8 +31804,8 @@
       "Source" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation" ],
-        "default" : "none"
+        "default" : "none",
+        "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation" ]
       },
       "Subscription" : {
         "required" : [ "has_scheduled_changes", "id", "plan_id", "plan_quantity", "status" ],
@@ -32151,8 +32165,8 @@
       "Taxability" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "taxable", "exempt" ],
-        "default" : "taxable"
+        "default" : "taxable",
+        "enum" : [ "taxable", "exempt" ]
       },
       "Transaction" : {
         "required" : [ "currency_code", "gateway", "id", "payment_method", "type" ],
@@ -32180,8 +32194,8 @@
             "type" : "string",
             "description" : "The payment method of this transaction \\* card - Card \\* amazon_payments - Amazon Payments \\* chargeback - Only applicable for a transaction of [type](transactions#transaction_type) = `refund`. This value is set by Chargebee when an automated [chargeback](https://www.chargebee.com/docs/chargeback.html#chargeback-process) occurs. You can also set this explicitly when [recording a refund](transactions#record_an_offline_refund). \\* bank_transfer - Bank Transfer \\* paypal_express_checkout - Paypal Express Checkout \\* direct_debit - Direct Debit \\* other - Payment Methods other than the above types \\* cash - Cash \\* check - Check\n",
             "deprecated" : false,
-            "enum" : [ "card", "cash", "check", "chargeback", "bank_transfer", "amazon_payments", "paypal_express_checkout", "direct_debit", "other" ],
-            "default" : "card"
+            "default" : "card",
+            "enum" : [ "card", "cash", "check", "chargeback", "bank_transfer", "amazon_payments", "paypal_express_checkout", "direct_debit", "other" ]
           },
           "reference_number" : {
             "maxLength" : 100,
