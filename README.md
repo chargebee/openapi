@@ -18,8 +18,10 @@ versions as below:
  
 ## Documentation
 
-The complete API reference documentation is available on
-https://apidocs.chargebee.com
+The complete API reference documentation is available at https://apidocs.chargebee.com
+
+You can also use our [interactive API Explorer](https://api-explorer.chargebee.com) to explore API capabilities tailored to your use case.
+
 
 ## Client Libraries
 
