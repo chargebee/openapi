@@ -8,7 +8,7 @@ info:
   version: v1 (PC 1.0)
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
-  x-generated-on: 1745413065419
+  x-generated-on: 1747313771608
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v1"
   description: Live Site
@@ -2696,7 +2696,7 @@ paths:
                       items:
                         type: string
                         description: |
-                          The proration_type parameter allows you to specify how each addon should be charged when you update a subscription in the middle of a billing period. This parameter provides three enum values: \* full_term - full charge will be added for the partial term \* partial_term - prorated charge will be calculated for the partial term. \* none - No charge will be added for the partial term
+                          null
                         deprecated: false
                         enum:
                         - full_term
@@ -8657,7 +8657,7 @@ paths:
                 gateway:
                   type: string
                   description: |
-                    Name of the gateway you want to switch to. \* ecentric - Ecentric provides a seamless payment processing service in South Africa specializing on omnichannel capabilities. \* bluesnap - BlueSnap is a payment gateway. \* jp_morgan - J.P. Morgan Mobility is a payment gateway that enables you to securely accept and manage digital payments across different `payment_source_type`. \* tco - 2Checkout is a payment gateway. \* first_data_global - First Data Global Gateway Virtual Terminal Account \* exact - Exact Payments is a payment gateway. \* bluepay - BluePay is a payment gateway. \* paypal_express_checkout - PayPal Express Checkout is a payment gateway. \* nuvei - Nuvei is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses. \* eway - eWAY Account is a payment gateway. \* metrics_global - Metrics global is a leading payment service provider providing unified payment services in the US. \* paypal_payflow_pro - PayPal Payflow Pro is a payment gateway. \* razorpay - Razorpay is a fast growing payment service provider in India working with all leading banks and support for major local payment methods including Netbanking, UPI etc. \* global_payments - Global Payments is a payment service provider. \* amazon_payments - Amazon Payments is a payment service provider. \* dlocal - Dlocal provides payment solutions for global commerce by accepting local payment methods. \* not_applicable - Indicates that payment gateway is not applicable for this resource. \* windcave - Windcave provides an end to end payment processing solution in ANZ and other leading global markets. \* checkout_com - Checkout.com is a payment gateway. \* adyen - Adyen is a payment gateway. \* braintree - Braintree is a payment gateway. \* nmi - NMI is a payment gateway. \* quickbooks - Intuit QuickBooks Payments gateway \* wepay - WePay is a payment gateway. \* worldpay - WorldPay is a payment gateway \* paystack - Paystack is a payment gateway for businesses in Africa. It enables secure payment acceptance both online and offline. \* pay_com - Pay.com provides payment services focused on simplicity and hassle-free operations for businesses of all sizes. \* wirecard - WireCard Account is a payment service provider. \* chargebee_payments - Chargebee Payments gateway \* sage_pay - Sage Pay is a payment gateway. \* moneris_us - Moneris USA is a payment gateway. \* pin - Pin is a payment gateway \* authorize_net - Authorize.net is a payment gateway \* elavon - Elavon Virtual Merchant is a payment solution. \* paypal_pro - PayPal Pro Account is a payment gateway. \* orbital - Chase Paymentech(Orbital) is a payment gateway. \* paypal - PayPal Commerce is a payment gateway. \* beanstream - Bambora(formerly known as Beanstream) is a payment gateway. \* hdfc - HDFC Account is a payment gateway. \* ingenico_direct - Worldline Online Payments is a payment gateway. \* ogone - Ingenico ePayments (formerly known as Ogone) is a payment gateway. \* migs - MasterCard Internet Gateway Service payment gateway. \* stripe - Stripe is a payment gateway. \* vantiv - Vantiv is a payment gateway. \* moneris - Moneris is a payment gateway. \* bank_of_america - Bank of America Gateway \* chargebee - Chargebee test gateway. \* eway_rapid - eWAY Rapid is a payment gateway. \* gocardless - GoCardless is a payment service provider. \* mollie - Mollie is a payment gateway. \* paymill - PAYMILL is a payment gateway. \* balanced_payments - Balanced is a payment gateway \* cybersource - CyberSource is a payment gateway. \* ebanx - EBANX is a payment gateway, enabling businesses to accept diverse local payment methods from various countries for increased market reach and conversion.
+                    Name of the gateway you want to switch to. \* ecentric - Ecentric provides a seamless payment processing service in South Africa specializing on omnichannel capabilities. \* bluesnap - BlueSnap is a payment gateway. \* tco - 2Checkout is a payment gateway. \* first_data_global - First Data Global Gateway Virtual Terminal Account \* exact - Exact Payments is a payment gateway. \* bluepay - BluePay is a payment gateway. \* paypal_express_checkout - PayPal Express Checkout is a payment gateway. \* nuvei - Nuvei is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses. \* eway - eWAY Account is a payment gateway. \* metrics_global - Metrics global is a leading payment service provider providing unified payment services in the US. \* paypal_payflow_pro - PayPal Payflow Pro is a payment gateway. \* razorpay - Razorpay is a fast growing payment service provider in India working with all leading banks and support for major local payment methods including Netbanking, UPI etc. \* global_payments - Global Payments is a payment service provider. \* amazon_payments - Amazon Payments is a payment service provider. \* dlocal - Dlocal provides payment solutions for global commerce by accepting local payment methods. \* not_applicable - Indicates that payment gateway is not applicable for this resource. \* windcave - Windcave provides an end to end payment processing solution in ANZ and other leading global markets. \* checkout_com - Checkout.com is a payment gateway. \* adyen - Adyen is a payment gateway. \* braintree - Braintree is a payment gateway. \* nmi - NMI is a payment gateway. \* quickbooks - Intuit QuickBooks Payments gateway \* wepay - WePay is a payment gateway. \* worldpay - WorldPay is a payment gateway \* paystack - Paystack is a payment gateway for businesses in Africa. It enables secure payment acceptance both online and offline. \* pay_com - Pay.com provides payment services focused on simplicity and hassle-free operations for businesses of all sizes. \* wirecard - WireCard Account is a payment service provider. \* chargebee_payments - Chargebee Payments gateway \* sage_pay - Sage Pay is a payment gateway. \* moneris_us - Moneris USA is a payment gateway. \* pin - Pin is a payment gateway \* authorize_net - Authorize.net is a payment gateway \* elavon - Elavon Virtual Merchant is a payment solution. \* paypal_pro - PayPal Pro Account is a payment gateway. \* orbital - Chase Paymentech(Orbital) is a payment gateway. \* paypal - PayPal Commerce is a payment gateway. \* beanstream - Bambora(formerly known as Beanstream) is a payment gateway. \* hdfc - HDFC Account is a payment gateway. \* ingenico_direct - Worldline Online Payments is a payment gateway. \* ogone - Ingenico ePayments (formerly known as Ogone) is a payment gateway. \* migs - MasterCard Internet Gateway Service payment gateway. \* stripe - Stripe is a payment gateway. \* vantiv - Vantiv is a payment gateway. \* moneris - Moneris is a payment gateway. \* bank_of_america - Bank of America Gateway \* chargebee - Chargebee test gateway. \* eway_rapid - eWAY Rapid is a payment gateway. \* gocardless - GoCardless is a payment service provider. \* mollie - Mollie is a payment gateway. \* paymill - PAYMILL is a payment gateway. \* balanced_payments - Balanced is a payment gateway \* cybersource - CyberSource is a payment gateway. \* ebanx - EBANX is a payment gateway, enabling businesses to accept diverse local payment methods from various countries for increased market reach and conversion.
                   deprecated: false
                   enum:
                   - stripe
@@ -9078,7 +9078,7 @@ paths:
                 gateway:
                   type: string
                   description: |
-                    Name of the gateway this card should be stored with. \* ecentric - Ecentric provides a seamless payment processing service in South Africa specializing on omnichannel capabilities. \* bluesnap - BlueSnap is a payment gateway. \* jp_morgan - J.P. Morgan Mobility is a payment gateway that enables you to securely accept and manage digital payments across different `payment_source_type`. \* tco - 2Checkout is a payment gateway. \* first_data_global - First Data Global Gateway Virtual Terminal Account \* exact - Exact Payments is a payment gateway. \* bluepay - BluePay is a payment gateway. \* paypal_express_checkout - PayPal Express Checkout is a payment gateway. \* nuvei - Nuvei is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses. \* eway - eWAY Account is a payment gateway. \* metrics_global - Metrics global is a leading payment service provider providing unified payment services in the US. \* paypal_payflow_pro - PayPal Payflow Pro is a payment gateway. \* razorpay - Razorpay is a fast growing payment service provider in India working with all leading banks and support for major local payment methods including Netbanking, UPI etc. \* global_payments - Global Payments is a payment service provider. \* amazon_payments - Amazon Payments is a payment service provider. \* dlocal - Dlocal provides payment solutions for global commerce by accepting local payment methods. \* not_applicable - Indicates that payment gateway is not applicable for this resource. \* windcave - Windcave provides an end to end payment processing solution in ANZ and other leading global markets. \* checkout_com - Checkout.com is a payment gateway. \* adyen - Adyen is a payment gateway. \* braintree - Braintree is a payment gateway. \* nmi - NMI is a payment gateway. \* quickbooks - Intuit QuickBooks Payments gateway \* wepay - WePay is a payment gateway. \* worldpay - WorldPay is a payment gateway \* paystack - Paystack is a payment gateway for businesses in Africa. It enables secure payment acceptance both online and offline. \* pay_com - Pay.com provides payment services focused on simplicity and hassle-free operations for businesses of all sizes. \* wirecard - WireCard Account is a payment service provider. \* chargebee_payments - Chargebee Payments gateway \* sage_pay - Sage Pay is a payment gateway. \* moneris_us - Moneris USA is a payment gateway. \* pin - Pin is a payment gateway \* authorize_net - Authorize.net is a payment gateway \* elavon - Elavon Virtual Merchant is a payment solution. \* paypal_pro - PayPal Pro Account is a payment gateway. \* orbital - Chase Paymentech(Orbital) is a payment gateway. \* paypal - PayPal Commerce is a payment gateway. \* beanstream - Bambora(formerly known as Beanstream) is a payment gateway. \* hdfc - HDFC Account is a payment gateway. \* ingenico_direct - Worldline Online Payments is a payment gateway. \* ogone - Ingenico ePayments (formerly known as Ogone) is a payment gateway. \* migs - MasterCard Internet Gateway Service payment gateway. \* stripe - Stripe is a payment gateway. \* vantiv - Vantiv is a payment gateway. \* moneris - Moneris is a payment gateway. \* bank_of_america - Bank of America Gateway \* chargebee - Chargebee test gateway. \* eway_rapid - eWAY Rapid is a payment gateway. \* gocardless - GoCardless is a payment service provider. \* mollie - Mollie is a payment gateway. \* paymill - PAYMILL is a payment gateway. \* balanced_payments - Balanced is a payment gateway \* cybersource - CyberSource is a payment gateway. \* ebanx - EBANX is a payment gateway, enabling businesses to accept diverse local payment methods from various countries for increased market reach and conversion.
+                    Name of the gateway this card should be stored with. \* ecentric - Ecentric provides a seamless payment processing service in South Africa specializing on omnichannel capabilities. \* bluesnap - BlueSnap is a payment gateway. \* tco - 2Checkout is a payment gateway. \* first_data_global - First Data Global Gateway Virtual Terminal Account \* exact - Exact Payments is a payment gateway. \* bluepay - BluePay is a payment gateway. \* paypal_express_checkout - PayPal Express Checkout is a payment gateway. \* nuvei - Nuvei is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses. \* eway - eWAY Account is a payment gateway. \* metrics_global - Metrics global is a leading payment service provider providing unified payment services in the US. \* paypal_payflow_pro - PayPal Payflow Pro is a payment gateway. \* razorpay - Razorpay is a fast growing payment service provider in India working with all leading banks and support for major local payment methods including Netbanking, UPI etc. \* global_payments - Global Payments is a payment service provider. \* amazon_payments - Amazon Payments is a payment service provider. \* dlocal - Dlocal provides payment solutions for global commerce by accepting local payment methods. \* not_applicable - Indicates that payment gateway is not applicable for this resource. \* windcave - Windcave provides an end to end payment processing solution in ANZ and other leading global markets. \* checkout_com - Checkout.com is a payment gateway. \* adyen - Adyen is a payment gateway. \* braintree - Braintree is a payment gateway. \* nmi - NMI is a payment gateway. \* quickbooks - Intuit QuickBooks Payments gateway \* wepay - WePay is a payment gateway. \* worldpay - WorldPay is a payment gateway \* paystack - Paystack is a payment gateway for businesses in Africa. It enables secure payment acceptance both online and offline. \* pay_com - Pay.com provides payment services focused on simplicity and hassle-free operations for businesses of all sizes. \* wirecard - WireCard Account is a payment service provider. \* chargebee_payments - Chargebee Payments gateway \* sage_pay - Sage Pay is a payment gateway. \* moneris_us - Moneris USA is a payment gateway. \* pin - Pin is a payment gateway \* authorize_net - Authorize.net is a payment gateway \* elavon - Elavon Virtual Merchant is a payment solution. \* paypal_pro - PayPal Pro Account is a payment gateway. \* orbital - Chase Paymentech(Orbital) is a payment gateway. \* paypal - PayPal Commerce is a payment gateway. \* beanstream - Bambora(formerly known as Beanstream) is a payment gateway. \* hdfc - HDFC Account is a payment gateway. \* ingenico_direct - Worldline Online Payments is a payment gateway. \* ogone - Ingenico ePayments (formerly known as Ogone) is a payment gateway. \* migs - MasterCard Internet Gateway Service payment gateway. \* stripe - Stripe is a payment gateway. \* vantiv - Vantiv is a payment gateway. \* moneris - Moneris is a payment gateway. \* bank_of_america - Bank of America Gateway \* chargebee - Chargebee test gateway. \* eway_rapid - eWAY Rapid is a payment gateway. \* gocardless - GoCardless is a payment service provider. \* mollie - Mollie is a payment gateway. \* paymill - PAYMILL is a payment gateway. \* balanced_payments - Balanced is a payment gateway \* cybersource - CyberSource is a payment gateway. \* ebanx - EBANX is a payment gateway, enabling businesses to accept diverse local payment methods from various countries for increased market reach and conversion.
                   deprecated: false
                   enum:
                   - chargebee
@@ -17647,7 +17647,7 @@ paths:
                       items:
                         type: string
                         description: |
-                          The proration_type parameter allows you to specify how each addon should be charged when you update a subscription in the middle of a billing period. This parameter provides three enum values: \* full_term - full charge will be added for the partial term \* partial_term - prorated charge will be calculated for the partial term. \* none - No charge will be added for the partial term
+                          null
                         deprecated: false
                         enum:
                         - full_term
@@ -20017,7 +20017,7 @@ paths:
                 period_unit:
                   type: string
                   description: |
-                    Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \* year - Charge based on year(s) \* month - Charge based on month(s) \* week - Charge based on week(s) \* day - Charge based on Day(S) \* not_applicable - not applicable for this addon
+                    Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \* year - Charge based on year(s) \* month - Charge based on month(s) \* not_applicable - not applicable for this addon \* week - Charge based on week(s) \* day - Charge based on Day(S)
                   deprecated: false
                   enum:
                   - day
@@ -20067,7 +20067,7 @@ paths:
                 proration_type:
                   type: string
                   description: |
-                    Set configurations for proration of charges and credits when used in a subscription. \* full_term - Updating a subscription will apply full charges or full credits for this Addon. \* site_default - Updating a subscription will apply the site level default settings \* partial_term - Updating a subscription will apply proration on charges or credits for this Addon.
+                    null
                   deprecated: false
                   default: site_default
                   enum:
@@ -20488,7 +20488,7 @@ paths:
                 period_unit:
                   type: string
                   description: |
-                    Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \* year - Charge based on year(s) \* month - Charge based on month(s) \* week - Charge based on week(s) \* day - Charge based on Day(S) \* not_applicable - not applicable for this addon
+                    Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon. \* year - Charge based on year(s) \* month - Charge based on month(s) \* not_applicable - not applicable for this addon \* week - Charge based on week(s) \* day - Charge based on Day(S)
                   deprecated: false
                   enum:
                   - day
@@ -20538,7 +20538,7 @@ paths:
                 proration_type:
                   type: string
                   description: |
-                    Set configurations for proration of charges and credits when used in a subscription. \* full_term - Updating a subscription will apply full charges or full credits for this Addon. \* site_default - Updating a subscription will apply the site level default settings \* partial_term - Updating a subscription will apply proration on charges or credits for this Addon.
+                    null
                   deprecated: false
                   default: site_default
                   enum:
@@ -21152,8 +21152,6 @@ paths:
                 discount_quantity:
                   minimum: 1
                   type: integer
-                  description: |
-                    Number of offered quantity for discount.
                   format: int32
                   deprecated: false
                 apply_on:
@@ -22387,13 +22385,12 @@ paths:
         in: query
         description: |-
           Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.<br/> <b> Note </b>: To retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.
+          * not_applicable - Webhook call is not applicable for this event.
           * re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s)
+          * succeeded - Webhook call was successful.
           * not_configured - Webhook was not configured when this event occurred
           * scheduled - Webhook call has been scheduled.
           * failed - Webhook call has been suspended after the all retries have resulted in failure.
-          * not_applicable - Webhook call is not applicable for this event.
-          * succeeded - Webhook call was successful.
-          * disabled - Disabled as no longer used
           * skipped - Skipped as specified in request
         required: false
         deprecated: false
@@ -22427,32 +22424,32 @@ paths:
           \ Triggered when shipping address is added or updated for a subscription.\n\
           * subscription_cancellation_scheduled - Sent when subscription is scheduled\
           \ to cancel at end of current term\n* subscription_created - Sent when a\
-          \ new subscription is created.\n* card_updated - Sent when the card is updated\
-          \ for a customer.\n* payment_initiated - Sent when a payment is initiated\
-          \ via direct debit\n* subscription_changed - Sent after the subscription's\
-          \ recurring items have been changed\n* customer_created - Sent when a customer\
-          \ is created. This event happens when only a new customer is created or\
-          \ when a customer is automatically created during new subscription creation.\n\
-          * subscription_deleted - Sent when a subscription has been deleted\n* subscription_trial_ending\
-          \ - Sent when the customer's trial period is about to end.\n* refund_initiated\
-          \ - Sent when a refund is initiated via direct debit\n* transaction_deleted\
-          \ - Triggered when a transaction is deleted. \n* card_added - Sent when\
-          \ a card is added for a customer.\n* payment_succeeded - Sent when the payment\
-          \ is successfully collected\n* payment_failed - Sent when attempt to charge\
-          \ customer's credit card fails\n* card_expiring - Sent when the customer's\
+          \ new subscription is created.\n* card_expiring - Sent when the customer's\
           \ credit card is expiring soon. Sent 30 days before the expiry date.\n*\
-          \ subscription_renewed - Sent when the subscription is renewed from the\
-          \ current term.\n* subscription_activated - Sent after the subscription\
-          \ has been moved from trial to active state\n* subscription_reactivated\
+          \ card_updated - Sent when the card is updated for a customer.\n* payment_initiated\
+          \ - Sent when a payment is initiated via direct debit\n* subscription_renewed\
+          \ - Sent when the subscription is renewed from the current term.\n* subscription_activated\
+          \ - Sent after the subscription has been moved from trial to active state\n\
+          * subscription_changed - Sent after the subscription's recurring items have\
+          \ been changed\n* customer_created - Sent when a customer is created. This\
+          \ event happens when only a new customer is created or when a customer is\
+          \ automatically created during new subscription creation.\n* subscription_deleted\
+          \ - Sent when a subscription has been deleted\n* subscription_reactivated\
           \ - Sent when the subscription is moved from cancelled state to active or\
-          \ in_trial state\n* subscription_trial_extended - Trial Extension\n* transaction_updated\
-          \ - Triggered when a transaction is updated. E.g. (1) When a transaction\
-          \ is removed, (2) or when an excess payment is applied on an invoice, (3)\
-          \ or when amount_capturable gets updated.\n* subscription_renewal_reminder\
+          \ in_trial state\n* subscription_trial_ending - Sent when the customer's\
+          \ trial period is about to end.\n* refund_initiated - Sent when a refund\
+          \ is initiated via direct debit\n* transaction_deleted - Triggered when\
+          \ a transaction is deleted. \n* subscription_trial_extended - Trial Extension\n\
+          * transaction_updated - Triggered when a transaction is updated. E.g. (1)\
+          \ When a transaction is removed, (2) or when an excess payment is applied\
+          \ on an invoice, (3) or when amount_capturable gets updated.\n* card_added\
+          \ - Sent when a card is added for a customer.\n* subscription_renewal_reminder\
           \ - Sent before each subscription's renewal based on plan's period\n* invoice_updated\
           \ - Triggered when the invoice’s shipping/billing address is updated, if\
           \ the invoice is voided, or when the amount due is modified due to payments\
           \ applied/removed.\n* payment_refunded - Sent when a payment refund is made\n\
+          * payment_succeeded - Sent when the payment is successfully collected\n\
+          * payment_failed - Sent when attempt to charge customer's credit card fails\n\
           * subscription_started - Sent when a 'future' subscription gets started\
           \ at the scheduled date.\n* invoice_generated - Event triggered when a new\
           \ invoice is generated. In case of metered billing, this event is triggered\
@@ -23168,19 +23165,13 @@ paths:
         in: query
         description: |-
           Type of the entity this comment generated for.
-          * omnichannel_transaction - Entity that represents omnichannel subscription transaction
           * order - Entity that represents an order
-          * omnichannel_subscription - Entity that represents omnichannel subscription
           * customer - Entity that represents a customer
           * invoice - Invoice description
-          * omnichannel_subscription_item - Entity that represents omnichannel subscription item
           * business_entity - Entity that represents item of type business entity
           * plan - Entity that represents a subscription plan
           * coupon - Entity that represents a discount coupon
           * subscription - Entity that represents a subscription of a customer
-          * sales_order - Entity that represents sales order
-          * omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes
-          * recorded_purchase - Entity that represents recorded purchases
           * transaction - Entity that represents a transaction.
           * addon - Entity that represents an addon
           * credit_note - Credit note description
@@ -23418,7 +23409,7 @@ paths:
                 entity_type:
                   type: string
                   description: |
-                    Type of the entity to create the comment for. \* omnichannel_transaction - Entity that represents omnichannel subscription transaction \* order - Entity that represents an order \* omnichannel_subscription - Entity that represents omnichannel subscription \* customer - Entity that represents a customer \* invoice - Invoice description \* omnichannel_subscription_item - Entity that represents omnichannel subscription item \* business_entity - Entity that represents item of type business entity \* plan - Entity that represents a subscription plan \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* sales_order - Entity that represents sales order \* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes \* recorded_purchase - Entity that represents recorded purchases \* transaction - Entity that represents a transaction. \* addon - Entity that represents an addon \* credit_note - Credit note description \* quote - Entity that represents a quote
+                    Type of the entity to create the comment for. \* order - Entity that represents an order \* customer - Entity that represents a customer \* invoice - Invoice description \* business_entity - Entity that represents item of type business entity \* plan - Entity that represents a subscription plan \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* transaction - Entity that represents a transaction. \* addon - Entity that represents an addon \* credit_note - Credit note description \* quote - Entity that represents a quote
                   deprecated: false
                   enum:
                   - customer
@@ -25589,7 +25580,7 @@ components:
         proration_type:
           type: string
           description: |
-            Set configurations for proration of charges and credits when used in a subscription \* full_term - Updating a subscription will apply full charges or full credits for this Addon. \* site_default - Updating a subscription will apply the site level default settings \* partial_term - Updating a subscription will apply proration on charges or credits for this Addon.
+            null
           deprecated: false
           default: site_default
           enum:
@@ -25932,7 +25923,7 @@ components:
         entity_type:
           type: string
           description: |
-            Type of the entity this comment generated for \* omnichannel_transaction - Entity that represents omnichannel subscription transaction \* invoice - Invoice description \* plan - Entity that represents a subscription plan \* sales_order - Entity that represents sales order \* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes \* transaction - Entity that represents a transaction. \* quote - Entity that represents a quote \* order - Entity that represents an order \* omnichannel_subscription - Entity that represents omnichannel subscription \* customer - Entity that represents a customer \* omnichannel_subscription_item - Entity that represents omnichannel subscription item \* business_entity - Entity that represents item of type business entity \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* recorded_purchase - Entity that represents recorded purchases \* addon - Entity that represents an addon \* credit_note - Credit note description
+            Type of the entity this comment generated for \* order - Entity that represents an order \* customer - Entity that represents a customer \* invoice - Invoice description \* business_entity - Entity that represents item of type business entity \* plan - Entity that represents a subscription plan \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* transaction - Entity that represents a transaction. \* addon - Entity that represents an addon \* credit_note - Credit note description \* quote - Entity that represents a quote
           deprecated: false
           enum:
           - customer
@@ -25970,7 +25961,7 @@ components:
         type:
           type: string
           description: |
-            Type of comment this is. \* system - Comment generated by Chargebee when any backend changes happen for an entity \* user - Comment generated by user either via API or Admin console.
+            Type of comment this is. \* user - Comment generated by user either via API or Admin console. \* system - Comment generated by Chargebee when any backend changes happen for an entity
           deprecated: false
           default: user
           enum:
@@ -26119,8 +26110,6 @@ components:
         discount_quantity:
           minimum: 1
           type: integer
-          description: |
-            Number of offered quantity for discount.
           format: int32
           deprecated: false
         duration_type:
@@ -26908,7 +26897,7 @@ components:
         subscription_status:
           type: string
           description: |
-            Applicable only for subsctiption related estimates. The post-operation status of the subscription. \* in_trial - The subscription is in trial. \* active - The subscription is active and will be charged for automatically based on the items in it. \* non_renewing - The subscription will be canceled at the end of the current term. \* transferred - The subscription has been transferred to another business entity within the organization. \* cancelled - The subscription has been canceled and is no longer in service. \* future - The subscription is scheduled to start at a future date.
+            Applicable only for subsctiption related estimates. The post-operation status of the subscription. \* in_trial - The subscription is in trial. \* active - The subscription is active and will be charged for automatically based on the items in it. \* non_renewing - The subscription will be canceled at the end of the current term. \* cancelled - The subscription has been canceled and is no longer in service. \* future - The subscription is scheduled to start at a future date.
           deprecated: false
           enum:
           - future
@@ -27220,7 +27209,7 @@ components:
                 description: |
                   * **When the event resource is retrieved via API:** Represents the status of the webhook call made to this webhook.
                   * **When the event resource is passed as part of a webhook call:** The `webhooks` object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.
-                  \* scheduled - Webhook call has been scheduled. \* not_applicable - Webhook call is not applicable for this event. \* skipped - Skipped as specified in request \* disabled - Disabled as no longer used \* failed - Webhook call has been suspended after the all retries have resulted in failure. \* re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s) \* not_configured - Webhook was not configured when this event occurred \* succeeded - Webhook call was successful.
+                  \* scheduled - Webhook call has been scheduled. \* not_applicable - Webhook call is not applicable for this event. \* skipped - Skipped as specified in request \* failed - Webhook call has been suspended after the all retries have resulted in failure. \* re_scheduled - Webhook call has been rescheduled due failure(s) in previous call(s) \* not_configured - Webhook was not configured when this event occurred \* succeeded - Webhook call was successful.
                 deprecated: false
                 enum:
                 - not_configured
