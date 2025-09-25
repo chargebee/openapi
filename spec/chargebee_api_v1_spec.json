@@ -7,47 +7,47 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2025-08-25.168911979b9858abd2070953e407974301168116",
+    "version" : "2025-09-25.daa5621e848477eea57f9a668c39aad24fb1eb69",
     "x-cb-product-catalog-version" : 1,
     "x-cb-api-version" : 1,
-    "x-generated-on" : 1756096572546
+    "x-generated-on" : 1758785376803
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
     "variables" : {
       "protocol" : {
-        "default" : "https",
-        "enum" : [ "https" ]
+        "enum" : [ "https" ],
+        "default" : "https"
       },
       "site" : {
         "default" : "demo"
       },
       "environment" : {
-        "default" : "chargebee.com",
-        "enum" : [ "chargebee.com" ]
+        "enum" : [ "chargebee.com" ],
+        "default" : "chargebee.com"
       },
       "port" : {
-        "default" : "443",
-        "enum" : [ "443" ]
+        "enum" : [ "443" ],
+        "default" : "443"
       }
     }
   }, {
     "url" : "{protocol}://{site}-test.{environment}:{port}/api/v1",
     "variables" : {
       "protocol" : {
-        "default" : "https",
-        "enum" : [ "https" ]
+        "enum" : [ "https" ],
+        "default" : "https"
       },
       "site" : {
         "default" : "demo"
       },
       "environment" : {
-        "default" : "chargebee.com",
-        "enum" : [ "chargebee.com" ]
+        "enum" : [ "chargebee.com" ],
+        "default" : "chargebee.com"
       },
       "port" : {
-        "default" : "443",
-        "enum" : [ "443" ]
+        "enum" : [ "443" ],
+        "default" : "443"
       }
     }
   } ],
@@ -176,7 +176,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -453,7 +453,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -695,7 +695,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -1227,7 +1227,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -1487,7 +1487,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -1764,7 +1764,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -1975,7 +1975,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -2300,7 +2300,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -2515,7 +2515,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -3343,7 +3343,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -3632,7 +3632,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -3854,7 +3854,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -4745,7 +4745,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -5025,7 +5025,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -5314,7 +5314,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -5516,7 +5516,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -5782,7 +5782,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -6050,7 +6050,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -6331,7 +6331,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -6608,7 +6608,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -6890,7 +6890,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -7190,7 +7190,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -7397,7 +7397,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -7734,7 +7734,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -8077,7 +8077,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -8358,7 +8358,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -8731,7 +8731,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -8957,7 +8957,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -9624,7 +9624,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -9967,7 +9967,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -10174,7 +10174,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -10463,7 +10463,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -10736,7 +10736,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -10988,7 +10988,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -11364,7 +11364,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -11661,7 +11661,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -11909,7 +11909,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -12186,7 +12186,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -12420,7 +12420,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -12705,7 +12705,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -12982,7 +12982,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -13250,7 +13250,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -13519,7 +13519,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -13771,7 +13771,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -14047,7 +14047,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -14287,7 +14287,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -14802,7 +14802,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -15114,7 +15114,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -15366,7 +15366,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -15569,7 +15569,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -15803,7 +15803,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -16113,7 +16113,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -16335,7 +16335,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -16656,7 +16656,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -16890,7 +16890,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -17110,7 +17110,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -17517,7 +17517,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -17751,7 +17751,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -18002,7 +18002,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -18241,7 +18241,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -18556,7 +18556,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -18763,7 +18763,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -18997,7 +18997,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -19338,7 +19338,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -19808,7 +19808,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -20148,7 +20148,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -20460,7 +20460,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -20663,7 +20663,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -21076,7 +21076,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -21307,7 +21307,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -21674,7 +21674,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -22155,7 +22155,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -22599,7 +22599,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -23124,7 +23124,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -23372,7 +23372,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -23594,7 +23594,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -24002,7 +24002,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -24205,7 +24205,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -24600,7 +24600,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -24803,7 +24803,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -25165,7 +25165,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -25387,7 +25387,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -25762,7 +25762,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -26010,7 +26010,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -26232,7 +26232,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -26641,7 +26641,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -26844,7 +26844,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -27115,7 +27115,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -27318,7 +27318,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -27537,7 +27537,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -27891,7 +27891,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -28169,7 +28169,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -28389,7 +28389,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -28637,7 +28637,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -28840,7 +28840,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -29070,7 +29070,7 @@
           "schema" : {
             "type" : "string",
             "deprecated" : false,
-            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change", "sales_order", "omnichannel_one_time_order", "omnichannel_one_time_order_item", "usage_file" ],
+            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity" ],
             "example" : null
           }
         }, {
@@ -29090,7 +29090,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -29349,7 +29349,7 @@
                     "type" : "string",
                     "deprecated" : false,
                     "description" : "Type of the entity to create the comment for. \\* order - Entity that represents an order \\* customer - Entity that represents a customer \\* invoice - Invoice description \\* business_entity - Entity that represents item of type business entity \\* plan - Entity that represents a subscription plan \\* coupon - Entity that represents a discount coupon \\* subscription - Entity that represents a subscription of a customer \\* transaction - Entity that represents a transaction. \\* addon - Entity that represents an addon \\* credit_note - Credit note description \\* quote - Entity that represents a quote\n",
-                    "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change", "sales_order", "omnichannel_one_time_order", "omnichannel_one_time_order_item", "usage_file" ],
+                    "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity" ],
                     "example" : null
                   },
                   "entity_id" : {
@@ -29383,7 +29383,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -29660,7 +29660,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -29929,7 +29929,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -30177,7 +30177,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -30380,7 +30380,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -30583,7 +30583,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -30878,7 +30878,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -31178,7 +31178,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -31621,7 +31621,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "on success",
+            "description" : "OK",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -32728,7 +32728,7 @@
             "type" : "string",
             "deprecated" : false,
             "description" : "Type of the entity this comment generated for \\* order - Entity that represents an order \\* customer - Entity that represents a customer \\* invoice - Invoice description \\* business_entity - Entity that represents item of type business entity \\* plan - Entity that represents a subscription plan \\* coupon - Entity that represents a discount coupon \\* subscription - Entity that represents a subscription of a customer \\* transaction - Entity that represents a transaction. \\* addon - Entity that represents an addon \\* credit_note - Credit note description \\* quote - Entity that represents a quote\n",
-            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change", "sales_order", "omnichannel_one_time_order", "omnichannel_one_time_order_item", "usage_file" ],
+            "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity" ],
             "example" : null
           },
           "added_by" : {
@@ -33812,93 +33812,10 @@
         "required" : [ "download_url", "valid_till" ],
         "example" : null
       },
-      "EinvoicingCountryConfiguration" : {
-        "type" : "object",
-        "properties" : {
-          "external_id" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 30,
-            "example" : null
-          },
-          "type" : {
-            "type" : "string",
-            "default" : "legal_entity",
-            "deprecated" : false,
-            "enum" : [ "legal_entity", "entity_identifier" ],
-            "example" : null
-          },
-          "taxRegNumberId" : {
-            "type" : "integer",
-            "format" : "int64",
-            "default" : 0,
-            "deprecated" : false,
-            "example" : null
-          },
-          "is_tax_identifier" : {
-            "type" : "boolean",
-            "default" : false,
-            "deprecated" : false,
-            "example" : null
-          },
-          "scheme_name" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 50,
-            "example" : null
-          },
-          "scheme_value" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 50,
-            "example" : null
-          },
-          "country" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 30,
-            "example" : null
-          },
-          "state" : {
-            "type" : "string",
-            "default" : "*",
-            "deprecated" : false,
-            "maxLength" : 30,
-            "example" : null
-          },
-          "irp_username" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 250,
-            "example" : null
-          },
-          "irp_validation_status" : {
-            "type" : "string",
-            "default" : "not_applicable",
-            "deprecated" : false,
-            "enum" : [ "not_applicable", "valid", "invalid" ],
-            "example" : null
-          },
-          "irp_validated_at" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          },
-          "network" : {
-            "type" : "string",
-            "deprecated" : false,
-            "enum" : [ "peppol", "storecove", "irp", "sdi", "finvoice", "not_applicable" ],
-            "example" : null
-          }
-        },
-        "required" : [ "country", "is_tax_identifier", "scheme_name" ],
-        "example" : null
-      },
       "EntityType" : {
         "type" : "string",
         "deprecated" : false,
-        "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity", "omnichannel_subscription", "omnichannel_subscription_item", "omnichannel_transaction", "recorded_purchase", "omnichannel_subscription_item_scheduled_change", "sales_order", "omnichannel_one_time_order", "omnichannel_one_time_order_item", "usage_file" ],
+        "enum" : [ "customer", "subscription", "transaction", "plan", "addon", "order", "business_entity" ],
         "example" : null
       },
       "Estimate" : {
@@ -34348,6 +34265,7 @@
       },
       "Invoice" : {
         "type" : "object",
+        "additionalProperties" : true,
         "description" : "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.\n\nGenerally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.\n\nWhen invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.\n\n**Note:** If *consolidated invoicing* is enabled, the attribute *invoice.subscription_id* should **not** be used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items'](/docs/api/invoices#invoice_line_items) *subscription_id* attribute should be referred.\n",
         "properties" : {
           "id" : {
@@ -38236,9 +38154,10 @@
   "jsonSchemaDialect" : "https://spec.openapis.org/oas/3.1/dialect/base",
   "webhooks" : {
     "subscription_reactivated" : {
+      "description" : "Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.",
       "post" : {
         "summary" : "Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.",
-        "description" : " ",
+        "description" : "Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.",
         "operationId" : "onSubscription_reactivatedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_reactivated event",
@@ -38259,9 +38178,10 @@
       }
     },
     "transaction_updated" : {
+      "description" : "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.",
       "post" : {
         "summary" : "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.",
-        "description" : " ",
+        "description" : "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.",
         "operationId" : "onTransaction_updatedWebhook",
         "requestBody" : {
           "description" : "Payload for transaction_updated event",
@@ -38282,9 +38202,10 @@
       }
     },
     "subscription_created" : {
+      "description" : "Triggered when a new subscription is created.",
       "post" : {
         "summary" : "Triggered when a new subscription is created.",
-        "description" : " ",
+        "description" : "Triggered when a new subscription is created.",
         "operationId" : "onSubscription_createdWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_created event",
@@ -38305,9 +38226,10 @@
       }
     },
     "subscription_cancellation_scheduled" : {
+      "description" : "Triggered when subscription is scheduled to cancel at end of current term.",
       "post" : {
         "summary" : "Triggered when subscription is scheduled to cancel at end of current term.",
-        "description" : " ",
+        "description" : "Triggered when subscription is scheduled to cancel at end of current term.",
         "operationId" : "onSubscription_cancellation_scheduledWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_cancellation_scheduled event",
@@ -38328,9 +38250,10 @@
       }
     },
     "subscription_trial_extended" : {
+      "description" : "Trial Extension",
       "post" : {
         "summary" : "Trial Extension",
-        "description" : " ",
+        "description" : "Trial Extension",
         "operationId" : "onSubscription_trial_extendedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_trial_extended event",
@@ -38351,9 +38274,10 @@
       }
     },
     "subscription_deleted" : {
+      "description" : "Triggered when a subscription is deleted.",
       "post" : {
         "summary" : "Triggered when a subscription is deleted.",
-        "description" : " ",
+        "description" : "Triggered when a subscription is deleted.",
         "operationId" : "onSubscription_deletedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_deleted event",
@@ -38374,9 +38298,10 @@
       }
     },
     "invoice_generated" : {
+      "description" : "Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.",
       "post" : {
         "summary" : "Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.",
-        "description" : " ",
+        "description" : "Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.",
         "operationId" : "onInvoice_generatedWebhook",
         "requestBody" : {
           "description" : "Payload for invoice_generated event",
@@ -38397,9 +38322,10 @@
       }
     },
     "subscription_cancelling" : {
+      "description" : "Triggered 6 days prior to the scheduled cancellation date.",
       "post" : {
         "summary" : "Triggered 6 days prior to the scheduled cancellation date.",
-        "description" : " ",
+        "description" : "Triggered 6 days prior to the scheduled cancellation date.",
         "operationId" : "onSubscription_cancellingWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_cancelling event",
@@ -38420,9 +38346,10 @@
       }
     },
     "subscription_renewed" : {
+      "description" : "Triggered when the subscription is renewed from the current term.",
       "post" : {
         "summary" : "Triggered when the subscription is renewed from the current term.",
-        "description" : " ",
+        "description" : "Triggered when the subscription is renewed from the current term.",
         "operationId" : "onSubscription_renewedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_renewed event",
@@ -38443,9 +38370,10 @@
       }
     },
     "subscription_scheduled_cancellation_removed" : {
+      "description" : "Triggered when scheduled cancellation is removed for the subscription.",
       "post" : {
         "summary" : "Triggered when scheduled cancellation is removed for the subscription.",
-        "description" : " ",
+        "description" : "Triggered when scheduled cancellation is removed for the subscription.",
         "operationId" : "onSubscription_scheduled_cancellation_removedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_scheduled_cancellation_removed event",
@@ -38466,9 +38394,10 @@
       }
     },
     "payment_refunded" : {
+      "description" : "Triggered when a payment refund is made.",
       "post" : {
         "summary" : "Triggered when a payment refund is made.",
-        "description" : " ",
+        "description" : "Triggered when a payment refund is made.",
         "operationId" : "onPayment_refundedWebhook",
         "requestBody" : {
           "description" : "Payload for payment_refunded event",
@@ -38489,9 +38418,10 @@
       }
     },
     "subscription_changed" : {
+      "description" : "Triggered when the subscription's recurring items are changed.",
       "post" : {
         "summary" : "Triggered when the subscription's recurring items are changed.",
-        "description" : " ",
+        "description" : "Triggered when the subscription's recurring items are changed.",
         "operationId" : "onSubscription_changedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_changed event",
@@ -38512,9 +38442,10 @@
       }
     },
     "invoice_created" : {
+      "description" : "Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.",
       "post" : {
         "summary" : "Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the “Notify for Pending Invoices” option is enabled.",
-        "description" : " ",
+        "description" : "Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.",
         "operationId" : "onInvoice_createdWebhook",
         "requestBody" : {
           "description" : "Payload for invoice_created event",
@@ -38535,9 +38466,10 @@
       }
     },
     "transaction_created" : {
+      "description" : "Triggered when a transaction is recorded.",
       "post" : {
         "summary" : "Triggered when a transaction is recorded.",
-        "description" : " ",
+        "description" : "Triggered when a transaction is recorded.",
         "operationId" : "onTransaction_createdWebhook",
         "requestBody" : {
           "description" : "Payload for transaction_created event",
@@ -38558,9 +38490,10 @@
       }
     },
     "subscription_cancelled" : {
+      "description" : "Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.",
       "post" : {
         "summary" : "Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.",
-        "description" : " ",
+        "description" : "Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.",
         "operationId" : "onSubscription_cancelledWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_cancelled event",
@@ -38581,9 +38514,10 @@
       }
     },
     "invoice_deleted" : {
+      "description" : "Event triggered when an invoice is deleted.",
       "post" : {
         "summary" : "Event triggered when an invoice is deleted.",
-        "description" : " ",
+        "description" : "Event triggered when an invoice is deleted.",
         "operationId" : "onInvoice_deletedWebhook",
         "requestBody" : {
           "description" : "Payload for invoice_deleted event",
@@ -38604,9 +38538,10 @@
       }
     },
     "payment_failed" : {
+      "description" : "Triggered when the payment collection fails.",
       "post" : {
         "summary" : "Triggered when the payment collection fails.",
-        "description" : " ",
+        "description" : "Triggered when the payment collection fails.",
         "operationId" : "onPayment_failedWebhook",
         "requestBody" : {
           "description" : "Payload for payment_failed event",
@@ -38627,9 +38562,10 @@
       }
     },
     "card_expired" : {
+      "description" : "Triggered when the card for a customer has expired.",
       "post" : {
         "summary" : "Triggered when the card for a customer has expired.",
-        "description" : " ",
+        "description" : "Triggered when the card for a customer has expired.",
         "operationId" : "onCard_expiredWebhook",
         "requestBody" : {
           "description" : "Payload for card_expired event",
@@ -38650,9 +38586,10 @@
       }
     },
     "invoice_updated" : {
+      "description" : "Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.",
       "post" : {
         "summary" : "Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.",
-        "description" : " ",
+        "description" : "Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.",
         "operationId" : "onInvoice_updatedWebhook",
         "requestBody" : {
           "description" : "Payload for invoice_updated event",
@@ -38673,9 +38610,10 @@
       }
     },
     "payment_succeeded" : {
+      "description" : "Triggered when the payment is successfully collected.",
       "post" : {
         "summary" : "Triggered when the payment is successfully collected.",
-        "description" : " ",
+        "description" : "Triggered when the payment is successfully collected.",
         "operationId" : "onPayment_succeededWebhook",
         "requestBody" : {
           "description" : "Payload for payment_succeeded event",
@@ -38696,9 +38634,10 @@
       }
     },
     "card_updated" : {
+      "description" : "Triggered when the card is updated for a customer.",
       "post" : {
         "summary" : "Triggered when the card is updated for a customer.",
-        "description" : " ",
+        "description" : "Triggered when the card is updated for a customer.",
         "operationId" : "onCard_updatedWebhook",
         "requestBody" : {
           "description" : "Payload for card_updated event",
@@ -38719,9 +38658,10 @@
       }
     },
     "card_expiring" : {
+      "description" : "Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.",
       "post" : {
         "summary" : "Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.",
-        "description" : " ",
+        "description" : "Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.",
         "operationId" : "onCard_expiringWebhook",
         "requestBody" : {
           "description" : "Payload for card_expiring event",
@@ -38742,9 +38682,10 @@
       }
     },
     "card_deleted" : {
+      "description" : "Triggered when a card is deleted for a customer.",
       "post" : {
         "summary" : "Triggered when a card is deleted for a customer.",
-        "description" : " ",
+        "description" : "Triggered when a card is deleted for a customer.",
         "operationId" : "onCard_deletedWebhook",
         "requestBody" : {
           "description" : "Payload for card_deleted event",
@@ -38765,9 +38706,10 @@
       }
     },
     "customer_created" : {
+      "description" : "Triggered when a customer is created.",
       "post" : {
         "summary" : "Triggered when a customer is created.",
-        "description" : " ",
+        "description" : "Triggered when a customer is created.",
         "operationId" : "onCustomer_createdWebhook",
         "requestBody" : {
           "description" : "Payload for customer_created event",
@@ -38788,9 +38730,10 @@
       }
     },
     "subscription_shipping_address_updated" : {
+      "description" : "Triggered when shipping address is added or updated for a subscription.",
       "post" : {
         "summary" : "Triggered when shipping address is added or updated for a subscription.",
-        "description" : " ",
+        "description" : "Triggered when shipping address is added or updated for a subscription.",
         "operationId" : "onSubscription_shipping_address_updatedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_shipping_address_updated event",
@@ -38811,9 +38754,10 @@
       }
     },
     "customer_changed" : {
+      "description" : "Triggered when a customer is changed.",
       "post" : {
         "summary" : "Triggered when a customer is changed.",
-        "description" : " ",
+        "description" : "Triggered when a customer is changed.",
         "operationId" : "onCustomer_changedWebhook",
         "requestBody" : {
           "description" : "Payload for customer_changed event",
@@ -38834,9 +38778,10 @@
       }
     },
     "subscription_renewal_reminder" : {
+      "description" : "Triggered 3 days before each subscription's renewal.",
       "post" : {
         "summary" : "Triggered 3 days before each subscription's renewal.",
-        "description" : " ",
+        "description" : "Triggered 3 days before each subscription's renewal.",
         "operationId" : "onSubscription_renewal_reminderWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_renewal_reminder event",
@@ -38857,9 +38802,10 @@
       }
     },
     "subscription_started" : {
+      "description" : "Triggered when a 'future' subscription gets started.",
       "post" : {
         "summary" : "Triggered when a 'future' subscription gets started.",
-        "description" : " ",
+        "description" : "Triggered when a 'future' subscription gets started.",
         "operationId" : "onSubscription_startedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_started event",
@@ -38880,9 +38826,10 @@
       }
     },
     "transaction_deleted" : {
+      "description" : "Triggered when a transaction is deleted.",
       "post" : {
         "summary" : "Triggered when a transaction is deleted.",
-        "description" : " ",
+        "description" : "Triggered when a transaction is deleted.",
         "operationId" : "onTransaction_deletedWebhook",
         "requestBody" : {
           "description" : "Payload for transaction_deleted event",
@@ -38903,9 +38850,10 @@
       }
     },
     "subscription_trial_ending" : {
+      "description" : "Triggered 6 days prior to the trial period's end date.",
       "post" : {
         "summary" : "Triggered 6 days prior to the trial period's end date.",
-        "description" : " ",
+        "description" : "Triggered 6 days prior to the trial period's end date.",
         "operationId" : "onSubscription_trial_endingWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_trial_ending event",
@@ -38926,9 +38874,10 @@
       }
     },
     "payment_initiated" : {
+      "description" : "Triggered when a payment is initiated via direct debit.",
       "post" : {
         "summary" : "Triggered when a payment is initiated via direct debit.",
-        "description" : " ",
+        "description" : "Triggered when a payment is initiated via direct debit.",
         "operationId" : "onPayment_initiatedWebhook",
         "requestBody" : {
           "description" : "Payload for payment_initiated event",
@@ -38949,9 +38898,10 @@
       }
     },
     "customer_deleted" : {
+      "description" : "Triggered when a customer is deleted.",
       "post" : {
         "summary" : "Triggered when a customer is deleted.",
-        "description" : " ",
+        "description" : "Triggered when a customer is deleted.",
         "operationId" : "onCustomer_deletedWebhook",
         "requestBody" : {
           "description" : "Payload for customer_deleted event",
@@ -38972,9 +38922,10 @@
       }
     },
     "subscription_activated" : {
+      "description" : "Triggered after the subscription has been moved from \"Trial\" to \"Active\" state.",
       "post" : {
         "summary" : "Triggered after the subscription has been moved from \"Trial\" to \"Active\" state.",
-        "description" : " ",
+        "description" : "Triggered after the subscription has been moved from \"Trial\" to \"Active\" state.",
         "operationId" : "onSubscription_activatedWebhook",
         "requestBody" : {
           "description" : "Payload for subscription_activated event",
@@ -38995,9 +38946,10 @@
       }
     },
     "card_added" : {
+      "description" : "Triggered when a card is added for a customer.",
       "post" : {
         "summary" : "Triggered when a card is added for a customer.",
-        "description" : " ",
+        "description" : "Triggered when a card is added for a customer.",
         "operationId" : "onCard_addedWebhook",
         "requestBody" : {
           "description" : "Payload for card_added event",
@@ -39018,9 +38970,10 @@
       }
     },
     "refund_initiated" : {
+      "description" : "Triggered when a refund is initiated via direct debit.",
       "post" : {
         "summary" : "Triggered when a refund is initiated via direct debit.",
-        "description" : " ",
+        "description" : "Triggered when a refund is initiated via direct debit.",
         "operationId" : "onRefund_initiatedWebhook",
         "requestBody" : {
           "description" : "Payload for refund_initiated event",
