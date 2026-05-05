@@ -7,10 +7,10 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2026-03-26.509f7d33bc8d8cc5e104ec4ea362aab0bb2c5291",
-    "x-cb-api-version" : 1,
+    "version" : "2026-05-03.4674ecf2ca0a4984ac4393bb415801c1157eee59",
     "x-cb-product-catalog-version" : 1,
-    "x-generated-on" : 1774534978926
+    "x-cb-api-version" : 1,
+    "x-generated-on" : 1777800139632
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
@@ -28117,7 +28117,7 @@
           "schema" : {
             "type" : "string",
             "deprecated" : false,
-            "enum" : [ "not_configured", "scheduled", "succeeded", "re_scheduled", "failed", "skipped", "not_applicable", "disabled" ],
+            "enum" : [ "not_configured", "scheduled", "succeeded", "re_scheduled", "failed", "skipped", "not_applicable", "disabled", "rate_limited" ],
             "example" : null
           }
         }, {
@@ -34091,6 +34091,7 @@
           "user" : {
             "type" : "string",
             "deprecated" : false,
+            "description" : "<p class=\"mb-2\">The &quot;user&quot; that triggered the event. The value depends on the <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">source</code>\nattribute:</p>\n<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\">When <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">source</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">admin_console</code>: the email address of the user that triggered the event.</li>\n<li class=\"text-base leading-relaxed\">When <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">source</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">api</code>, <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">js_api</code> or <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">bulk_operation</code>: the <a href=\"https://www.chargebee.com/docs/api_keys.html#create-an-api-key\" target=\"_blank\" rel=\"noopener noreferrer\">name</a> of the API key that was used to trigger the event.</li>\n<li class=\"text-base leading-relaxed\">When the <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">source</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">external_service</code>: the name of the service that called our webhook. Eg. <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">ADYEN</code>, <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">STRIPE</code>, <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">AMAZON_PAYMENTS</code> etc.</li>\n<li class=\"text-base leading-relaxed\">When the <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">source</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">hosted_page</code> or <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">portal</code>: the <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">user</code> attribute is not passed.</li>\n</ul>",
             "maxLength" : 150,
             "example" : null
           },
@@ -34113,7 +34114,7 @@
                   "type" : "string",
                   "deprecated" : false,
                   "description" : "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>",
-                  "enum" : [ "not_configured", "scheduled", "succeeded", "re_scheduled", "failed", "skipped", "not_applicable", "disabled" ],
+                  "enum" : [ "not_configured", "scheduled", "succeeded", "re_scheduled", "failed", "skipped", "not_applicable", "disabled", "rate_limited" ],
                   "example" : null
                 }
               },
@@ -35532,7 +35533,7 @@
             "example" : null
           }
         },
-        "required" : [ "amount", "created_at", "customer_id", "expires_at", "gateway_account_id", "id", "modified_at", "status" ],
+        "required" : [ "amount", "created_at", "customer_id", "expires_at", "id", "modified_at", "status" ],
         "example" : null
       },
       "PaymentMethod" : {
