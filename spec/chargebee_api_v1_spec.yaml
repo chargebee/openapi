@@ -5,10 +5,10 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-06-12.a49b34edd262e3e190bd6d8616ff9e401c37bd21
-  x-cb-api-version: 1
+  version: 2026-07-21.2a6a65b3e1a8ff29840466a7bfdb5cdd778d0634
   x-cb-product-catalog-version: 1
-  x-generated-on: 1781239677988
+  x-cb-api-version: 1
+  x-generated-on: 1784611157092
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v1"
   variables:
@@ -30396,51 +30396,6 @@ components:
       - label
       - subscription_id
       example: null
-    ApiKey:
-      type: object
-      properties:
-        key_name:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        key:
-          type: string
-          deprecated: false
-          maxLength: 250
-          example: null
-        created_at:
-          type: integer
-          format: unix-time
-          deprecated: false
-          example: null
-        status:
-          type: string
-          deprecated: false
-          enum:
-          - enabled
-          - disabled
-          example: null
-        roles:
-          type: array
-          deprecated: false
-          items:
-            type: string
-            deprecated: false
-            enum:
-            - full_access
-            - update_access
-            - read_only_access
-            - read_transactional_data
-            - read_product_configuration
-            - publishable
-            - publishable_extended
-            example: null
-          example: null
-      required:
-      - created_at
-      - key_name
-      example: null
     ApiVersion:
       type: string
       default: v1
@@ -33333,11 +33288,6 @@ components:
         * [Subscription](/docs/api/v1/subscriptions/subscription-object) - The updated details of the subscription.
         * [Card](/docs/api/v1/cards/card-object) - The details about the card provided while subscribing.
         * [Invoice](/docs/api/v1/invoices/invoice-object) - The details about the invoice, if one is generated.
-
-        [Update Payment Method](/docs/api/v1/hosted_pages/update-payment-method):
-
-        * [Customer](/docs/api/v1/customers/customer-object) - The details about the customer for whom the card was updated.
-        * [Card](/docs/api/v1/cards/card-object) - The details about the updated card. It will be present only if the type of payment method is card.
 
         When an embedded hosted page is cancelled by your end user, the **content** attribute will have the unmodified details of customer, subscription and card resources.
       properties:

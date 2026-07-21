@@ -5,10 +5,10 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-06-12.a49b34edd262e3e190bd6d8616ff9e401c37bd21
+  version: 2026-07-21.2a6a65b3e1a8ff29840466a7bfdb5cdd778d0634
   x-cb-api-version: 2
   x-cb-product-catalog-version: 1
-  x-generated-on: 1781239687838
+  x-generated-on: 1784611165580
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v2"
   variables:
@@ -956,6 +956,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -2253,7 +2256,7 @@ paths:
         description: |-
           <dfn class="text-muted"><p class="mb-2">optional, boolean filter</p></dfn>
           <p class="mb-2">Set to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">false</code>
-          to override for this subscription, the <a href="https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
+          to override for this subscription, the <a href="https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
           for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute has a higher precedence than the same attribute at the <a href="/docs/api/customers/customer-object#auto_close_invoices">customer level</a>.
           Possible values are : <em class="italic">true, false</em></p>
           <p class="mb-2"><strong class="font-semibold">Supported operators :</strong>
@@ -2456,6 +2459,24 @@ paths:
               - play_store
               pattern: "^\\[(web|app_store|play_store)(,(web|app_store|play_store))*\\\
                 ]$"
+              example: null
+      - name: decommissioned
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          example: "true"
+          properties:
+            is:
+              type: string
+              format: boolean
+              enum:
+              - "true"
+              - "false"
               example: null
       responses:
         "200":
@@ -4009,6 +4030,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -4335,6 +4359,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -7386,6 +7413,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -9029,6 +9059,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -11711,6 +11744,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -12513,7 +12549,7 @@ paths:
       - BasicAuth: []
   /subscriptions/{subscription-id}/import_unbilled_charges:
     post:
-      summary: Import Unbilled Charges
+      summary: Import unbilled charges
       description: |
         Imports unbilled charges into Chargebee.
       operationId: import_unbilled_charges
@@ -14530,6 +14566,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -14844,6 +14883,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -16143,7 +16185,7 @@ paths:
       - BasicAuth: []
   /subscriptions/{subscription-id}/override_billing_profile:
     post:
-      summary: Override Billing Profile
+      summary: Override billing profile
       description: "Assigns the payment source and sets auto collection state for\
         \ the subscription.  \nWhen you don't pass any input param for this API, payment\
         \ source and auto collection for the subscription will be the same as the\
@@ -17360,7 +17402,7 @@ paths:
       - BasicAuth: []
   /subscriptions/{subscription-id}/edit_advance_invoice_schedule:
     post:
-      summary: Edit Advance Invoice Schedule
+      summary: Edit advance invoice schedule
       description: |
         Modifies the [advance invoicing schedule](/docs/api/advance_invoice_schedules) for a subscription.
       operationId: edit_advance_invoice_schedule
@@ -20649,6 +20691,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -21484,7 +21529,7 @@ paths:
                   type: boolean
                   deprecated: false
                   description: |
-                    Override for this customer, the [site-level setting](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing)
+                    Override for this customer, the [site-level setting](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing)
                     for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the [subscription level](/docs/api/subscriptions/subscription-object#auto_close_invoices)
                     which takes precedence.
                   example: null
@@ -22846,7 +22891,7 @@ paths:
         description: |
           optional, boolean filter
 
-          Override for this customer, the [site-level setting](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing)
+          Override for this customer, the [site-level setting](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing)
           for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the [subscription level](/docs/api/subscriptions/subscription-object#auto_close_invoices)
           which takes precedence. Possible values are : *true, false*
 
@@ -23767,7 +23812,7 @@ paths:
                   type: boolean
                   deprecated: false
                   description: |
-                    Override for this customer, the [site-level setting](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing)
+                    Override for this customer, the [site-level setting](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing)
                     for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the [subscription level](/docs/api/subscriptions/subscription-object#auto_close_invoices)
                     which takes precedence.
                   example: null
@@ -24300,6 +24345,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -24626,6 +24674,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -25564,7 +25615,7 @@ paths:
       - BasicAuth: []
   /customers/{customer-id}/clear_personal_data:
     post:
-      summary: Clear Personal Data of a customer
+      summary: Clear personal data of a customer
       description: |
         Clear personal details of a customer using this API.
       operationId: clear_personal_data_of_a_customer
@@ -26293,6 +26344,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -26817,6 +26871,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -28848,6 +28905,9 @@ paths:
                   - paypay
                   - gcash
                   - south_korean_cards
+                  - paynow
+                  - bizum
+                  - promptpay
                   example: null
                 id_at_vault:
                   type: string
@@ -28951,6 +29011,11 @@ paths:
                     </ul>
                     </li>
                     </ul>
+                  example: null
+                browser_details:
+                  type: object
+                  additionalProperties: true
+                  deprecated: false
                   example: null
                 token_additional_detail:
                   type: object
@@ -29273,6 +29338,11 @@ paths:
             schema:
               type: object
               properties:
+                browser_details:
+                  type: object
+                  additionalProperties: true
+                  deprecated: false
+                  example: null
                 card:
                   type: object
                   deprecated: false
@@ -30043,6 +30113,9 @@ paths:
                   - paypay
                   - gcash
                   - south_korean_cards
+                  - paynow
+                  - bizum
+                  - promptpay
                   example: null
                 gateway_account_id:
                   type: string
@@ -31686,7 +31759,7 @@ paths:
             is:
               type: string
               description: |
-                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards
+                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay
               enum:
               - card
               - paypal_express_checkout
@@ -31735,11 +31808,14 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
+              - paynow
+              - bizum
+              - promptpay
               example: null
             is_not:
               type: string
               description: |
-                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards
+                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay
               enum:
               - card
               - paypal_express_checkout
@@ -31788,11 +31864,14 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
+              - paynow
+              - bizum
+              - promptpay
               example: null
             in:
               type: string
               description: |
-                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards
+                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay
               enum:
               - card
               - paypal_express_checkout
@@ -31841,13 +31920,16 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
-              pattern: "^\\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards))*\\\
+              - paynow
+              - bizum
+              - promptpay
+              pattern: "^\\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay))*\\\
                 ]$"
               example: null
             not_in:
               type: string
               description: |
-                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards
+                \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay
               enum:
               - card
               - paypal_express_checkout
@@ -31896,7 +31978,10 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
-              pattern: "^\\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards))*\\\
+              - paynow
+              - bizum
+              - promptpay
+              pattern: "^\\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay))*\\\
                 ]$"
               example: null
       - name: status
@@ -32749,6 +32834,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -33612,6 +33700,9 @@ paths:
                   - paypay
                   - gcash
                   - south_korean_cards
+                  - paynow
+                  - bizum
+                  - promptpay
                   example: null
                 tmp_token:
                   type: string
@@ -38716,7 +38807,7 @@ paths:
       - BasicAuth: []
   /promotional_credits/deduct:
     post:
-      summary: Deduct Promotional Credits
+      summary: Deduct promotional credits
       description: |
         This API call can be used to deduct promotional credits for a customer. [Learn more about Promotional Credits](https://www.chargebee.com/docs/2.0/credit-notes.html#creating-promotional-credits).
 
@@ -38997,7 +39088,7 @@ paths:
       - BasicAuth: []
   /promotional_credits/set:
     post:
-      summary: Set Promotional Credits
+      summary: Set promotional credits
       description: |
         This API call can be used to set the promotional credits balance of a customer. [Learn more about Promotional Credits](https://www.chargebee.com/docs/2.0/credit-notes.html#creating-promotional-credits).
 
@@ -39271,7 +39362,7 @@ paths:
       - BasicAuth: []
   /promotional_credits/add:
     post:
-      summary: Add Promotional Credits
+      summary: Add promotional credits
       description: |
         This API call can be used to add promotional credits to a customer. [Learn more about Promotional Credits](https://www.chargebee.com/docs/2.0/credit-notes.html#creating-promotional-credits).
 
@@ -39541,7 +39632,7 @@ paths:
       - BasicAuth: []
   /invoices/{invoice-id}/delete_line_items:
     post:
-      summary: Delete Line Items
+      summary: Delete line items
       description: |
         This endpoint is used to delete line items from "Pending" invoice.
       operationId: delete_line_items
@@ -45041,6 +45132,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     gateway_account_id:
                       type: string
@@ -45352,6 +45446,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -48383,6 +48480,9 @@ paths:
                   deprecated: false
                   description: |
                     The reason for exempting the invoice from tax. (Applicable only for exempted invoices.).
+                    \* zero_rated -
+
+                    If the rate of tax is 0% and no Sales/ GST tax is collectable for that line item
                     \* export -
 
                     The customer is from a non-taxable region or the billing address and shipping address are unavailable.
@@ -48390,15 +48490,36 @@ paths:
 
                     The customer is [exempted](/docs/api/customers/customer-object#taxability)
                     from tax.
+                    \* tax_not_configured_external_provider -
+
+                    If the tax is not configured for the country in 3rd party tax provider.
                     \* id_exempt -
 
                     The customer is from a different country than your business and they have a valid VAT number or, the customer is a business entity. (This reason is only applicable when [EU VAT](https://www.chargebee.com/docs/eu-vat.html)
                     or [UK VAT](https://www.chargebee.com/docs/uk-vat.html)
                     is enabled.)
+                    \* high_value_physical_goods -
+
+                    If physical goods are sold from outside Australia to customers in Australia, and the price of all the physical good line items is greater than AUD 1000, then tax will not be applied
+                    \* product_exempt -
+
+                    If the Plan or Addon is marked as Tax exempt
+                    \* region_non_taxable -
+
+                    If the product sold is not taxable in this region, but it is taxable in other regions, hence this region is not part of the Taxable jurisdiction
+                    \* zero_value_item -
+
+                    If the total invoice value/amount is equal to zero. E.g., If the total order value is $10 and a $10 coupon has been applied against that order, the total order value becomes $0. Hence the invoice value also becomes $0.
                   enum:
+                  - zero_rated
                   - id_exempt
                   - customer_exempt
+                  - region_non_taxable
+                  - product_exempt
                   - export
+                  - high_value_physical_goods
+                  - zero_value_item
+                  - tax_not_configured_external_provider
                   example: null
                 vat_number:
                   type: string
@@ -48544,6 +48665,17 @@ paths:
                   deprecated: false
                   description: |
                     If the invoice falls within the subscription current term will be used for proration.
+                  example: null
+                paid_at:
+                  type: integer
+                  format: unix-time
+                  deprecated: false
+                  description: <p class="mb-2">Timestamp when the invoice was paid.
+                    Applicable only when <code class="bg-gray-100 text-gray-800 font-medium
+                    border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono
+                    whitespace-nowrap">status</code> is <code class="bg-gray-100 text-gray-800
+                    font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1
+                    text-sm font-mono whitespace-nowrap">paid</code>.</p>
                   example: null
                 credit_note:
                   type: object
@@ -49251,6 +49383,20 @@ paths:
                         format: int64
                         deprecated: false
                         minimum: 0
+                        example: null
+                      example: null
+                    proration_mode:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        description: |
+                          Proration mode for the line item.
+                        enum:
+                        - reset
+                        - delta
+                        - service_period_revision
+                        - adjusted_term
                         example: null
                       example: null
                     created_at:
@@ -51175,13 +51321,13 @@ paths:
           deprecated: false
           example: old_inv_001
           properties:
-            is:
-              type: string
-              minLength: 1
-              example: null
             in:
               type: string
               pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            is:
+              type: string
+              minLength: 1
               example: null
       - name: payment_reference_number
         in: query
@@ -51202,13 +51348,13 @@ paths:
                 This parameter is used to identify the PRN in the system and retrieve its corresponding payment information. \*\*Note\*\*: To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
               example: "001234"
               properties:
-                is:
-                  type: string
-                  minLength: 1
-                  example: null
                 in:
                   type: string
                   pattern: "^\\[(.*)(,.*)*\\]$"
+                  example: null
+                is:
+                  type: string
+                  minLength: 1
                   example: null
           example: null
       responses:
@@ -52465,7 +52611,7 @@ paths:
       - BasicAuth: []
   /invoices/{invoice-id}/pdf:
     post:
-      summary: Retrieve Invoice as PDF
+      summary: Retrieve invoice as PDF
       description: |
         Gets the invoice as PDF. The returned URL is secure and allows download. The URL will expire in 60 minutes.
 
@@ -53920,6 +54066,20 @@ paths:
                         minimum: 0
                         example: null
                       example: null
+                    proration_mode:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        description: |
+                          Proration mode for the line item.
+                        enum:
+                        - reset
+                        - delta
+                        - service_period_revision
+                        - adjusted_term
+                        example: null
+                      example: null
                   required:
                   - description
                   example: null
@@ -54476,7 +54636,7 @@ paths:
       - BasicAuth: []
   /credit_notes/{credit-note-id}/delete:
     post:
-      summary: Delete a credit Note
+      summary: Delete a credit note
       description: |
         This API [deletes a credit note.](https://www.chargebee.com/docs/credit-notes.html#voiding-or-deleting-a-credit-note) A credit note once deleted, is deleted permanently. You cannot delete a credit which has already been deleted or refunded. If you try to delete a refunded or deleted credit note, an error message will be displayed.
       operationId: delete_a_credit_note
@@ -65360,6 +65520,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -66147,8 +66310,22 @@ paths:
   /transactions:
     get:
       summary: List transactions
-      description: |
-        Lists all the transactions.
+      description: "<div class=\"api-description\"><p class=\"mb-2\">Lists all the\
+        \ transactions.</p><div class=\"alert alert-info\"><p class=\"mb-2\"><strong\
+        \ class=\"font-semibold\">Note:</strong></p><p class=\"mb-2\">For better query\
+        \ performance, we recommend using a <code class=\"bg-gray-100 text-gray-800\
+        \ font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono\
+        \ whitespace-nowrap\">date</code> filter (for example, <code class=\"bg-gray-100\
+        \ text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1\
+        \ text-sm font-mono whitespace-nowrap\">date[after]</code> or <code class=\"\
+        bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5\
+        \ py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">date[between]</code>)\
+        \ when listing transactions. If you are already filtering by <code class=\"\
+        bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5\
+        \ py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">updated_at</code>, you\
+        \ do not need to also filter by <code class=\"bg-gray-100 text-gray-800 font-medium\
+        \ border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\"\
+        >date</code>.</p></div></div>"
       operationId: list_transactions
       parameters:
       - name: chargebee-request-origin-device
@@ -66522,6 +66699,9 @@ paths:
                 * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                 * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                 * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
               enum:
               - card
               - cash
@@ -66578,6 +66758,9 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
+              - paynow
+              - bizum
+              - promptpay
               example: null
             is_not:
               type: string
@@ -66639,6 +66822,9 @@ paths:
                 * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                 * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                 * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
               enum:
               - card
               - cash
@@ -66695,6 +66881,9 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
+              - paynow
+              - bizum
+              - promptpay
               example: null
             in:
               type: string
@@ -66756,6 +66945,9 @@ paths:
                 * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                 * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                 * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
               enum:
               - card
               - cash
@@ -66812,7 +67004,10 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
-              pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards))*\\\
+              - paynow
+              - bizum
+              - promptpay
+              pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay))*\\\
                 ]$"
               example: null
             not_in:
@@ -66875,6 +67070,9 @@ paths:
                 * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                 * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                 * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
               enum:
               - card
               - cash
@@ -66931,7 +67129,10 @@ paths:
               - paypay
               - gcash
               - south_korean_cards
-              pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards))*\\\
+              - paynow
+              - bizum
+              - promptpay
+              pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay))*\\\
                 ]$"
               example: null
       - name: gateway
@@ -67657,15 +67858,16 @@ paths:
               example: null
       - name: date
         in: query
-        description: |
-          optional, timestamp(UTC) in seconds filter
-
-          Indicates when this transaction occurred.
-          **Supported operators :**
-          after, before, on, between
-
-          **Example →**
-          *date\[before\] = "1435054328"*
+        description: |-
+          <dfn class="text-muted"><p class="mb-2">optional, timestamp(UTC) in seconds filter</p></dfn>
+          <p class="mb-2">Indicates when this transaction occurred.
+          We recommend using this filter when listing transactions for better query performance. It is advisable when using this filter, to pass the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">sort_by</code>
+          input parameter as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">date</code>
+          for a faster response.
+          <strong class="font-semibold">Supported operators :</strong>
+          after, before, on, between</p>
+          <p class="mb-2"><strong class="font-semibold">Example →</strong>
+          <em class="italic">date[before] = &quot;1435054328&quot;</em></p>
         required: false
         deprecated: false
         style: deepObject
@@ -69893,7 +70095,7 @@ paths:
       - BasicAuth: []
   /hosted_pages/extend_subscription:
     post:
-      summary: Extend Subscription
+      summary: Extend subscription
       description: |-
         <div class="api-description"><p class="mb-2">This API generates a hosted page URL to extend the billing cycle of a subscription.</p><p class="mb-2">Use one of the following methods to open the hosted page:</p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
         <li class="text-base leading-relaxed"><strong class="font-semibold">In-app modal</strong>: Use Chargebee.js <a href="https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">openCheckout()</code></a> to open the hosted page in a modal popup in your website or application.</li>
@@ -73283,7 +73485,7 @@ paths:
       - BasicAuth: []
   /hosted_pages/collect_now:
     post:
-      summary: Collect Now
+      summary: Collect now
       description: "<div class=\"api-description\"><p class=\"mb-2\">This API generates\
         \ a hosted page URL to collect due payments for the customer.</p><p class=\"\
         mb-2\">Open the hosted page in a new browser tab or window using the <code\
@@ -73581,7 +73783,7 @@ paths:
       - BasicAuth: []
   /hosted_pages/checkout_gift:
     post:
-      summary: Checkout Gift subscription
+      summary: Checkout gift subscription
       description: "<div class=\"api-description\"><p class=\"mb-2\">Creates a hosted\
         \ page for a customer (called the gifter) to gift a subscription to another\
         \ customer (called the receiver).</p><h4>Gifter customer resource lookup and\
@@ -74188,7 +74390,7 @@ paths:
       - BasicAuth: []
   /hosted_pages/claim_gift:
     post:
-      summary: Claim a Gift subscription
+      summary: Claim a gift subscription
       description: |
         This API generates a hosted page URL to claim a gifted subscription.
       operationId: claim_a_gift_subscription
@@ -74916,7 +75118,7 @@ paths:
       - BasicAuth: []
   /hosted_pages/retrieve_agreement_pdf:
     post:
-      summary: Retrieve Direct Debit Agreement PDF
+      summary: Retrieve direct debit agreement PDF
       description: |
         This is applicable only for Direct Debit via SEPA, Bacs, Bg Autogiro, BECS (for both Australia and New Zealand) and PAD. For Direct Debit, the customer needs to accept an agreement that allows the merchant to debit their bank account. This agreement PDF allows you to easily display scheme-rules compliant Direct Debit mandates to your customers.
 
@@ -75297,7 +75499,7 @@ paths:
       - BasicAuth: []
   /hosted_pages/manage_payment_sources:
     post:
-      summary: Manage Payment Sources
+      summary: Manage payment sources
       description: |-
         <div class="api-description"><p class="mb-2">This API generates a hosted page URL to add new or update existing payment sources for the customer.</p><p class="mb-2">Use one of the following methods to open the hosted page:</p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
         <li class="text-base leading-relaxed"><strong class="font-semibold">In-app modal</strong>: Use Chargebee.js <a href="https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">openCheckout()</code></a> to open the hosted page in a modal popup in your website or application.</li>
@@ -78688,6 +78890,9 @@ paths:
                       - paypay
                       - gcash
                       - south_korean_cards
+                      - paynow
+                      - bizum
+                      - promptpay
                       example: null
                     reference_id:
                       type: string
@@ -79270,7 +79475,7 @@ paths:
       - BasicAuth: []
   /subscriptions/{subscription-id}/regenerate_invoice_estimate:
     post:
-      summary: Regenerate Invoice Estimate
+      summary: Regenerate invoice estimate
       description: |-
         <div class="api-description"><p class="mb-2">Regenerates the invoice for the current term of the subscription. The subscription must have <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">status</code> as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">active</code> or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">non_renewing</code>. This operation is not allowed when any of the following conditions hold true for the subscription:</p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
         <li class="text-base leading-relaxed">An invoice exists for the current term and its <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">status</code> is not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">voided</code>.</li>
@@ -93622,7 +93827,7 @@ paths:
                         or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">volume</code>
                         ; the total cost for the item price when the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">pricing_model</code>
                         is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">stairstep</code>.
-                        The value is in the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">minor unit of the currency</a>
+                        The value is in the <a href="/docs/api/v2/pcv-1/currencies">minor unit of the currency</a>
                         .</p>
                       items:
                         type: integer
@@ -94779,7 +94984,7 @@ paths:
                         or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">volume</code>
                         ; the total cost for the item price when the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">pricing_model</code>
                         is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">stairstep</code>.
-                        The value is in the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">minor unit of the currency</a>
+                        The value is in the <a href="/docs/api/v2/pcv-1/currencies">minor unit of the currency</a>
                         .</p>
                       items:
                         type: integer
@@ -95145,7 +95350,7 @@ paths:
       - BasicAuth: []
   /addons/copy:
     post:
-      summary: Copy an Addon
+      summary: Copy an addon
       description: "Creates an addon in this site by copying its configurations from\
         \ another site. Copying of archived addons is not supported.  \n**Note:**\n\
         The attribute *tax_profile_id*\nis not copied. In effect, if the plan is taxable,\
@@ -96327,7 +96532,7 @@ paths:
                         or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">volume</code>
                         ; the total cost for the item price when the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">pricing_model</code>
                         is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">stairstep</code>.
-                        The value is in the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">minor unit of the currency</a>
+                        The value is in the <a href="/docs/api/v2/pcv-1/currencies">minor unit of the currency</a>
                         .</p>
                       items:
                         type: integer
@@ -97925,7 +98130,7 @@ paths:
                         or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">volume</code>
                         ; the total cost for the item price when the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">pricing_model</code>
                         is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">stairstep</code>.
-                        The value is in the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">minor unit of the currency</a>
+                        The value is in the <a href="/docs/api/v2/pcv-1/currencies">minor unit of the currency</a>
                         .</p>
                       items:
                         type: integer
@@ -99000,13 +99205,13 @@ paths:
           deprecated: false
           example: day-pass-USD
           properties:
-            is:
-              type: string
-              minLength: 1
-              example: null
             in:
               type: string
               pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            is:
+              type: string
+              minLength: 1
               example: null
       responses:
         "200":
@@ -108194,7 +108399,7 @@ paths:
       - BasicAuth: []
   /time_machines/{time-machine-name}/start_afresh:
     post:
-      summary: Start Afresh
+      summary: Start afresh
       description: |
         Restart the time machine. This will clear the "customer" data like customer details, subscriptions, invoices, transactions. Also a time travel is initiated to travel back to specified genesis time.
 
@@ -108428,7 +108633,7 @@ paths:
       - BasicAuth: []
   /exports/customers:
     post:
-      summary: Export Customers
+      summary: Export customers
       description: |
         This API triggers export of customer data. The exported zip file contains CSV files with customer-related data.
       operationId: export_customers
@@ -108558,15 +108763,10 @@ paths:
                   type: string
                   default: data
                   deprecated: false
-                  description: |
-                    Determines the format of the data. Returns the export type based on the selected value.
-                    \* data -
-
-                    Download your current data in CSV.
-                    \* import_friendly_data -
-
-                    Download import friendly data in CSV. This CSV can be used to perform [bulk operations](https://www.chargebee.com/docs/bulk-operations.html)
-                    .
+                  description: |-
+                    <p class="mb-2">Determines the format of the data. Returns the export type based on the selected value.</p>
+                    * data - <p class="mb-2">Provides the full set of data for the customers in multiple <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">.csv</code> files.</p>
+                    * import_friendly_data - <p class="mb-2">Provides a <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">.csv</code> file whose columns match the <a href="/docs/api/customers/customer-object" class="text-blue-600 hover:text-blue-800 underline"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">customer</code></a> schema. This file format can be readily imported through the UI by using <a href="https://www.chargebee.com/docs/bulk-operations.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">Bulk Operations</a>.</p>
                   enum:
                   - data
                   - import_friendly_data
@@ -108985,7 +109185,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Override for this customer, the \[site-level setting\](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing) for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the \[subscription level\](/docs/api/subscriptions/subscription-object#auto_close_invoices) which takes precedence.
+                        Override for this customer, the \[site-level setting\](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing) for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the \[subscription level\](/docs/api/subscriptions/subscription-object#auto_close_invoices) which takes precedence.
                       example: "true"
                       properties:
                         is:
@@ -109234,7 +109434,7 @@ paths:
       - BasicAuth: []
   /exports/transactions:
     post:
-      summary: Export Transactions
+      summary: Export transactions
       description: |
         This API triggers export of transaction data. The exported zip file contains CSV files with transaction-related data.
       operationId: export_transactions
@@ -109562,6 +109762,9 @@ paths:
                             * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                             * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                             * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                            * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                            * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                            * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
                           enum:
                           - card
                           - cash
@@ -109618,6 +109821,9 @@ paths:
                           - paypay
                           - gcash
                           - south_korean_cards
+                          - paynow
+                          - bizum
+                          - promptpay
                           example: null
                         is_not:
                           type: string
@@ -109679,6 +109885,9 @@ paths:
                             * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                             * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                             * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                            * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                            * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                            * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
                           enum:
                           - card
                           - cash
@@ -109735,6 +109944,9 @@ paths:
                           - paypay
                           - gcash
                           - south_korean_cards
+                          - paynow
+                          - bizum
+                          - promptpay
                           example: null
                         in:
                           type: string
@@ -109796,6 +110008,9 @@ paths:
                             * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                             * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                             * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                            * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                            * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                            * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
                           enum:
                           - card
                           - cash
@@ -109852,7 +110067,10 @@ paths:
                           - paypay
                           - gcash
                           - south_korean_cards
-                          pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards))*\\\
+                          - paynow
+                          - bizum
+                          - promptpay
+                          pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay))*\\\
                             ]$"
                           example: null
                         not_in:
@@ -109915,6 +110133,9 @@ paths:
                             * `paypay` - PayPay <span isMicro='true' featureId='cb-paypay'></span>
                             * `gcash` - GCash <span isMicro='true' featureId='cb-gcash'></span>
                             * `south_korean_cards` - Payments made via South Korean Cards <span isMicro='true' featureId='cb-south-korean-cards'></span>
+                            * `paynow` - Payments made via PayNow <span isMicro='true' featureId='cb-paynow'></span>
+                            * `bizum` - Payments made via Bizum <span isMicro='true' featureId='cb-bizum'></span>
+                            * `promptpay` - Payments made via PromptPay <span isMicro='true' featureId='cb-promptpay'></span>
                           enum:
                           - card
                           - cash
@@ -109971,7 +110192,10 @@ paths:
                           - paypay
                           - gcash
                           - south_korean_cards
-                          pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards))*\\\
+                          - paynow
+                          - bizum
+                          - promptpay
+                          pattern: "^\\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay))*\\\
                             ]$"
                           example: null
                     gateway:
@@ -110915,7 +111139,7 @@ paths:
       - BasicAuth: []
   /exports/invoices:
     post:
-      summary: Export Invoices
+      summary: Export invoices
       description: "This API triggers export of invoice data. The exported zip file\
         \ contains CSV files with invoice-related data.\n\n### Invoice Export Best\
         \ Practice\n\nFor a full export, Chargebee recommends exporting data in batches\
@@ -112018,7 +112242,7 @@ paths:
       - BasicAuth: []
   /exports/deferred_revenue:
     post:
-      summary: Export Deferred Revenue Reports
+      summary: Export deferred revenue reports
       description: |
         **Important:**
         This report is deprecated. Therefore, the endpoint is also deprecated.
@@ -113427,7 +113651,7 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">Set to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">false</code>
-                        to override for this subscription, the <a href="https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
+                        to override for this subscription, the <a href="https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
                         for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute has a higher precedence than the same attribute at the <a href="/docs/api/customers/customer-object#auto_close_invoices">customer level</a>
                         .</p>
                       example: "true"
@@ -113922,7 +114146,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Override for this customer, the \[site-level setting\](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing) for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the \[subscription level\](/docs/api/subscriptions/subscription-object#auto_close_invoices) which takes precedence.
+                        Override for this customer, the \[site-level setting\](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing) for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the \[subscription level\](/docs/api/subscriptions/subscription-object#auto_close_invoices) which takes precedence.
                       example: "true"
                       properties:
                         is:
@@ -114183,7 +114407,7 @@ paths:
       - BasicAuth: []
   /exports/revenue_recognition:
     post:
-      summary: Export Revenue Recognition Reports
+      summary: Export revenue recognition reports
       description: |
         **Important:**
         This report is deprecated. Therefore, the endpoint is also deprecated.
@@ -115593,7 +115817,7 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">Set to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">false</code>
-                        to override for this subscription, the <a href="https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
+                        to override for this subscription, the <a href="https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
                         for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute has a higher precedence than the same attribute at the <a href="/docs/api/customers/customer-object#auto_close_invoices">customer level</a>
                         .</p>
                       example: "true"
@@ -116088,7 +116312,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Override for this customer, the \[site-level setting\](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing) for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the \[subscription level\](/docs/api/subscriptions/subscription-object#auto_close_invoices) which takes precedence.
+                        Override for this customer, the \[site-level setting\](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing) for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the \[subscription level\](/docs/api/subscriptions/subscription-object#auto_close_invoices) which takes precedence.
                       example: "true"
                       properties:
                         is:
@@ -116349,7 +116573,7 @@ paths:
       - BasicAuth: []
   /exports/credit_notes:
     post:
-      summary: Export Credit Notes
+      summary: Export credit notes
       description: |
         This API triggers export of credit note data. The exported zip file contains CSV files with credit note-related data.
       operationId: export_credit_notes
@@ -117268,7 +117492,7 @@ paths:
       - BasicAuth: []
   /exports/coupons:
     post:
-      summary: Export Coupons
+      summary: Export coupons
       description: |
         This API triggers export of coupon data. The exported zip file contains CSV files with coupon-related data.
       operationId: export_coupons
@@ -117428,13 +117652,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: "^\\[(.*)(,.*)*\\]$"
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -117899,7 +118123,7 @@ paths:
       - BasicAuth: []
   /exports/orders:
     post:
-      summary: Export Orders
+      summary: Export orders
       description: |
         This API triggers export of order data. The exported zip file contains CSV files with order-related data.
       operationId: export_orders
@@ -118726,7 +118950,7 @@ paths:
       - BasicAuth: []
   /exports/addons:
     post:
-      summary: Export Addons
+      summary: Export addons
       description: |
         This API triggers export of addon data. The exported zip file contains CSV files with addon-related data.
       operationId: export_addons
@@ -119364,7 +119588,7 @@ paths:
       - BasicAuth: []
   /exports/subscriptions:
     post:
-      summary: Export Subscriptions
+      summary: Export subscriptions
       description: |
         This API triggers export of subscription data. The exported zip file contains CSV files with subscription-related data.
       operationId: export_subscriptions
@@ -119494,15 +119718,10 @@ paths:
                   type: string
                   default: data
                   deprecated: false
-                  description: |
-                    Determines the format of the data. Returns the export type based on the selected value.
-                    \* data -
-
-                    Download your current data in CSV.
-                    \* import_friendly_data -
-
-                    Download import friendly data in CSV. This CSV can be used to perform [bulk operations](https://www.chargebee.com/docs/bulk-operations.html)
-                    .
+                  description: |-
+                    <p class="mb-2">Determines the format of the data. Returns the export type based on the selected value.</p>
+                    * data - <p class="mb-2">Provides the full set of data for the subscriptions in multiple <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">.csv</code> files.</p>
+                    * import_friendly_data - <p class="mb-2">Provides a <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">.csv</code> file whose columns match the <a href="/docs/api/subscriptions/subscription-object" class="text-blue-600 hover:text-blue-800 underline"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">subscription</code></a> schema. This file format can be readily imported through the UI by using <a href="https://www.chargebee.com/docs/bulk-operations.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">Bulk Operations</a>.</p>
                   enum:
                   - data
                   - import_friendly_data
@@ -120057,7 +120276,7 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">Set to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">false</code>
-                        to override for this subscription, the <a href="https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
+                        to override for this subscription, the <a href="https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
                         for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute has a higher precedence than the same attribute at the <a href="/docs/api/customers/customer-object#auto_close_invoices">customer level</a>
                         .</p>
                       example: "true"
@@ -120156,6 +120375,20 @@ paths:
                           pattern: "^\\[(web|app_store|play_store)(,(web|app_store|play_store))*\\\
                             ]$"
                           example: null
+                    decommissioned:
+                      type: object
+                      deprecated: false
+                      description: |
+                        Specifies whether a cancelled subscription is decommissioned or not
+                      example: "true"
+                      properties:
+                        is:
+                          type: string
+                          format: boolean
+                          enum:
+                          - "true"
+                          - "false"
+                          example: null
                   example: null
               example: null
             encoding:
@@ -120241,7 +120474,7 @@ paths:
       - BasicAuth: []
   /exports/plans:
     post:
-      summary: Export Plans
+      summary: Export plans
       description: |
         This API triggers export of plan data. The exported zip file contains CSV files with plan-related data.
       operationId: export_plans
@@ -121643,6 +121876,9 @@ paths:
                   - paypay
                   - gcash
                   - south_korean_cards
+                  - paynow
+                  - bizum
+                  - promptpay
                   example: null
                 success_url:
                   type: string
@@ -122101,6 +122337,9 @@ paths:
                   - paypay
                   - gcash
                   - south_korean_cards
+                  - paynow
+                  - bizum
+                  - promptpay
                   example: null
                 success_url:
                   type: string
@@ -122859,7 +123098,7 @@ paths:
       - BasicAuth: []
   /in_app_subscriptions/{in-app-subscription-app-id}/retrieve:
     post:
-      summary: Retrieve Store Subscription
+      summary: Retrieve store subscription
       description: |-
         <div class="api-description"><span featureId="cb-mobile-subscriptions"></span><p class="mb-2">This API verifies the application id <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">{in_app_subscription_app_id}</code> and <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">receipt</code> then returns the subscription details associated with the purchase.</p><h4>Path Parameter</h4><div class="cb-list cb-list-action "><div class="cb-list-item"><samp id="import_subscription_without_receipt_in_app_subscription_app_id"><p class="mb-2">in_app_subscription_app_id</p></samp></div><div class="cb-list-desc"><dfn class="text-muted"><p class="mb-2">required, string</p></dfn><p class="mb-2">The handle is created by Chargebee for your Apple App Store or Google Play Store app. It can be obtained from the Chargebee web app.
         The following are instructions to obtain the value of the path parameter for the Apple App Store and Google Play Store.</p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
@@ -123094,7 +123333,7 @@ paths:
       - BasicAuth: []
   /in_app_subscriptions/{in-app-subscription-app-id}/import_receipt:
     post:
-      summary: Import Receipt
+      summary: Import receipt
       description: |-
         <div class="api-description"><span featureId="cb-mobile-subscriptions"></span><p class="mb-2">Verifies an Apple App Store or Google Play Store in-app purchase <a href="https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store?language=objc#overview">receipt</a> and imports <a href="/docs/api/subscriptions">subscriptions</a> for all historical purchases made by the customer.</p><div class="alert alert-info"><p class="mb-2"><strong class="font-semibold">Tip</strong>
         An <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">in_app_subscription</code>
@@ -123454,7 +123693,7 @@ paths:
       - BasicAuth: []
   /in_app_subscriptions/{in-app-subscription-app-id}/import_subscription:
     post:
-      summary: Import Subscription Without Receipt
+      summary: Import subscription without receipt
       description: |-
         <div class="api-description"><span featureId="cb-mobile-subscriptions"></span><p class="mb-2">The Import Subscriptions endpoint is a Chargebee API that allows you to import historic In-App Subscriptions without using a valid Apple App Store receipt. This endpoint is useful if you do not have access to the receipt data which is required for the <a href="/docs/api/in_app_subscriptions/import-receipt">Import Receipt</a> API.
         With this API, you can import subscriptions and corresponding invoices for historic In-App purchases. The API returns the <a href="/docs/api/in_app_subscriptions/in-app-subscription-object">in-app-subscriptions object</a> once the historic subscription is successfully imported into Chargebee.</p><div class="warning alert alert-warning"><p class="mb-2"><strong class="font-semibold">Note</strong>:</p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
@@ -123859,7 +124098,7 @@ paths:
       - BasicAuth: []
   /in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command:
     post:
-      summary: Process Purchase Command
+      summary: Process purchase command
       description: |-
         <div class="api-description"><span featureId="cb-mobile-subscriptions"></span><p class="mb-2">Verifies an in-app purchase made by your customer and creates a subscription in Chargebee.</p><div class="warning alert alert-warning"><p class="mb-2"><strong class="font-semibold">Note:</strong>
         If App Store or Play Store products have not been imported to Chargebee and this API is invoked, Chargebee will automatically create plans that correspond to the store product IDs. However, if historical subscriptions are to be imported using the <a href="/docs/api/v2/pcv-1/in_app_subscriptions/import-receipt">import receipt</a> API, importing products is mandatory. <a href="https://www.chargebee.com/docs/1.0/mobile_subscriptions.html">Learn more</a>.</p></div><div id="apple-app-store-accordion" class="cb-accordion"><div class="cb-accordion-title collapsed" data-toggle="collapse" data-target="#apple-app-store-accordion-content" aria-expanded="false" aria-controls="apple-app-store-accordion-content">Apple App Store<i class="fa fa-chevron-circle-down fa-lg" aria-hidden="true"></i></div><div class="collapse" id="apple-app-store-accordion-content"><p class="mb-2">This section provides details of the Process Purchase Command operation when performed for the Apple App Store. This API processes only the latest in-app transaction on the receipt. Sync historical subscriptions into Chargebee using <a href="https://www.chargebee.com/docs/2.0/mobile-app-store-product-iap.html#import-in-app-purchase-receipts" target="_blank">bulk import</a> of In-App Purchase receipts.</p><div class="warning alert alert-warning"><p class="mb-2"><strong class="font-semibold">Important</strong></p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
@@ -136167,7 +136406,7 @@ components:
                   or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">volume</code>
                   ; the total cost for the item price when the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">pricing_model</code>
                   is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">stairstep</code>.
-                  The value is in the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">minor unit of the currency</a>
+                  The value is in the <a href="/docs/api/v2/pcv-1/currencies">minor unit of the currency</a>
                   .</p>
                 minimum: 0
                 example: null
@@ -137055,6 +137294,225 @@ components:
       - result
       - status
       - updated_at
+      example: null
+    AsyncResponse:
+      type: object
+      properties:
+        api_version:
+          type: string
+          deprecated: false
+          maxLength: 10
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        completed_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        status:
+          type: string
+          deprecated: false
+          enum:
+          - success
+          - failed
+          example: null
+        result:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        request:
+          type: object
+          deprecated: false
+          properties:
+            id:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            resource:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            operation_type:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            method:
+              type: string
+              deprecated: false
+              maxLength: 10
+              example: null
+            uri:
+              type: string
+              deprecated: false
+              maxLength: 512
+              example: null
+            idempotency_key:
+              type: string
+              deprecated: false
+              maxLength: 250
+              example: null
+          required:
+          - id
+          example: null
+        error_detail:
+          type: object
+          deprecated: false
+          properties:
+            message:
+              type: string
+              deprecated: false
+              maxLength: 500
+              example: null
+            type:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            api_error_code:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            error_code:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            error_msg:
+              type: string
+              deprecated: false
+              maxLength: 250
+              example: null
+            http_status_code:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+          example: null
+      required:
+      - status
+      example: null
+    AsyncResponseList:
+      type: object
+      properties:
+        list:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              api_version:
+                type: string
+                deprecated: false
+                maxLength: 10
+                example: null
+              created_at:
+                type: integer
+                format: unix-time
+                deprecated: false
+                example: null
+              completed_at:
+                type: integer
+                format: unix-time
+                deprecated: false
+                example: null
+              status:
+                type: string
+                deprecated: false
+                enum:
+                - success
+                - failed
+                example: null
+              request:
+                type: object
+                deprecated: false
+                properties:
+                  id:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                  resource:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                  operation_type:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                  method:
+                    type: string
+                    deprecated: false
+                    maxLength: 10
+                    example: null
+                  uri:
+                    type: string
+                    deprecated: false
+                    maxLength: 512
+                    example: null
+                  idempotency_key:
+                    type: string
+                    deprecated: false
+                    maxLength: 250
+                    example: null
+                required:
+                - id
+                example: null
+              error_detail:
+                type: object
+                deprecated: false
+                properties:
+                  message:
+                    type: string
+                    deprecated: false
+                    maxLength: 500
+                    example: null
+                  type:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                  api_error_code:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                  error_code:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                  error_msg:
+                    type: string
+                    deprecated: false
+                    maxLength: 250
+                    example: null
+                  http_status_code:
+                    type: string
+                    deprecated: false
+                    maxLength: 100
+                    example: null
+                example: null
+              result:
+                type: object
+                additionalProperties: true
+                deprecated: false
+                example: null
+            required:
+            - status
+            example: null
+          example: null
       example: null
     AuthorizationSucceededEvent:
       type: object
@@ -138318,6 +138776,25 @@ components:
       enum:
       - invoice_immediately
       - add_to_unbilled_charges
+      example: null
+    ColumnDefinition:
+      type: object
+      properties:
+        column_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        data_type:
+          type: string
+          deprecated: false
+          enum:
+          - number
+          - string
+          example: null
+      required:
+      - column_name
+      - data_type
       example: null
     Comment:
       type: object
@@ -140829,6 +141306,17 @@ components:
                   A unique identifier for the customer this line item belongs to
                 maxLength: 100
                 example: null
+              proration_mode:
+                type: string
+                deprecated: false
+                description: |
+                  Proration mode for the line item.
+                enum:
+                - reset
+                - delta
+                - service_period_revision
+                - adjusted_term
+                example: null
             required:
             - date_from
             - date_to
@@ -141704,6 +142192,30 @@ components:
             - invoice_status
             example: null
           example: null
+        exchange_rates:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              currency_code:
+                type: string
+                deprecated: false
+                maxLength: 3
+                example: null
+              rate:
+                type: number
+                format: decimal
+                deprecated: false
+                maximum: 1000000000
+                minimum: 0.0000000010
+                example: null
+            required:
+            - currency_code
+            - rate
+            example: null
+          example: null
         shipping_address:
           type: object
           deprecated: false
@@ -142488,6 +143000,15 @@ components:
                 type: string
                 deprecated: false
                 maxLength: 100
+                example: null
+              proration_mode:
+                type: string
+                deprecated: false
+                enum:
+                - reset
+                - delta
+                - service_period_revision
+                - adjusted_term
                 example: null
             required:
             - date_from
@@ -143992,7 +144513,7 @@ components:
           type: boolean
           deprecated: false
           description: |
-            Override for this customer, the [site-level setting](https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing)
+            Override for this customer, the [site-level setting](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing)
             for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute is also available at the [subscription level](/docs/api/subscriptions/subscription-object#auto_close_invoices)
             which takes precedence.
           example: null
@@ -144667,6 +145188,9 @@ components:
               - paypay
               - gcash
               - south_korean_cards
+              - paynow
+              - bizum
+              - promptpay
               example: null
             gateway:
               type: string
@@ -145592,6 +146116,7 @@ components:
       - auto_collect
       - offline
       - direct_debit
+      - real_time_payments
       example: null
     DunningUpdatedEvent:
       type: object
@@ -147146,6 +147671,17 @@ components:
                       A unique identifier for the customer this line item belongs to
                     maxLength: 100
                     example: null
+                  proration_mode:
+                    type: string
+                    deprecated: false
+                    description: |
+                      Proration mode for the line item.
+                    enum:
+                    - reset
+                    - delta
+                    - service_period_revision
+                    - adjusted_term
+                    example: null
                 required:
                 - date_from
                 - date_to
@@ -148178,6 +148714,17 @@ components:
                       description: |
                         A unique identifier for the customer this line item belongs to
                       maxLength: 100
+                      example: null
+                    proration_mode:
+                      type: string
+                      deprecated: false
+                      description: |
+                        Proration mode for the line item.
+                      enum:
+                      - reset
+                      - delta
+                      - service_period_revision
+                      - adjusted_term
                       example: null
                   required:
                   - date_from
@@ -149331,6 +149878,17 @@ components:
                       A unique identifier for the customer this line item belongs to
                     maxLength: 100
                     example: null
+                  proration_mode:
+                    type: string
+                    deprecated: false
+                    description: |
+                      Proration mode for the line item.
+                    enum:
+                    - reset
+                    - delta
+                    - service_period_revision
+                    - adjusted_term
+                    example: null
                 required:
                 - date_from
                 - date_to
@@ -150366,6 +150924,17 @@ components:
                       description: |
                         A unique identifier for the customer this line item belongs to
                       maxLength: 100
+                      example: null
+                    proration_mode:
+                      type: string
+                      deprecated: false
+                      description: |
+                        Proration mode for the line item.
+                      enum:
+                      - reset
+                      - delta
+                      - service_period_revision
+                      - adjusted_term
                       example: null
                   required:
                   - date_from
@@ -153116,11 +153685,6 @@ components:
           - scheduled
           - in_grace_period
           example: null
-        metadata:
-          type: string
-          deprecated: false
-          maxLength: 65000
-          example: null
         grant_source:
           type: string
           deprecated: false
@@ -153153,6 +153717,11 @@ components:
           deprecated: false
           enum:
           - credit_unit
+          example: null
+        metadata:
+          type: object
+          additionalProperties: true
+          deprecated: false
           example: null
       required:
       - balance
@@ -153407,7 +153976,7 @@ components:
         * [Card](/docs/api/cards/card-object) - The details about the card provided while subscribing.
         * [Invoice](/docs/api/invoices/invoice-object) - The details about the invoice, if one is generated.
 
-        [Update Payment Method](/docs/api/v2/pcv-1/hosted_pages/update-payment-method):
+        [Manage Payment Sources](/docs/api/v2/pcv-1/hosted_pages/manage-payment-sources):
 
         * [Customer](/docs/api/customers/customer-object) - The details about the customer for whom the card was updated.
         * [Card](/docs/api/cards/card-object) - The details about the updated card. It will be present only if the type of payment method is card.
@@ -154181,6 +154750,30 @@ components:
             \ a feature available only on Product Catalog 2.0.\n"
           maxLength: 50
           example: null
+        exchange_rates:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              currency_code:
+                type: string
+                deprecated: false
+                maxLength: 3
+                example: null
+              rate:
+                type: number
+                format: decimal
+                deprecated: false
+                maximum: 1000000000
+                minimum: 0.0000000010
+                example: null
+            required:
+            - currency_code
+            - rate
+            example: null
+          example: null
         line_items:
           type: array
           deprecated: false
@@ -154445,6 +155038,17 @@ components:
                 description: |
                   A unique identifier for the customer this line item belongs to
                 maxLength: 100
+                example: null
+              proration_mode:
+                type: string
+                deprecated: false
+                description: |
+                  Proration mode for the line item.
+                enum:
+                - reset
+                - delta
+                - service_period_revision
+                - adjusted_term
                 example: null
             required:
             - date_from
@@ -155441,6 +156045,7 @@ components:
                 - auto_collect
                 - offline
                 - direct_debit
+                - real_time_payments
                 example: null
               created_at:
                 type: integer
@@ -156818,6 +157423,15 @@ components:
                 deprecated: false
                 maxLength: 100
                 example: null
+              proration_mode:
+                type: string
+                deprecated: false
+                enum:
+                - reset
+                - delta
+                - service_period_revision
+                - adjusted_term
+                example: null
             required:
             - date_from
             - date_to
@@ -157511,252 +158125,12 @@ components:
       - level
       - value
       example: null
-    Meter:
-      type: object
-      properties:
-        feature_id:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        id:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        name:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        description:
-          type: string
-          deprecated: false
-          maxLength: 500
-          example: null
-        type:
-          type: string
-          deprecated: false
-          enum:
-          - simple
-          - compound
-          example: null
-        status:
-          type: string
-          deprecated: false
-          enum:
-          - active
-          - archived
-          - deleted
-          example: null
-        query:
-          type: string
-          deprecated: false
-          maxLength: 500
-          example: null
-        meter_strategy:
-          type: string
-          deprecated: false
-          example: null
-        feature_ids:
-          type: array
-          deprecated: false
-          items:
-            type: string
-            deprecated: false
-            maxLength: 50
-            example: null
-          example: null
-        column_definitions:
-          type: array
-          deprecated: false
-          items:
-            type: object
-            deprecated: false
-            properties:
-              column_name:
-                type: string
-                deprecated: false
-                maxLength: 100
-                example: null
-              property_data_type:
-                type: string
-                deprecated: false
-                enum:
-                - number
-                - string
-                example: null
-              data_type:
-                type: string
-                deprecated: false
-                enum:
-                - number
-                - string
-                example: null
-            required:
-            - column_name
-            - data_type
-            - property_data_type
-            example: null
-          example: null
-        features:
-          type: array
-          deprecated: false
-          items:
-            type: object
-            deprecated: false
-            properties:
-              id:
-                type: string
-                deprecated: false
-                maxLength: 50
-                example: null
-              name:
-                type: string
-                deprecated: false
-                maxLength: 50
-                example: null
-              description:
-                type: string
-                deprecated: false
-                maxLength: 500
-                example: null
-              status:
-                type: string
-                deprecated: false
-                enum:
-                - active
-                - archived
-                - draft
-                example: null
-              type:
-                type: string
-                deprecated: false
-                enum:
-                - switch
-                - custom
-                - quantity
-                - range
-                example: null
-              unit:
-                type: string
-                deprecated: false
-                maxLength: 50
-                example: null
-              resource_version:
-                type: integer
-                format: int64
-                deprecated: false
-                example: null
-              updated_at:
-                type: integer
-                format: unix-time
-                deprecated: false
-                example: null
-              created_at:
-                type: integer
-                format: unix-time
-                deprecated: false
-                example: null
-              levels:
-                type: array
-                deprecated: false
-                items:
-                  type: object
-                  deprecated: false
-                  properties:
-                    name:
-                      type: string
-                      deprecated: false
-                      maxLength: 50
-                      example: null
-                    value:
-                      type: string
-                      deprecated: false
-                      maxLength: 50
-                      example: null
-                    level:
-                      type: integer
-                      format: int32
-                      deprecated: false
-                      example: null
-                    is_unlimited:
-                      type: boolean
-                      deprecated: false
-                      example: null
-                  required:
-                  - is_unlimited
-                  - level
-                  - value
-                  example: null
-                example: null
-            required:
-            - created_at
-            - id
-            - name
-            example: null
-          example: null
-      required:
-      - feature_id
-      - id
-      - name
-      - query
-      - type
-      example: null
-    MeteredFeature:
-      type: object
-      properties:
-        meter_id:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        feature_id:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        id:
-          type: string
-          deprecated: false
-          maxLength: 50
-          example: null
-        column_definitions:
-          type: array
-          deprecated: false
-          items:
-            type: object
-            deprecated: false
-            properties:
-              column_name:
-                type: string
-                deprecated: false
-                maxLength: 100
-                example: null
-              property_data_type:
-                type: string
-                deprecated: false
-                enum:
-                - number
-                - string
-                example: null
-              data_type:
-                type: string
-                deprecated: false
-                enum:
-                - number
-                - string
-                example: null
-            required:
-            - column_name
-            - data_type
-            - property_data_type
-            example: null
-          example: null
-      required:
-      - feature_id
-      - id
-      - meter_id
+    MeterType:
+      type: string
+      deprecated: true
+      enum:
+      - simple
+      - compound
       example: null
     Mode:
       type: string
@@ -160489,6 +160863,9 @@ components:
           - paypay
           - gcash
           - south_korean_cards
+          - paynow
+          - bizum
+          - promptpay
           example: null
         success_url:
           type: string
@@ -160739,6 +161116,9 @@ components:
               - paypay
               - gcash
               - south_korean_cards
+              - paynow
+              - bizum
+              - promptpay
               example: null
             id_at_gateway:
               type: string
@@ -161114,6 +161494,9 @@ components:
                 - paypay
                 - gcash
                 - south_korean_cards
+                - paynow
+                - bizum
+                - promptpay
                 example: null
               id_at_gateway:
                 type: string
@@ -161275,6 +161658,45 @@ components:
             - modified_at
             - status
             example: null
+          example: null
+        payment_intent_metadata:
+          type: object
+          deprecated: false
+          properties:
+            source:
+              type: string
+              deprecated: false
+              description: |
+                null
+              enum:
+              - cb_js
+              - components_fields
+              - checkout_v3
+              - paynow_v3
+              - portal_v3
+              - gift_v3
+              - checkout_v4
+              - payment_component
+              - pc_inapp_v4
+              - pc_fpc_v4
+              example: null
+            client_ip_address:
+              type: string
+              deprecated: false
+              maxLength: 50
+              example: null
+            user_agent:
+              type: string
+              deprecated: false
+              maxLength: 1000
+              example: null
+            created_at:
+              type: integer
+              format: unix-time
+              deprecated: false
+              example: null
+          required:
+          - source
           example: null
       required:
       - amount
@@ -161459,6 +161881,9 @@ components:
       - paypay
       - gcash
       - south_korean_cards
+      - paynow
+      - bizum
+      - promptpay
       example: null
     PaymentMethodSavePolicy:
       type: string
@@ -161519,6 +161944,9 @@ components:
       - paypay
       - gcash
       - south_korean_cards
+      - paynow
+      - bizum
+      - promptpay
       example: null
     PaymentReferenceNumber:
       type: object
@@ -161997,6 +162425,9 @@ components:
           - paypay
           - gcash
           - south_korean_cards
+          - paynow
+          - bizum
+          - promptpay
           example: null
         reference_id:
           type: string
@@ -165006,7 +165437,7 @@ components:
                   or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">volume</code>
                   ; the total cost for the item price when the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">pricing_model</code>
                   is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">stairstep</code>.
-                  The value is in the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">minor unit of the currency</a>
+                  The value is in the <a href="/docs/api/v2/pcv-1/currencies">minor unit of the currency</a>
                   .</p>
                 minimum: 0
                 example: null
@@ -166599,6 +167030,17 @@ components:
                   A unique identifier for the customer this line item belongs to
                 maxLength: 100
                 example: null
+              proration_mode:
+                type: string
+                deprecated: false
+                description: |
+                  null
+                enum:
+                - reset
+                - delta
+                - service_period_revision
+                - adjusted_term
+                example: null
             required:
             - date_from
             - date_to
@@ -167946,6 +168388,17 @@ components:
                   A unique identifier for the customer this line item belongs to
                 maxLength: 100
                 example: null
+              proration_mode:
+                type: string
+                deprecated: false
+                description: |
+                  null
+                enum:
+                - reset
+                - delta
+                - service_period_revision
+                - adjusted_term
+                example: null
             required:
             - date_from
             - date_to
@@ -168429,6 +168882,11 @@ components:
                 description: |
                   Description for this charge
                 maxLength: 250
+                example: null
+              entity_description:
+                type: string
+                deprecated: false
+                maxLength: 500
                 example: null
               service_period_in_days:
                 type: integer
@@ -170127,19 +170585,41 @@ components:
         <div class="api-description"><p class="mb-2">Represents a platform site in Chargebee.
         Each platform site includes a unique <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">id</code>, the associated <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">site_id</code>, and a <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">domain</code>, along with its <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">site_type</code> and <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">created_at</code> timestamp.</p></div>
       properties:
+        site_owner_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
         id:
           type: string
           deprecated: false
           description: |
             Unique identifier of the platform site. Maximum length is 40 characters.
-          maxLength: 40
+          maxLength: 60
           example: null
-        site_id:
+        currency_code:
+          type: string
+          deprecated: false
+          maxLength: 3
+          example: null
+        status:
           type: string
           deprecated: false
           description: |
-            Unique identifier of the Chargebee site associated with this platform site.
-          maxLength: 60
+            null
+          enum:
+          - active
+          - disabled
+          - cancelled
+          example: null
+        type:
+          type: string
+          deprecated: false
+          description: |
+            null
+          enum:
+          - sandbox
+          - live
           example: null
         domain:
           type: string
@@ -170147,21 +170627,46 @@ components:
           description: |
             Domain name of the platform site. Maximum length is 50 characters.
           maxLength: 50
+          minLength: 4
           example: null
-        site_type:
+        locale:
           type: string
+          default: en
           deprecated: false
-          description: |-
-            <p class="mb-2">Type of the platform site. Possible values are:</p>
-            <ul class="list-disc list-outside ml-6 my-4 space-y-2">
-            <li class="text-base leading-relaxed"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">sandbox</code>: Used for testing in a non-production environment.</li>
-            <li class="text-base leading-relaxed"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">live</code>: Used in production for real transactions.</li>
-            <li class="text-base leading-relaxed"><code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">both</code>: Supports both sandbox and live environments.</li>
-            </ul>
+          description: |
+            null
           enum:
-          - sandbox
-          - live
-          - both
+          - en
+          - fr
+          - de
+          - it
+          - pt
+          - es
+          - da
+          - tr
+          - fi
+          - sl
+          - zh
+          - sv
+          - ja
+          - ru
+          - nl
+          - lt
+          - lv
+          - et
+          - pl
+          - id
+          - cs
+          - sk
+          - ko
+          - "no"
+          - ro
+          - th
+          - vi
+          - bg
+          - hu
+          - uk
+          - hr
           example: null
         created_at:
           type: integer
@@ -170170,10 +170675,67 @@ components:
           description: |
             Timestamp indicating when this platform site was created.
           example: null
+        timezone:
+          type: string
+          default: UTC
+          deprecated: false
+          maxLength: 50
+          example: null
+        created_from_ip:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        linked_sites:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              id:
+                type: string
+                deprecated: false
+                maxLength: 60
+                example: null
+              domain:
+                type: string
+                deprecated: false
+                maxLength: 50
+                minLength: 4
+                example: null
+              type:
+                type: string
+                deprecated: false
+                description: |
+                  null
+                enum:
+                - sandbox
+                - live
+                example: null
+              status:
+                type: string
+                deprecated: false
+                description: |
+                  null
+                enum:
+                - active
+                - disabled
+                - cancelled
+                example: null
+              created_at:
+                type: integer
+                format: unix-time
+                deprecated: false
+                example: null
+            required:
+            - created_at
+            - domain
+            example: null
+          example: null
       required:
       - created_at
-      - id
-      - site_id
+      - domain
       example: null
     SiteMigrationDetail:
       type: object
@@ -170302,6 +170864,11 @@ components:
             ID of the associated customer. Maximum length is 50 characters.
           maxLength: 50
           example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
         updated_at:
           type: integer
           format: unix-time
@@ -170310,6 +170877,7 @@ components:
             Unix timestamp when this site owner was last updated.
           example: null
       required:
+      - created_at
       - email
       - id
       example: null
@@ -170364,9 +170932,11 @@ components:
       example: null
     Status:
       type: string
-      default: available
       deprecated: false
       enum:
+      - active
+      - archived
+      - deleted
       - available
       - exhausted
       - scheduled
@@ -171071,7 +171641,7 @@ components:
           deprecated: false
           description: |-
             <p class="mb-2">Set to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">false</code>
-            to override for this subscription, the <a href="https://www.chargebee.com/docs/2.0/metered_billing.html#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
+            to override for this subscription, the <a href="https://www.chargebee.com/docs/billing/2.0/usage-based-billing/metered_billing#configuring-metered-billing" target="_blank" rel="noopener noreferrer">site-level setting</a>
             for auto-closing invoices. Only applicable when auto-closing invoices has been enabled for the site. This attribute has a higher precedence than the same attribute at the <a href="/docs/api/customers/customer-object#auto_close_invoices">customer level</a>
             .</p>
           example: null
@@ -171122,7 +171692,7 @@ components:
                 format: int64
                 deprecated: false
                 description: |-
-                  <p class="mb-2">The price or per-unit-price of the addon. The value depends on the <a href="/docs/api/v2/pcv-1/currencies/handling-currency-units">type of currency</a>.</p>
+                  <p class="mb-2">The price or per-unit-price of the addon. The value depends on the <a href="/docs/api/v2/pcv-1/currencies">type of currency</a>.</p>
                   <div class="alert alert-info"><p class="mb-2"><strong class="font-semibold">Note:</strong></p><p class="mb-2">For recurring addons, this is the final price or per-unit price for each billing period of the subscription, regardless of the <a href="/docs/api/v2/pcv-1/addons/addon-object#period">addon period</a>. For example, consider the following details:</p><ul class="list-disc list-outside ml-6 my-4 space-y-2">
                   <li class="text-base leading-relaxed">The <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">unit_price</code> provided is $10</li>
                   <li class="text-base leading-relaxed">The addon billing period is 1 month.</li>
@@ -174699,9 +175269,15 @@ components:
       type: string
       deprecated: false
       enum:
+      - zero_rated
       - id_exempt
       - customer_exempt
+      - region_non_taxable
+      - product_exempt
       - export
+      - high_value_physical_goods
+      - zero_value_item
+      - tax_not_configured_external_provider
       example: null
     TaxWithheld:
       type: object
@@ -175059,6 +175635,9 @@ components:
           - paypay
           - gcash
           - south_korean_cards
+          - paynow
+          - bizum
+          - promptpay
           example: null
         gateway:
           type: string
@@ -176229,6 +176808,9 @@ components:
           - paypay
           - gcash
           - south_korean_cards
+          - paynow
+          - bizum
+          - promptpay
           example: null
         status:
           type: string
@@ -176658,6 +177240,9 @@ components:
           - paypay
           - gcash
           - south_korean_cards
+          - paynow
+          - bizum
+          - promptpay
           example: null
         reference_number:
           type: string
@@ -177844,10 +178429,16 @@ components:
       - paypay
       - gcash
       - south_korean_cards
+      - paynow
+      - bizum
+      - promptpay
       - free_trial
       - pay_up_front
       - pay_as_you_go
+      - simple
+      - compound
       - usage_exceeded
+      - spend_exceeded
       example: null
     UnbilledCharge:
       type: object
@@ -179524,6 +180115,14 @@ components:
         default: false
         description: Indicates whether to include deleted objects in the list. The
           deleted objects have the attribute `deleted` as `true`.
+    credit-unit-id:
+      name: credit-unit-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
     chargebee-request-origin-ip:
       name: chargebee-request-origin-ip
       in: header
@@ -179829,6 +180428,14 @@ components:
       explode: false
       schema:
         type: string
+    site-id:
+      name: site-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
     invoice-id:
       name: invoice-id
       in: path
@@ -179847,14 +180454,6 @@ components:
         type: string
     transaction-id:
       name: transaction-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    platform-site-id:
-      name: platform-site-id
       in: path
       required: true
       style: simple
