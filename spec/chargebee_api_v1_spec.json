@@ -7,10 +7,10 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2026-06-12.a49b34edd262e3e190bd6d8616ff9e401c37bd21",
-    "x-cb-api-version" : 1,
+    "version" : "2026-07-21.2a6a65b3e1a8ff29840466a7bfdb5cdd778d0634",
     "x-cb-product-catalog-version" : 1,
-    "x-generated-on" : 1781239677988
+    "x-cb-api-version" : 1,
+    "x-generated-on" : 1784611157092
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
@@ -31909,48 +31909,6 @@
         "required" : [ "label", "subscription_id" ],
         "example" : null
       },
-      "ApiKey" : {
-        "type" : "object",
-        "properties" : {
-          "key_name" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 50,
-            "example" : null
-          },
-          "key" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 250,
-            "example" : null
-          },
-          "created_at" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          },
-          "status" : {
-            "type" : "string",
-            "deprecated" : false,
-            "enum" : [ "enabled", "disabled" ],
-            "example" : null
-          },
-          "roles" : {
-            "type" : "array",
-            "deprecated" : false,
-            "items" : {
-              "type" : "string",
-              "deprecated" : false,
-              "enum" : [ "full_access", "update_access", "read_only_access", "read_transactional_data", "read_product_configuration", "publishable", "publishable_extended" ],
-              "example" : null
-            },
-            "example" : null
-          }
-        },
-        "required" : [ "created_at", "key_name" ],
-        "example" : null
-      },
       "ApiVersion" : {
         "type" : "string",
         "default" : "v1",
@@ -33882,7 +33840,7 @@
       },
       "HostedPage" : {
         "type" : "object",
-        "description" : "Hosted pages are the easiest and most secure way to integrate chargebee with your website. By using hosted pages, you can avoid the sensitive card information passing through your server and be compliant with most of the PCI DSS requirements.\n\nWhen you request for a hosted page, a **secure** and **unique URL** will be returned which you could either embed or redirect depending upon the embed parameter value that you had passed.\n\nSpecifying **\"embed\"** parameter as **true** allows you to embed the \"hosted page\" in an iframe in your own website. This helps you provide the best experience to your user as they do not have to leave your website to provide card information. There are a few limitations:\n\n* Your site URL must be embedded with HTTPS.\n* Set the appropriate height and width for the iframe to avoid scrolling.\n\nTo use the hosted pages, you must configure **Redirect URL** in the Chargebee web interface under **Hosted Pages Settings** \\> **Configuration**. The configured redirect URL will be called with the following parameters after user had submitted the page.\n\n* **id** - unique identifier of the hosted page resource\n* **state** - succeeded, failed or cancelled\n\nAfter the **Redirect URL** is called by Chargebee with the above parameters, the details of the hosted page can be fetched using [Retrieve a hosted page](/docs/api/v1/hosted_pages/retrieve-a-hosted-page) API. The **content** attribute will have the details about the customer, subscription, card and invoice based on the type of the hosted page.\n\n[Checkout New Subscription](/docs/api/v1/hosted_pages/checkout-new-subscription):\n\n* [Customer](/docs/api/v1/customers/customer-object) - The details about the new customer created.\n* [Subscription](/docs/api/v1/subscriptions/subscription-object) - The details about the new subscription created.\n* [Card](/docs/api/v1/cards/card-object) - The details about the card provided while subscribing.\n* [Invoice](/docs/api/v1/invoices/invoice-object) - The details about the invoice, if one is generated.\n\n[Checkout Existing Subscription](/docs/api/v1/hosted_pages/checkout-existing-subscription):\n\n* [Customer](/docs/api/v1/customers/customer-object) - The updated details of the customer.\n* [Subscription](/docs/api/v1/subscriptions/subscription-object) - The updated details of the subscription.\n* [Card](/docs/api/v1/cards/card-object) - The details about the card provided while subscribing.\n* [Invoice](/docs/api/v1/invoices/invoice-object) - The details about the invoice, if one is generated.\n\n[Update Payment Method](/docs/api/v1/hosted_pages/update-payment-method):\n\n* [Customer](/docs/api/v1/customers/customer-object) - The details about the customer for whom the card was updated.\n* [Card](/docs/api/v1/cards/card-object) - The details about the updated card. It will be present only if the type of payment method is card.\n\nWhen an embedded hosted page is cancelled by your end user, the **content** attribute will have the unmodified details of customer, subscription and card resources.\n",
+        "description" : "Hosted pages are the easiest and most secure way to integrate chargebee with your website. By using hosted pages, you can avoid the sensitive card information passing through your server and be compliant with most of the PCI DSS requirements.\n\nWhen you request for a hosted page, a **secure** and **unique URL** will be returned which you could either embed or redirect depending upon the embed parameter value that you had passed.\n\nSpecifying **\"embed\"** parameter as **true** allows you to embed the \"hosted page\" in an iframe in your own website. This helps you provide the best experience to your user as they do not have to leave your website to provide card information. There are a few limitations:\n\n* Your site URL must be embedded with HTTPS.\n* Set the appropriate height and width for the iframe to avoid scrolling.\n\nTo use the hosted pages, you must configure **Redirect URL** in the Chargebee web interface under **Hosted Pages Settings** \\> **Configuration**. The configured redirect URL will be called with the following parameters after user had submitted the page.\n\n* **id** - unique identifier of the hosted page resource\n* **state** - succeeded, failed or cancelled\n\nAfter the **Redirect URL** is called by Chargebee with the above parameters, the details of the hosted page can be fetched using [Retrieve a hosted page](/docs/api/v1/hosted_pages/retrieve-a-hosted-page) API. The **content** attribute will have the details about the customer, subscription, card and invoice based on the type of the hosted page.\n\n[Checkout New Subscription](/docs/api/v1/hosted_pages/checkout-new-subscription):\n\n* [Customer](/docs/api/v1/customers/customer-object) - The details about the new customer created.\n* [Subscription](/docs/api/v1/subscriptions/subscription-object) - The details about the new subscription created.\n* [Card](/docs/api/v1/cards/card-object) - The details about the card provided while subscribing.\n* [Invoice](/docs/api/v1/invoices/invoice-object) - The details about the invoice, if one is generated.\n\n[Checkout Existing Subscription](/docs/api/v1/hosted_pages/checkout-existing-subscription):\n\n* [Customer](/docs/api/v1/customers/customer-object) - The updated details of the customer.\n* [Subscription](/docs/api/v1/subscriptions/subscription-object) - The updated details of the subscription.\n* [Card](/docs/api/v1/cards/card-object) - The details about the card provided while subscribing.\n* [Invoice](/docs/api/v1/invoices/invoice-object) - The details about the invoice, if one is generated.\n\nWhen an embedded hosted page is cancelled by your end user, the **content** attribute will have the unmodified details of customer, subscription and card resources.\n",
         "properties" : {
           "id" : {
             "type" : "string",
