@@ -5,10 +5,10 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-07-30.26c7bd26c97b795a3432d5c43413a877a549a04a
-  x-cb-api-version: 1
+  version: 2026-08-19.ac160eefbc69961d63f4f80ac6f28ba294244db8
   x-cb-product-catalog-version: 1
-  x-generated-on: 1785401361682
+  x-cb-api-version: 1
+  x-generated-on: 1787124300669
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v1"
   variables:
@@ -2368,7 +2368,7 @@ paths:
         \ use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form.\
         \ Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges)\
         \ for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript)\
-        \ with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html)\
+        \ with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities)\
         \ based integration.\n\n**Proration Scenario:**\nA customer changes from a\
         \ $15 plan to $30 plan after 15 days of a monthly term. He will be billed\
         \ a total of $7.50 immediately. Calculation will be as follows:  \n\n|---------------------------------------------|---------|\n\
@@ -3332,7 +3332,15 @@ paths:
                         type: string
                         deprecated: false
                         description: |
-                          \* full_term - \* partial_term - \* none -
+                          \* full_term -
+
+                          Charge the full price of the addon or give the full credit. Don't apply any proration.
+                          \* partial_term -
+
+                          Prorate the charges or credits for the rest of the current term.
+                          \* none -
+
+                          Don't apply any charges or credits for the addon.
                         enum:
                         - full_term
                         - partial_term
@@ -3925,7 +3933,7 @@ paths:
         Passing card details to this API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable
 
         * If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.
-        * If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details. You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.
+        * If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details. You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.
 
         #### Billing Address
 
@@ -8840,7 +8848,7 @@ paths:
 
         * If you use Stripe, you can also use [Stripe.js](https://stripe.com/docs/js) with your checkout form, to collect card information.
         * If you are using Braintree gateway, you can use [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2) with your checkout form.
-        * You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.
+        * You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.
 
         The Billing Address is significant especially when [EU VAT taxes](https://www.chargebee.com/docs/tax.html#european-union-vat) are involved, for tax calculations will be based on this address. For customers without a billing address, EU VAT taxes will not be included. Thus ensure to set this properly if you have configured EU VAT Tax.
 
@@ -10955,7 +10963,7 @@ paths:
 
         * If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your card update form.
         * If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your card update form.
-        * You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration. Use our [Hosted Page - Update Card](/docs/api/v1/hosted_pages) API to generate a 'Update Card' Hosted Page link.
+        * You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration. Use our [Hosted Page - Update Card](/docs/api/v1/hosted_pages) API to generate a 'Update Card' Hosted Page link.
 
         \*\*Note:\*\*For customers signed up before 1st March 2014, if the card's billing information is specified in the input, the customer's Billing Info (i.e [Billing Address](/docs/api/v1/customers/customer-object) and vat_number) will also be replaced with the new values automatically.
       operationId: update_card_for_a_customer
@@ -20966,7 +20974,15 @@ paths:
                         type: string
                         deprecated: false
                         description: |
-                          \* full_term - \* partial_term - \* none -
+                          \* full_term -
+
+                          Charge the full price of the addon or give the full credit. Don't apply any proration.
+                          \* partial_term -
+
+                          Prorate the charges or credits for the rest of the current term.
+                          \* none -
+
+                          Don't apply any charges or credits for the addon.
                         enum:
                         - full_term
                         - partial_term
@@ -25092,7 +25108,11 @@ paths:
                   type: integer
                   format: int32
                   deprecated: false
-                  description: ""
+                  description: <p class="mb-2">The number of free units offered. Applicable
+                    only when <code class="bg-gray-100 text-gray-800 font-medium border
+                    border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">discount_type</code>
+                    is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300
+                    rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offer_quantity</code>.</p>
                   minimum: 1
                   example: null
                 apply_on:
@@ -26525,7 +26545,10 @@ paths:
           \* scheduled -
 
           Webhook call has been scheduled.
-          \* rate_limited - \* failed -
+          \* rate_limited -
+
+          Webhook call was rate limited.
+          \* failed -
 
           Webhook call has been suspended after the all retries have resulted in failure.
           \* not_applicable -
@@ -26534,7 +26557,10 @@ paths:
           \* succeeded -
 
           Webhook call was successful.
-          \* disabled - \* skipped -
+          \* disabled -
+
+          Disabled as it is no longer used.
+          \* skipped -
 
           Skipped as specified in request
         required: false
@@ -30259,7 +30285,16 @@ components:
           default: site_default
           deprecated: false
           description: |
-            \* full_term - \* site_default - \* partial_term -
+            Configuration for proration of charges and credits when the addon is used in a subscription.
+            \* full_term -
+
+            Updating a subscription will apply full charges or full credits for this addon.
+            \* site_default -
+
+            Updating a subscription will apply the site-level default settings.
+            \* partial_term -
+
+            Updating a subscription will apply proration to charges or credits for this addon.
           enum:
           - site_default
           - partial_term
@@ -31308,7 +31343,11 @@ components:
           type: integer
           format: int32
           deprecated: false
-          description: ""
+          description: <p class="mb-2">The number of free units offered. Applicable
+            only when <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300
+            rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">discount_type</code>
+            is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300
+            rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offer_quantity</code>.</p>
           minimum: 1
           example: null
         duration_type:
@@ -32550,14 +32589,14 @@ components:
           type: string
           deprecated: false
           description: |
-            Applicable only for subsctiption related estimates. The identifier of the subscription this estimate belongs to.
+            Applicable only for subscription related estimates. The identifier of the subscription this estimate belongs to.
           maxLength: 100
           example: null
         subscription_status:
           type: string
           deprecated: false
           description: |
-            Applicable only for subsctiption related estimates. The post-operation status of the subscription.
+            Applicable only for subscription related estimates. The post-operation status of the subscription.
             \* in_trial -
 
             The subscription is in trial.
@@ -32567,7 +32606,10 @@ components:
             \* non_renewing -
 
             The subscription will be canceled at the end of the current term.
-            \* transferred - \* cancelled -
+            \* transferred -
+
+            The subscription has been transferred to another business entity within the organization.
+            \* cancelled -
 
             The subscription has been canceled and is no longer in service.
             \* future -
@@ -32586,7 +32628,7 @@ components:
           format: unix-time
           deprecated: false
           description: |
-            Applicable only for subsctiption related estimates. End of the current billing term
+            Applicable only for subscription related estimates. End of the current billing term
           example: null
         collect_now:
           type: boolean
@@ -33007,27 +33049,20 @@ components:
               webhook_status:
                 type: string
                 deprecated: false
-                description: "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\"\
-                  >\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\"\
-                  >When the event resource is retrieved via API:</strong> Represents\
-                  \ the status of the webhook call made to this webhook.</li>\n<li\
-                  \ class=\"text-base leading-relaxed\"><strong class=\"font-semibold\"\
-                  >When the event resource is passed as part of a webhook call:</strong>\
-                  \ The <code class=\"bg-gray-100 text-gray-800 font-medium border\
-                  \ border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\"\
-                  >webhooks</code> object is unavailable on the first webhook call\
-                  \ for the event. For subsequent calls, this attribute holds the\
-                  \ status from after the last retry.</li>\n</ul>\n* scheduled - <p\
-                  \ class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable\
-                  \ - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n\
-                  * skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n\
-                  * disabled - \n* failed - <p class=\"mb-2\">Webhook call has been\
-                  \ suspended after the all retries have resulted in failure.</p>\n\
-                  * re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled\
-                  \ due failure(s) in previous call(s)</p>\n* not_configured - <p\
-                  \ class=\"mb-2\">Webhook was not configured when this event occurred</p>\n\
-                  * succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n\
-                  * rate_limited - "
+                description: |-
+                  <ul class="list-disc list-outside ml-6 my-4 space-y-2">
+                  <li class="text-base leading-relaxed"><strong class="font-semibold">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>
+                  <li class="text-base leading-relaxed"><strong class="font-semibold">When the event resource is passed as part of a webhook call:</strong> The <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>
+                  </ul>
+                  * scheduled - <p class="mb-2">Webhook call has been scheduled.</p>
+                  * not_applicable - <p class="mb-2">Webhook call is not applicable for this event.</p>
+                  * skipped - <p class="mb-2">Skipped as specified in request</p>
+                  * disabled - <p class="mb-2">Disabled as it is no longer used.</p>
+                  * failed - <p class="mb-2">Webhook call has been suspended after the all retries have resulted in failure.</p>
+                  * re_scheduled - <p class="mb-2">Webhook call has been rescheduled due failure(s) in previous call(s)</p>
+                  * not_configured - <p class="mb-2">Webhook was not configured when this event occurred</p>
+                  * succeeded - <p class="mb-2">Webhook call was successful.</p>
+                  * rate_limited - <p class="mb-2">Webhook call was rate limited.</p>
                 enum:
                 - not_configured
                 - scheduled
@@ -35116,7 +35151,6 @@ components:
       required:
       - amount
       - created_at
-      - customer_id
       - expires_at
       - id
       - modified_at
@@ -35498,7 +35532,7 @@ components:
     PortalSession:
       type: object
       description: |-
-        <div class="api-description"><p class="mb-2">Customer Portal lets your customers to manage their account and billing themselves. Chargebee supports Single Sign-on (SSO) to access the customer portal. If you already have your own authentication for your website, it allows your authenticated customers to access their portal without having to login again.</p><p class="mb-2"><strong class="font-semibold">Note:</strong> You can instead allow your customers to access the portal via login page provided by Chargebee. <a href="https://www.chargebee.com/docs/1.0/customer_portal.html#how-can-customers-access-their-customer-account-portal" target="_blank">Read more</a>.</p><p class="mb-2">Please follow the below steps for supporting portal access via SSO:</p><ol class="list-decimal list-outside ml-6 my-4 space-y-2">
+        <div class="api-description"><p class="mb-2">Customer Portal lets your customers to manage their account and billing themselves. Chargebee supports Single Sign-on (SSO) to access the customer portal. If you already have your own authentication for your website, it allows your authenticated customers to access their portal without having to login again.</p><p class="mb-2"><strong class="font-semibold">Note:</strong> You can instead allow your customers to access the portal via login page provided by Chargebee. <a href="https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/self-serve-portal#access-the-self-serve-portal" target="_blank">Read more</a>.</p><p class="mb-2">Please follow the below steps for supporting portal access via SSO:</p><ol class="list-decimal list-outside ml-6 my-4 space-y-2">
         <li class="text-base leading-relaxed">Enable the &quot;Allow access to customer portal via API&quot; under &quot;Settings &gt; Hosted Pages Settings &gt; Customer Portal&quot; to use the portal sessions API.</li>
         <li class="text-base leading-relaxed">Provide a link in your website/application which your authenticated customers can use to access the portal (For example, <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">{your_website_url}/portal_link</code>).</li>
         <li class="text-base leading-relaxed">Handle the link request in your server code and create a portal session for the customer by calling Chargebee&#x27;s &quot;Create a portal session&quot; API</li>
@@ -37962,6 +37996,109 @@ components:
       - automated_bank_transfer
       example: null
   parameters:
+    Prefer:
+      name: Prefer
+      in: header
+      description: Must be set to <code>respond-async</code>. Instructs Chargebee
+        to process the request asynchronously and return <code>202 Accepted</code>
+        immediately.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: Must be set to <code>respond-async</code>. Instructs Chargebee
+          to process the request asynchronously and return <code>202 Accepted</code>
+          immediately.
+        example: respond-async
+      x-cb-async-header: true
+    reason-code-id:
+      name: reason-code-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    invoice-id:
+      name: invoice-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    transaction-id:
+      name: transaction-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 10
+        description: The number of resources to be returned.
+        x-cb-is-pagination-parameter: true
+        maximum: 100
+        minimum: 1
+        example: null
+    chargebee-event-email:
+      name: chargebee-event-email
+      in: header
+      description: skip only emails
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: skip only emails
+        enum:
+        - all-disabled
+    chargebee-request-origin-ip:
+      name: chargebee-request-origin-ip
+      in: header
+      description: The IP address of the customer where the request originated
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: The IP address of the customer where the request originated
+        example: 192.168.1.2
+        pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
+          -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+    coupon-code-code:
+      name: coupon-code-code
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    comment-id:
+      name: comment-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
     coupon-id:
       name: coupon-id
       in: path
@@ -37984,6 +38121,23 @@ components:
         x-cb-is-pagination-parameter: true
         maxLength: 1000
         example: null
+    chargebee-async-callback-url:
+      name: chargebee-async-callback-url
+      in: header
+      description: "The callback URL where Chargebee will <code>POST</code> the async\
+        \ result. Must be an <code>https://</code> URL and may embed basic-auth credentials,\
+        \ e.g. <code>https://username:password@example.com</code>."
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uri
+        description: "The callback URL where Chargebee will <code>POST</code> the\
+          \ async result. Must be an <code>https://</code> URL and may embed basic-auth\
+          \ credentials, e.g. <code>https://username:password@example.com</code>."
+        example: https://username:password@example.com
+      x-cb-async-header: true
     subscription-id:
       name: subscription-id
       in: path
@@ -38008,14 +38162,23 @@ components:
       explode: false
       schema:
         type: string
-    reason-code-id:
-      name: reason-code-id
-      in: path
+    chargebee-request-id:
+      name: chargebee-request-id
+      in: header
+      description: "A client-generated unique identifier (UUID recommended) for this\
+        \ request. Echoed back as <code>request.id</code> in the async callback payload,\
+        \ allowing you to correlate each callback to its originating request."
       required: true
       style: simple
       explode: false
       schema:
         type: string
+        description: "A client-generated unique identifier (UUID recommended) for\
+          \ this request. Echoed back as <code>request.id</code> in the async callback\
+          \ payload, allowing you to correlate each callback to its originating request."
+        example: 7c9e2f4a-8b1d-4e6f-9a0c-3d5e7f9b1c2d
+        maxLength: 100
+      x-cb-async-header: true
     order-id:
       name: order-id
       in: path
@@ -38044,24 +38207,8 @@ components:
       explode: false
       schema:
         type: string
-    invoice-id:
-      name: invoice-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     plan-id:
       name: plan-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    transaction-id:
-      name: transaction-id
       in: path
       required: true
       style: simple
@@ -38129,33 +38276,6 @@ components:
         type: string
         description: The device from which the customer has made the request
         example: Android
-    limit:
-      name: limit
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: integer
-        format: int32
-        default: 10
-        description: The number of resources to be returned.
-        x-cb-is-pagination-parameter: true
-        maximum: 100
-        minimum: 1
-        example: null
-    chargebee-event-email:
-      name: chargebee-event-email
-      in: header
-      description: skip only emails
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: skip only emails
-        enum:
-        - all-disabled
     addon-id:
       name: addon-id
       in: path
@@ -38164,44 +38284,8 @@ components:
       explode: false
       schema:
         type: string
-    chargebee-request-origin-ip:
-      name: chargebee-request-origin-ip
-      in: header
-      description: The IP address of the customer where the request originated
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: The IP address of the customer where the request originated
-        example: 192.168.1.2
-        pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
-          -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
     event-id:
       name: event-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    coupon-code-code:
-      name: coupon-code-code
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    comment-id:
-      name: comment-id
       in: path
       required: true
       style: simple

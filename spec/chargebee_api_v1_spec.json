@@ -7,10 +7,10 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2026-07-30.26c7bd26c97b795a3432d5c43413a877a549a04a",
-    "x-cb-api-version" : 1,
+    "version" : "2026-08-19.ac160eefbc69961d63f4f80ac6f28ba294244db8",
     "x-cb-product-catalog-version" : 1,
-    "x-generated-on" : 1785401361682
+    "x-cb-api-version" : 1,
+    "x-generated-on" : 1787124300669
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
@@ -2646,7 +2646,7 @@
       },
       "post" : {
         "summary" : "Update a subscription",
-        "description" : "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nYou can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as \"true\". In this case proration will not be done.\n\nOnly the parameters that are passed are modified for the subscription. Rest will reflect the existing values.\n\nBy default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as \"true\".\n\n[Card](/docs/api/v1/cards/card-object) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers/customer-object) and 'vat_number' - will be replaced automatically.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.\n\n**Proration Scenario:**\nA customer changes from a $15 plan to $30 plan after 15 days of a monthly term. He will be billed a total of $7.50 immediately. Calculation will be as follows:  \n\n|---------------------------------------------|---------|\n| Prorated Charge(New Plan)                   | $15.00  |\n| Prorated Credit(Old Plan) for unused period | ($7.50) |\n| Total prorated amount                       | $7.50   |\n\nDowngrading will result in credit being created which will be applied when the subscription is charged on start of the next term.\n\n**Billing Cycle:** The billing period for a subscription does not change if the plans intervals of both old and new are same. However, if a customer changes to a plan that has different billing interval(say monthly to yearly), the billing period is reset. Customer is charged immediately for the modified subscription after applying credit for the unused period for the old subscription.\n\n**Card and VAT number Input:** If they are passed, corresponding [Billing Address](/docs/api/v1/customers/customer-object) attributes and [vat_number](/docs/api/v1/customers/customer-object) will be replaced. i.e existing values for Billing Address and 'vat_number' will be cleared and the new values will be set.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n\n**Advance charges**, if any, will be refunded as credits and a new invoice will be generated on renewal.\n",
+        "description" : "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nYou can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as \"true\". In this case proration will not be done.\n\nOnly the parameters that are passed are modified for the subscription. Rest will reflect the existing values.\n\nBy default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as \"true\".\n\n[Card](/docs/api/v1/cards/card-object) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers/customer-object) and 'vat_number' - will be replaced automatically.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\n**Proration Scenario:**\nA customer changes from a $15 plan to $30 plan after 15 days of a monthly term. He will be billed a total of $7.50 immediately. Calculation will be as follows:  \n\n|---------------------------------------------|---------|\n| Prorated Charge(New Plan)                   | $15.00  |\n| Prorated Credit(Old Plan) for unused period | ($7.50) |\n| Total prorated amount                       | $7.50   |\n\nDowngrading will result in credit being created which will be applied when the subscription is charged on start of the next term.\n\n**Billing Cycle:** The billing period for a subscription does not change if the plans intervals of both old and new are same. However, if a customer changes to a plan that has different billing interval(say monthly to yearly), the billing period is reset. Customer is charged immediately for the modified subscription after applying credit for the unused period for the old subscription.\n\n**Card and VAT number Input:** If they are passed, corresponding [Billing Address](/docs/api/v1/customers/customer-object) attributes and [vat_number](/docs/api/v1/customers/customer-object) will be replaced. i.e existing values for Billing Address and 'vat_number' will be cleared and the new values will be set.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n\n**Advance charges**, if any, will be refunded as credits and a new invoice will be generated on renewal.\n",
         "operationId" : "update_a_subscription",
         "parameters" : [ {
           "name" : "chargebee-request-origin-device",
@@ -3294,7 +3294,7 @@
                         "items" : {
                           "type" : "string",
                           "deprecated" : false,
-                          "description" : "\\* full_term - \\* partial_term - \\* none -\n",
+                          "description" : "\\* full_term -\n\nCharge the full price of the addon or give the full credit. Don't apply any proration.\n\\* partial_term -\n\nProrate the charges or credits for the rest of the current term.\n\\* none -\n\nDon't apply any charges or credits for the addon.\n",
                           "enum" : [ "full_term", "partial_term", "none" ],
                           "example" : null
                         },
@@ -4000,7 +4000,7 @@
       },
       "post" : {
         "summary" : "Create a subscription",
-        "description" : "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a new subscription along with the customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.\n\n#### Future Subscriptions\n\nIf the **start_date** is specified, the subscription will be created in 'future' state (.ie, instead of starting immediately it will be scheduled to start at the specified 'start_date'). Besides if 'trial' is specified (plan configuration or specified explicitly using trial_end), the subscription will go into 'trial' state when it starts. Otherwise it will directly become 'active' when it starts.\n\n#### Trial Period\n\nIf the plan has trial period or if the trial_end is specified explicitly, the subscription will be created in 'in_trial' state.\n\nIf the card details are passed, it is not charged until the end of the trial period. Incase you need to verify the card you could enable the ['card verification option'](https://www.chargebee.com/docs/cards.html#card-verification) in the gateway settings.\n\n#### Invoice\n\nIf the plan does not have a trial period and if any of the recurring items has charges, then a invoice would be raised immediately. If 'auto_collection' is turned 'on', then card attributes are mandatory and subscription will be created only if the payment was successful.\n\n#### Card details\n\nPassing card details to this API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details. You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.\n\n#### Billing Address\n\n* The Billing Address is significant especially when EU VAT or Customized Tax options are in use, because tax calculations will be based on this address.\n* In the case of EU VAT, for customers without Billing Address, taxes will not be included.\n* In the case of Customized Tax option, the billing address will be used to determine tax if shipping address is not available for the customer. If both addresses are not available, tax calculation will not happen.\n\n**Note:** For the sites created before 1st Mar 2014, customer's billing address and 'vat_number' will be replaced automatically whenever the associated card gets updated. i.e existing values for billing address and 'vat_number' will be cleared and the new values will be set. This behaviour is changed now - The VAT number should always be passed along billing address and not with card address. Both the addresses have to be dealt separately.\n\nBilling Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).\n\n#### Shipping Address\n\nThe Shipping Address is significant for the Customized Tax option, because tax calculations will be based on this address. For customers without Shipping Address, Billing Address details will be used to calculate taxes. If neither of the addresses are available for a customer, taxes will not be calculated for him/her.\n\n#### Related Tutorials\n\n* [Check out this tutorial to create trial signup with custom fields.](https://www.chargebee.com/tutorials/custom-fields-recurring-billing-example.html)\n* [Learn how to implement a in-app checkout flow that allows your customers to select addons and apply coupons. Estimate API is used to dynamically calculate the order summary shown to the customer.](https://www.chargebee.com/tutorials/in-app-checkout-page-using-estimate-api-example.html)\n",
+        "description" : "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a new subscription along with the customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.\n\n#### Future Subscriptions\n\nIf the **start_date** is specified, the subscription will be created in 'future' state (.ie, instead of starting immediately it will be scheduled to start at the specified 'start_date'). Besides if 'trial' is specified (plan configuration or specified explicitly using trial_end), the subscription will go into 'trial' state when it starts. Otherwise it will directly become 'active' when it starts.\n\n#### Trial Period\n\nIf the plan has trial period or if the trial_end is specified explicitly, the subscription will be created in 'in_trial' state.\n\nIf the card details are passed, it is not charged until the end of the trial period. Incase you need to verify the card you could enable the ['card verification option'](https://www.chargebee.com/docs/cards.html#card-verification) in the gateway settings.\n\n#### Invoice\n\nIf the plan does not have a trial period and if any of the recurring items has charges, then a invoice would be raised immediately. If 'auto_collection' is turned 'on', then card attributes are mandatory and subscription will be created only if the payment was successful.\n\n#### Card details\n\nPassing card details to this API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details. You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\n#### Billing Address\n\n* The Billing Address is significant especially when EU VAT or Customized Tax options are in use, because tax calculations will be based on this address.\n* In the case of EU VAT, for customers without Billing Address, taxes will not be included.\n* In the case of Customized Tax option, the billing address will be used to determine tax if shipping address is not available for the customer. If both addresses are not available, tax calculation will not happen.\n\n**Note:** For the sites created before 1st Mar 2014, customer's billing address and 'vat_number' will be replaced automatically whenever the associated card gets updated. i.e existing values for billing address and 'vat_number' will be cleared and the new values will be set. This behaviour is changed now - The VAT number should always be passed along billing address and not with card address. Both the addresses have to be dealt separately.\n\nBilling Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).\n\n#### Shipping Address\n\nThe Shipping Address is significant for the Customized Tax option, because tax calculations will be based on this address. For customers without Shipping Address, Billing Address details will be used to calculate taxes. If neither of the addresses are available for a customer, taxes will not be calculated for him/her.\n\n#### Related Tutorials\n\n* [Check out this tutorial to create trial signup with custom fields.](https://www.chargebee.com/tutorials/custom-fields-recurring-billing-example.html)\n* [Learn how to implement a in-app checkout flow that allows your customers to select addons and apply coupons. Estimate API is used to dynamically calculate the order summary shown to the customer.](https://www.chargebee.com/tutorials/in-app-checkout-page-using-estimate-api-example.html)\n",
         "operationId" : "create_a_subscription",
         "parameters" : [ {
           "name" : "chargebee-request-origin-device",
@@ -9097,7 +9097,7 @@
       },
       "post" : {
         "summary" : "Create a customer",
-        "description" : "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a customer. You can create a customer and then create subscriptions for the customer when required. When creating a customer, you can pass along the billing address and card details.\n\nPassing credit card details to through the API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable:\n\n* If you use Stripe, you can also use [Stripe.js](https://stripe.com/docs/js) with your checkout form, to collect card information.\n* If you are using Braintree gateway, you can use [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.\n\nThe Billing Address is significant especially when [EU VAT taxes](https://www.chargebee.com/docs/tax.html#european-union-vat) are involved, for tax calculations will be based on this address. For customers without a billing address, EU VAT taxes will not be included. Thus ensure to set this properly if you have configured EU VAT Tax.\n\nBilling Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).\n\n**Note:** When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.\n",
+        "description" : "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a customer. You can create a customer and then create subscriptions for the customer when required. When creating a customer, you can pass along the billing address and card details.\n\nPassing credit card details to through the API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable:\n\n* If you use Stripe, you can also use [Stripe.js](https://stripe.com/docs/js) with your checkout form, to collect card information.\n* If you are using Braintree gateway, you can use [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\nThe Billing Address is significant especially when [EU VAT taxes](https://www.chargebee.com/docs/tax.html#european-union-vat) are involved, for tax calculations will be based on this address. For customers without a billing address, EU VAT taxes will not be included. Thus ensure to set this properly if you have configured EU VAT Tax.\n\nBilling Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).\n\n**Note:** When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.\n",
         "operationId" : "create_a_customer",
         "parameters" : [ {
           "name" : "chargebee-request-origin-device",
@@ -11109,7 +11109,7 @@
     "/customers/{customer-id}/credit_card" : {
       "post" : {
         "summary" : "Update card for a customer",
-        "description" : "Storing card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources/create-using-payment-intent)\nunder Payemnt source to store the card after successful 3DS flow completion.\n\nAdds or replaces card details of a customer. Updating card details replaces the present payment method.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your card update form.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your card update form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration. Use our [Hosted Page - Update Card](/docs/api/v1/hosted_pages) API to generate a 'Update Card' Hosted Page link.\n\n\\*\\*Note:\\*\\*For customers signed up before 1st March 2014, if the card's billing information is specified in the input, the customer's Billing Info (i.e [Billing Address](/docs/api/v1/customers/customer-object) and vat_number) will also be replaced with the new values automatically.\n",
+        "description" : "Storing card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources/create-using-payment-intent)\nunder Payemnt source to store the card after successful 3DS flow completion.\n\nAdds or replaces card details of a customer. Updating card details replaces the present payment method.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your card update form.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your card update form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration. Use our [Hosted Page - Update Card](/docs/api/v1/hosted_pages) API to generate a 'Update Card' Hosted Page link.\n\n\\*\\*Note:\\*\\*For customers signed up before 1st March 2014, if the card's billing information is specified in the input, the customer's Billing Info (i.e [Billing Address](/docs/api/v1/customers/customer-object) and vat_number) will also be replaced with the new values automatically.\n",
         "operationId" : "update_card_for_a_customer",
         "parameters" : [ {
           "name" : "chargebee-request-origin-device",
@@ -21767,7 +21767,7 @@
                         "items" : {
                           "type" : "string",
                           "deprecated" : false,
-                          "description" : "\\* full_term - \\* partial_term - \\* none -\n",
+                          "description" : "\\* full_term -\n\nCharge the full price of the addon or give the full credit. Don't apply any proration.\n\\* partial_term -\n\nProrate the charges or credits for the rest of the current term.\n\\* none -\n\nDon't apply any charges or credits for the addon.\n",
                           "enum" : [ "full_term", "partial_term", "none" ],
                           "example" : null
                         },
@@ -26182,7 +26182,7 @@
                     "type" : "integer",
                     "format" : "int32",
                     "deprecated" : false,
-                    "description" : "",
+                    "description" : "<p class=\"mb-2\">The number of free units offered. Applicable only when <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">discount_type</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offer_quantity</code>.</p>",
                     "minimum" : 1,
                     "example" : null
                   },
@@ -27785,7 +27785,7 @@
         }, {
           "name" : "webhook_status",
           "in" : "query",
-          "description" : "Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.\n**Note**:\nTo retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.\n\\* re_scheduled -\n\nWebhook call has been rescheduled due failure(s) in previous call(s)\n\\* not_configured -\n\nWebhook was not configured when this event occurred\n\\* scheduled -\n\nWebhook call has been scheduled.\n\\* rate_limited - \\* failed -\n\nWebhook call has been suspended after the all retries have resulted in failure.\n\\* not_applicable -\n\nWebhook call is not applicable for this event.\n\\* succeeded -\n\nWebhook call was successful.\n\\* disabled - \\* skipped -\n\nSkipped as specified in request\n",
+          "description" : "Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.\n**Note**:\nTo retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.\n\\* re_scheduled -\n\nWebhook call has been rescheduled due failure(s) in previous call(s)\n\\* not_configured -\n\nWebhook was not configured when this event occurred\n\\* scheduled -\n\nWebhook call has been scheduled.\n\\* rate_limited -\n\nWebhook call was rate limited.\n\\* failed -\n\nWebhook call has been suspended after the all retries have resulted in failure.\n\\* not_applicable -\n\nWebhook call is not applicable for this event.\n\\* succeeded -\n\nWebhook call was successful.\n\\* disabled -\n\nDisabled as it is no longer used.\n\\* skipped -\n\nSkipped as specified in request\n",
           "required" : false,
           "deprecated" : false,
           "style" : "form",
@@ -31766,7 +31766,7 @@
             "type" : "string",
             "default" : "site_default",
             "deprecated" : false,
-            "description" : "\\* full_term - \\* site_default - \\* partial_term -\n",
+            "description" : "Configuration for proration of charges and credits when the addon is used in a subscription.\n\\* full_term -\n\nUpdating a subscription will apply full charges or full credits for this addon.\n\\* site_default -\n\nUpdating a subscription will apply the site-level default settings.\n\\* partial_term -\n\nUpdating a subscription will apply proration to charges or credits for this addon.\n",
             "enum" : [ "site_default", "partial_term", "full_term" ],
             "example" : null
           },
@@ -32540,7 +32540,7 @@
             "type" : "integer",
             "format" : "int32",
             "deprecated" : false,
-            "description" : "",
+            "description" : "<p class=\"mb-2\">The number of free units offered. Applicable only when <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">discount_type</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offer_quantity</code>.</p>",
             "minimum" : 1,
             "example" : null
           },
@@ -33486,14 +33486,14 @@
           "subscription_id" : {
             "type" : "string",
             "deprecated" : false,
-            "description" : "Applicable only for subsctiption related estimates. The identifier of the subscription this estimate belongs to.\n",
+            "description" : "Applicable only for subscription related estimates. The identifier of the subscription this estimate belongs to.\n",
             "maxLength" : 100,
             "example" : null
           },
           "subscription_status" : {
             "type" : "string",
             "deprecated" : false,
-            "description" : "Applicable only for subsctiption related estimates. The post-operation status of the subscription.\n\\* in_trial -\n\nThe subscription is in trial.\n\\* active -\n\nThe subscription is active and will be charged for automatically based on the items in it.\n\\* non_renewing -\n\nThe subscription will be canceled at the end of the current term.\n\\* transferred - \\* cancelled -\n\nThe subscription has been canceled and is no longer in service.\n\\* future -\n\nThe subscription is scheduled to start at a future date.\n",
+            "description" : "Applicable only for subscription related estimates. The post-operation status of the subscription.\n\\* in_trial -\n\nThe subscription is in trial.\n\\* active -\n\nThe subscription is active and will be charged for automatically based on the items in it.\n\\* non_renewing -\n\nThe subscription will be canceled at the end of the current term.\n\\* transferred -\n\nThe subscription has been transferred to another business entity within the organization.\n\\* cancelled -\n\nThe subscription has been canceled and is no longer in service.\n\\* future -\n\nThe subscription is scheduled to start at a future date.\n",
             "enum" : [ "future", "in_trial", "active", "non_renewing", "cancelled", "transferred" ],
             "example" : null
           },
@@ -33501,7 +33501,7 @@
             "type" : "integer",
             "format" : "unix-time",
             "deprecated" : false,
-            "description" : "Applicable only for subsctiption related estimates. End of the current billing term\n",
+            "description" : "Applicable only for subscription related estimates. End of the current billing term\n",
             "example" : null
           },
           "collect_now" : {
@@ -33790,7 +33790,7 @@
                 "webhook_status" : {
                   "type" : "string",
                   "deprecated" : false,
-                  "description" : "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* disabled - \n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n* rate_limited - ",
+                  "description" : "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* disabled - <p class=\"mb-2\">Disabled as it is no longer used.</p>\n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n* rate_limited - <p class=\"mb-2\">Webhook call was rate limited.</p>",
                   "enum" : [ "not_configured", "scheduled", "succeeded", "re_scheduled", "failed", "skipped", "not_applicable", "disabled", "rate_limited" ],
                   "example" : null
                 }
@@ -35223,7 +35223,7 @@
             "example" : null
           }
         },
-        "required" : [ "amount", "created_at", "customer_id", "expires_at", "id", "modified_at", "status" ],
+        "required" : [ "amount", "created_at", "expires_at", "id", "modified_at", "status" ],
         "example" : null
       },
       "PaymentMethod" : {
@@ -35531,7 +35531,7 @@
       },
       "PortalSession" : {
         "type" : "object",
-        "description" : "<div class=\"api-description\"><p class=\"mb-2\">Customer Portal lets your customers to manage their account and billing themselves. Chargebee supports Single Sign-on (SSO) to access the customer portal. If you already have your own authentication for your website, it allows your authenticated customers to access their portal without having to login again.</p><p class=\"mb-2\"><strong class=\"font-semibold\">Note:</strong> You can instead allow your customers to access the portal via login page provided by Chargebee. <a href=\"https://www.chargebee.com/docs/1.0/customer_portal.html#how-can-customers-access-their-customer-account-portal\" target=\"_blank\">Read more</a>.</p><p class=\"mb-2\">Please follow the below steps for supporting portal access via SSO:</p><ol class=\"list-decimal list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\">Enable the &quot;Allow access to customer portal via API&quot; under &quot;Settings &gt; Hosted Pages Settings &gt; Customer Portal&quot; to use the portal sessions API.</li>\n<li class=\"text-base leading-relaxed\">Provide a link in your website/application which your authenticated customers can use to access the portal (For example, <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">{your_website_url}/portal_link</code>).</li>\n<li class=\"text-base leading-relaxed\">Handle the link request in your server code and create a portal session for the customer by calling Chargebee&#x27;s &quot;Create a portal session&quot; API</li>\n<li class=\"text-base leading-relaxed\">Forward the user to the access URL present in the &quot;Portal Session&quot; resource returned by the above API call.</li>\n</ol><div class=\"alert alert-info\"><p class=\"mb-2\"><strong class=\"font-semibold\">Notes about access URL:</strong></p><ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\">The access URL should be accessed by the customer within one hour from the time it was created.</li>\n<li class=\"text-base leading-relaxed\">Once accessed, the session is valid until the user logs out from the portal UI or logout API is called from your application for this session.</li>\n<li class=\"text-base leading-relaxed\">Once accessed, the access url cannot be reused. Hence do not persist this URL. Whenever you need to provide access to the portal, you need to create a new portal session.</li>\n</ul></div><h4>Using Chargebee&#x27;s authentication to allow access to your website</h4><p class=\"mb-2\"><strong class=\"font-semibold\">Note:</strong> This feature is not supported in <a href=\"https://www.chargebee.com/docs/inapp-self-serve-portal.html\" target=\"_blank\">in-app</a> portal.\nChargebee allows you to integrate your website by building user authentication on top of Chargebee. If you would want to allow access to parts of your website only to subscribers (like a paywall), you can integrate Chargebee&#x27;s authentication without having to handle it from your end.\n<strong class=\"font-semibold\">Workflow:</strong>\nUsers should be redirected to the portal login URL - <strong class=\"font-semibold\">https://yourdomain.chargebeeportal.com/portal/login</strong> by passing the following parameters:</p><ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">return_url</strong> - URL the users should be redirected to upon successful authentication.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">cancel_url</strong> - URL the users should be redirected to when they want to go back to your website during login.\nThe domain name used in the Return/Cancel URL should be added as a &#x27;Whitelisted Domain&#x27; in Chargebee. Add just the domain name in Chargebee and not the entire URL: E.g. yourdomain.com.</li>\n</ul><p class=\"mb-2\">Upon successful authentication, a session is created for the user and Chargebee redirects the user to the return_url along with the following parameters:</p><ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">auth_session_id</strong> - Identifier to the authenticated session.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">auth_session_token</strong> - Token for the session which should be sent later to activate this session.\nUsing the <strong class=\"font-semibold\">auth_session_id</strong> &amp; <strong class=\"font-semibold\">auth_session_token</strong>, you should call <a href=\"/docs/api/v1/portal_sessions/activate-a-portal-session\">Activate a Portal Session</a> API to validate the session details and create a session for that user in your website.\n<strong class=\"font-semibold\">Note:</strong> The process of setting up the portal account will take place along with the authentication process.</li>\n</ul></div>",
+        "description" : "<div class=\"api-description\"><p class=\"mb-2\">Customer Portal lets your customers to manage their account and billing themselves. Chargebee supports Single Sign-on (SSO) to access the customer portal. If you already have your own authentication for your website, it allows your authenticated customers to access their portal without having to login again.</p><p class=\"mb-2\"><strong class=\"font-semibold\">Note:</strong> You can instead allow your customers to access the portal via login page provided by Chargebee. <a href=\"https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/self-serve-portal#access-the-self-serve-portal\" target=\"_blank\">Read more</a>.</p><p class=\"mb-2\">Please follow the below steps for supporting portal access via SSO:</p><ol class=\"list-decimal list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\">Enable the &quot;Allow access to customer portal via API&quot; under &quot;Settings &gt; Hosted Pages Settings &gt; Customer Portal&quot; to use the portal sessions API.</li>\n<li class=\"text-base leading-relaxed\">Provide a link in your website/application which your authenticated customers can use to access the portal (For example, <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">{your_website_url}/portal_link</code>).</li>\n<li class=\"text-base leading-relaxed\">Handle the link request in your server code and create a portal session for the customer by calling Chargebee&#x27;s &quot;Create a portal session&quot; API</li>\n<li class=\"text-base leading-relaxed\">Forward the user to the access URL present in the &quot;Portal Session&quot; resource returned by the above API call.</li>\n</ol><div class=\"alert alert-info\"><p class=\"mb-2\"><strong class=\"font-semibold\">Notes about access URL:</strong></p><ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\">The access URL should be accessed by the customer within one hour from the time it was created.</li>\n<li class=\"text-base leading-relaxed\">Once accessed, the session is valid until the user logs out from the portal UI or logout API is called from your application for this session.</li>\n<li class=\"text-base leading-relaxed\">Once accessed, the access url cannot be reused. Hence do not persist this URL. Whenever you need to provide access to the portal, you need to create a new portal session.</li>\n</ul></div><h4>Using Chargebee&#x27;s authentication to allow access to your website</h4><p class=\"mb-2\"><strong class=\"font-semibold\">Note:</strong> This feature is not supported in <a href=\"https://www.chargebee.com/docs/inapp-self-serve-portal.html\" target=\"_blank\">in-app</a> portal.\nChargebee allows you to integrate your website by building user authentication on top of Chargebee. If you would want to allow access to parts of your website only to subscribers (like a paywall), you can integrate Chargebee&#x27;s authentication without having to handle it from your end.\n<strong class=\"font-semibold\">Workflow:</strong>\nUsers should be redirected to the portal login URL - <strong class=\"font-semibold\">https://yourdomain.chargebeeportal.com/portal/login</strong> by passing the following parameters:</p><ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">return_url</strong> - URL the users should be redirected to upon successful authentication.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">cancel_url</strong> - URL the users should be redirected to when they want to go back to your website during login.\nThe domain name used in the Return/Cancel URL should be added as a &#x27;Whitelisted Domain&#x27; in Chargebee. Add just the domain name in Chargebee and not the entire URL: E.g. yourdomain.com.</li>\n</ul><p class=\"mb-2\">Upon successful authentication, a session is created for the user and Chargebee redirects the user to the return_url along with the following parameters:</p><ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">auth_session_id</strong> - Identifier to the authenticated session.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">auth_session_token</strong> - Token for the session which should be sent later to activate this session.\nUsing the <strong class=\"font-semibold\">auth_session_id</strong> &amp; <strong class=\"font-semibold\">auth_session_token</strong>, you should call <a href=\"/docs/api/v1/portal_sessions/activate-a-portal-session\">Activate a Portal Session</a> API to validate the session details and create a session for that user in your website.\n<strong class=\"font-semibold\">Note:</strong> The process of setting up the portal account will take place along with the authentication process.</li>\n</ul></div>",
         "properties" : {
           "id" : {
             "type" : "string",
@@ -37530,6 +37530,114 @@
       }
     },
     "parameters" : {
+      "Prefer" : {
+        "name" : "Prefer",
+        "in" : "header",
+        "description" : "Must be set to <code>respond-async</code>. Instructs Chargebee to process the request asynchronously and return <code>202 Accepted</code> immediately.",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "description" : "Must be set to <code>respond-async</code>. Instructs Chargebee to process the request asynchronously and return <code>202 Accepted</code> immediately.",
+          "example" : "respond-async"
+        },
+        "x-cb-async-header" : true
+      },
+      "reason-code-id" : {
+        "name" : "reason-code-id",
+        "in" : "path",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "invoice-id" : {
+        "name" : "invoice-id",
+        "in" : "path",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "transaction-id" : {
+        "name" : "transaction-id",
+        "in" : "path",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "limit" : {
+        "name" : "limit",
+        "in" : "query",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer",
+          "format" : "int32",
+          "default" : 10,
+          "description" : "The number of resources to be returned.",
+          "x-cb-is-pagination-parameter" : true,
+          "maximum" : 100,
+          "minimum" : 1,
+          "example" : null
+        }
+      },
+      "chargebee-event-email" : {
+        "name" : "chargebee-event-email",
+        "in" : "header",
+        "description" : "skip only emails",
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "description" : "skip only emails",
+          "enum" : [ "all-disabled" ]
+        }
+      },
+      "chargebee-request-origin-ip" : {
+        "name" : "chargebee-request-origin-ip",
+        "in" : "header",
+        "description" : "The IP address of the customer where the request originated",
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "description" : "The IP address of the customer where the request originated",
+          "example" : "192.168.1.2",
+          "pattern" : "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+        }
+      },
+      "coupon-code-code" : {
+        "name" : "coupon-code-code",
+        "in" : "path",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "comment-id" : {
+        "name" : "comment-id",
+        "in" : "path",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
       "coupon-id" : {
         "name" : "coupon-id",
         "in" : "path",
@@ -37553,6 +37661,21 @@
           "maxLength" : 1000,
           "example" : null
         }
+      },
+      "chargebee-async-callback-url" : {
+        "name" : "chargebee-async-callback-url",
+        "in" : "header",
+        "description" : "The callback URL where Chargebee will <code>POST</code> the async result. Must be an <code>https://</code> URL and may embed basic-auth credentials, e.g. <code>https://username:password@example.com</code>.",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : "The callback URL where Chargebee will <code>POST</code> the async result. Must be an <code>https://</code> URL and may embed basic-auth credentials, e.g. <code>https://username:password@example.com</code>.",
+          "example" : "https://username:password@example.com"
+        },
+        "x-cb-async-header" : true
       },
       "subscription-id" : {
         "name" : "subscription-id",
@@ -37584,15 +37707,20 @@
           "type" : "string"
         }
       },
-      "reason-code-id" : {
-        "name" : "reason-code-id",
-        "in" : "path",
+      "chargebee-request-id" : {
+        "name" : "chargebee-request-id",
+        "in" : "header",
+        "description" : "A client-generated unique identifier (UUID recommended) for this request. Echoed back as <code>request.id</code> in the async callback payload, allowing you to correlate each callback to its originating request.",
         "required" : true,
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
-        }
+          "type" : "string",
+          "description" : "A client-generated unique identifier (UUID recommended) for this request. Echoed back as <code>request.id</code> in the async callback payload, allowing you to correlate each callback to its originating request.",
+          "example" : "7c9e2f4a-8b1d-4e6f-9a0c-3d5e7f9b1c2d",
+          "maxLength" : 100
+        },
+        "x-cb-async-header" : true
       },
       "order-id" : {
         "name" : "order-id",
@@ -37627,28 +37755,8 @@
           "type" : "string"
         }
       },
-      "invoice-id" : {
-        "name" : "invoice-id",
-        "in" : "path",
-        "required" : true,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "type" : "string"
-        }
-      },
       "plan-id" : {
         "name" : "plan-id",
-        "in" : "path",
-        "required" : true,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "type" : "string"
-        }
-      },
-      "transaction-id" : {
-        "name" : "transaction-id",
         "in" : "path",
         "required" : true,
         "style" : "simple",
@@ -37721,36 +37829,6 @@
           "example" : "Android"
         }
       },
-      "limit" : {
-        "name" : "limit",
-        "in" : "query",
-        "required" : false,
-        "style" : "form",
-        "explode" : true,
-        "schema" : {
-          "type" : "integer",
-          "format" : "int32",
-          "default" : 10,
-          "description" : "The number of resources to be returned.",
-          "x-cb-is-pagination-parameter" : true,
-          "maximum" : 100,
-          "minimum" : 1,
-          "example" : null
-        }
-      },
-      "chargebee-event-email" : {
-        "name" : "chargebee-event-email",
-        "in" : "header",
-        "description" : "skip only emails",
-        "required" : false,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "type" : "string",
-          "description" : "skip only emails",
-          "enum" : [ "all-disabled" ]
-        }
-      },
       "addon-id" : {
         "name" : "addon-id",
         "in" : "path",
@@ -37761,42 +37839,8 @@
           "type" : "string"
         }
       },
-      "chargebee-request-origin-ip" : {
-        "name" : "chargebee-request-origin-ip",
-        "in" : "header",
-        "description" : "The IP address of the customer where the request originated",
-        "required" : false,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "type" : "string",
-          "description" : "The IP address of the customer where the request originated",
-          "example" : "192.168.1.2",
-          "pattern" : "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
-        }
-      },
       "event-id" : {
         "name" : "event-id",
-        "in" : "path",
-        "required" : true,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "type" : "string"
-        }
-      },
-      "coupon-code-code" : {
-        "name" : "coupon-code-code",
-        "in" : "path",
-        "required" : true,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "type" : "string"
-        }
-      },
-      "comment-id" : {
-        "name" : "comment-id",
         "in" : "path",
         "required" : true,
         "style" : "simple",
