@@ -5,42 +5,42 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-08-19.ac160eefbc69961d63f4f80ac6f28ba294244db8
-  x-cb-api-version: 2
+  version: 2026-08-28.release
   x-cb-product-catalog-version: 2
+  x-cb-api-version: 2
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v2"
   variables:
     protocol:
-      default: https
       enum:
       - https
+      default: https
     site:
       default: demo
     environment:
-      default: chargebee.com
       enum:
       - chargebee.com
+      default: chargebee.com
     port:
-      default: "443"
       enum:
       - "443"
+      default: "443"
 - url: "{protocol}://{site}-test.{environment}:{port}/api/v2"
   variables:
     protocol:
-      default: https
       enum:
       - https
+      default: https
     site:
       default: demo
     environment:
-      default: chargebee.com
       enum:
       - chargebee.com
+      default: chargebee.com
     port:
-      default: "443"
       enum:
       - "443"
+      default: "443"
 paths:
   /subscriptions/{subscription-id}/remove_advance_invoice_schedule:
     post:
@@ -160806,6 +160806,15 @@ paths:
           x-cb-is-multi-value-attribute: false
           x-cb-sort-order: 6
           properties:
+            before:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            between:
+              type: string
+              pattern: "^\\[\\d{10},\\d{10}\\]$"
+              example: null
             after:
               type: string
               format: unix-time
@@ -160815,15 +160824,6 @@ paths:
               type: string
               format: unix-time
               pattern: "^\\d{10}$"
-              example: null
-            before:
-              type: string
-              format: unix-time
-              pattern: "^\\d{10}$"
-              example: null
-            between:
-              type: string
-              pattern: "^\\[\\d{10},\\d{10}\\]$"
               example: null
       - name: purchased_at
         in: query
@@ -160846,6 +160846,15 @@ paths:
           x-cb-is-multi-value-attribute: false
           x-cb-sort-order: 7
           properties:
+            before:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            between:
+              type: string
+              pattern: "^\\[\\d{10},\\d{10}\\]$"
+              example: null
             after:
               type: string
               format: unix-time
@@ -160855,15 +160864,6 @@ paths:
               type: string
               format: unix-time
               pattern: "^\\d{10}$"
-              example: null
-            before:
-              type: string
-              format: unix-time
-              pattern: "^\\d{10}$"
-              example: null
-            between:
-              type: string
-              pattern: "^\\[\\d{10},\\d{10}\\]$"
               example: null
       - name: sort_by
         in: query
@@ -162437,39 +162437,39 @@ paths:
       - url: "{protocol}://{site}.ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: usage_event
       x-cb-sort-order: 4
       x-cb-module: usage-based-billing
@@ -162676,39 +162676,39 @@ paths:
       - url: "{protocol}://{site}.ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: usage_event
       x-cb-sort-order: 5
       x-cb-module: usage-based-billing
@@ -163357,39 +163357,39 @@ paths:
       - url: "{protocol}://{site}.file-ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.file-ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: usage_file
       x-cb-sort-order: 3
       x-cb-module: usage-based-billing
@@ -163532,39 +163532,39 @@ paths:
       - url: "{protocol}://{site}.file-ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.file-ingest.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: usage_file
       x-cb-sort-order: 2
       x-cb-module: usage-based-billing
@@ -163848,39 +163848,39 @@ paths:
       - url: "{protocol}://{site}.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: personalized_offer
       x-cb-sort-order: 0
       x-cb-module: retention
@@ -164030,39 +164030,39 @@ paths:
       - url: "{protocol}://{site}.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: offer_fulfillment
       x-cb-sort-order: 0
       x-cb-module: retention
@@ -164173,39 +164173,39 @@ paths:
       - url: "{protocol}://{site}.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: offer_fulfillment
       x-cb-sort-order: 1
       x-cb-module: retention
@@ -164367,39 +164367,39 @@ paths:
       - url: "{protocol}://{site}.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: offer_fulfillment
       x-cb-sort-order: 2
       x-cb-module: retention
@@ -164540,39 +164540,39 @@ paths:
       - url: "{protocol}://{site}.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       - url: "{protocol}://{site}-test.grow.{environment}:{port}/api/v2"
         variables:
           protocol:
-            default: https
             enum:
             - http
             - https
+            default: https
           site:
             default: demo
           environment:
-            default: chargebee.com
             enum:
             - chargebee.com
+            default: chargebee.com
           port:
-            default: "443"
             enum:
             - "443"
             - "8080"
+            default: "443"
       x-cb-resource-id: offer_event
       x-cb-sort-order: 0
       x-cb-module: retention
