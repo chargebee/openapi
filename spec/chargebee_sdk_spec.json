@@ -7,46 +7,46 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2026-08-19.ac160eefbc69961d63f4f80ac6f28ba294244db8",
-    "x-cb-api-version" : 2,
-    "x-cb-product-catalog-version" : 2
+    "version" : "2026-08-28.ac160eefbc69961d63f4f80ac6f28ba294244db8",
+    "x-cb-product-catalog-version" : 2,
+    "x-cb-api-version" : 2
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v2",
     "variables" : {
       "protocol" : {
-        "default" : "https",
-        "enum" : [ "https" ]
+        "enum" : [ "https" ],
+        "default" : "https"
       },
       "site" : {
         "default" : "demo"
       },
       "environment" : {
-        "default" : "chargebee.com",
-        "enum" : [ "chargebee.com" ]
+        "enum" : [ "chargebee.com" ],
+        "default" : "chargebee.com"
       },
       "port" : {
-        "default" : "443",
-        "enum" : [ "443" ]
+        "enum" : [ "443" ],
+        "default" : "443"
       }
     }
   }, {
     "url" : "{protocol}://{site}-test.{environment}:{port}/api/v2",
     "variables" : {
       "protocol" : {
-        "default" : "https",
-        "enum" : [ "https" ]
+        "enum" : [ "https" ],
+        "default" : "https"
       },
       "site" : {
         "default" : "demo"
       },
       "environment" : {
-        "default" : "chargebee.com",
-        "enum" : [ "chargebee.com" ]
+        "enum" : [ "chargebee.com" ],
+        "default" : "chargebee.com"
       },
       "port" : {
-        "default" : "443",
-        "enum" : [ "443" ]
+        "enum" : [ "443" ],
+        "default" : "443"
       }
     }
   } ],
@@ -180306,6 +180306,17 @@
             "x-cb-is-multi-value-attribute" : false,
             "x-cb-sort-order" : 6,
             "properties" : {
+              "before" : {
+                "type" : "string",
+                "format" : "unix-time",
+                "pattern" : "^\\d{10}$",
+                "example" : null
+              },
+              "between" : {
+                "type" : "string",
+                "pattern" : "^\\[\\d{10},\\d{10}\\]$",
+                "example" : null
+              },
               "after" : {
                 "type" : "string",
                 "format" : "unix-time",
@@ -180316,17 +180327,6 @@
                 "type" : "string",
                 "format" : "unix-time",
                 "pattern" : "^\\d{10}$",
-                "example" : null
-              },
-              "before" : {
-                "type" : "string",
-                "format" : "unix-time",
-                "pattern" : "^\\d{10}$",
-                "example" : null
-              },
-              "between" : {
-                "type" : "string",
-                "pattern" : "^\\[\\d{10},\\d{10}\\]$",
                 "example" : null
               }
             }
@@ -180352,6 +180352,17 @@
             "x-cb-is-multi-value-attribute" : false,
             "x-cb-sort-order" : 7,
             "properties" : {
+              "before" : {
+                "type" : "string",
+                "format" : "unix-time",
+                "pattern" : "^\\d{10}$",
+                "example" : null
+              },
+              "between" : {
+                "type" : "string",
+                "pattern" : "^\\[\\d{10},\\d{10}\\]$",
+                "example" : null
+              },
               "after" : {
                 "type" : "string",
                 "format" : "unix-time",
@@ -180362,17 +180373,6 @@
                 "type" : "string",
                 "format" : "unix-time",
                 "pattern" : "^\\d{10}$",
-                "example" : null
-              },
-              "before" : {
-                "type" : "string",
-                "format" : "unix-time",
-                "pattern" : "^\\d{10}$",
-                "example" : null
-              },
-              "between" : {
-                "type" : "string",
-                "pattern" : "^\\[\\d{10},\\d{10}\\]$",
                 "example" : null
               }
             }
@@ -182397,38 +182397,38 @@
           "url" : "{protocol}://{site}.ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -182704,38 +182704,38 @@
           "url" : "{protocol}://{site}.ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -183658,38 +183658,38 @@
           "url" : "{protocol}://{site}.file-ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.file-ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -183892,38 +183892,38 @@
           "url" : "{protocol}://{site}.file-ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.file-ingest.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -184286,38 +184286,38 @@
           "url" : "{protocol}://{site}.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -184528,38 +184528,38 @@
           "url" : "{protocol}://{site}.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -184723,38 +184723,38 @@
           "url" : "{protocol}://{site}.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -184975,38 +184975,38 @@
           "url" : "{protocol}://{site}.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
@@ -185201,38 +185201,38 @@
           "url" : "{protocol}://{site}.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         }, {
           "url" : "{protocol}://{site}-test.grow.{environment}:{port}/api/v2",
           "variables" : {
             "protocol" : {
-              "default" : "https",
-              "enum" : [ "http", "https" ]
+              "enum" : [ "http", "https" ],
+              "default" : "https"
             },
             "site" : {
               "default" : "demo"
             },
             "environment" : {
-              "default" : "chargebee.com",
-              "enum" : [ "chargebee.com" ]
+              "enum" : [ "chargebee.com" ],
+              "default" : "chargebee.com"
             },
             "port" : {
-              "default" : "443",
-              "enum" : [ "443", "8080" ]
+              "enum" : [ "443", "8080" ],
+              "default" : "443"
             }
           }
         } ],
