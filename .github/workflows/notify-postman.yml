@@ -1,0 +1,81 @@
+# Tells the Postman collection pipeline that a specification release has landed.
+#
+# The specs in spec/ are updated by cb-sdk-gen's public-sdk-release, which opens
+# a pull request here. Merging that pull request is the moment the specification
+# becomes public — this repository's main branch is what downstream consumers
+# read — so it is the moment worth announcing.
+#
+# The consumer, chargebee/cb-openapi-generator, regenerates its published Postman
+# collections from spec/ and opens a pull request carrying the diff. Nothing
+# auto-merges there; a human reads the semantic change.
+#
+# This is a latency optimisation, not a dependency. That pipeline also polls
+# hourly and keys on this repository's commit SHA, so if the dispatch fails, is
+# never configured, or this workflow is deleted, the collections still follow —
+# just up to an hour later. Deliberately fails soft for the same reason: a
+# specification release must not be reported as broken because a downstream
+# notification could not be sent.
+name: notify-postman
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spec/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      # Same identity cb-sdk-gen releases specs with (chargebee-sdk-release-bot),
+      # so no separate personal access token needs minting or rotating: the
+      # installation token below lives for an hour.
+      #
+      # continue-on-error is what keeps this workflow failing soft. Without it
+      # this step hard-fails when the private key is absent or malformed, before
+      # the empty-token check in the next step can report the skip and exit 0.
+      #
+      # repositories: narrows the token to the one repository being dispatched
+      # to, rather than every repository in the installation.
+      - name: Generate GitHub App token
+        id: app-token
+        continue-on-error: true
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CB_SDK_BOT_APP_ID }}
+          private-key: ${{ secrets.CB_SDK_BOT_PEM_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: cb-openapi-generator
+          permission-contents: write
+
+      - name: Dispatch to cb-openapi-generator
+        env:
+          # Short-lived installation token carrying Contents: write on
+          # chargebee/cb-openapi-generator — the permission repository_dispatch
+          # requires. Nothing else.
+          TOKEN: ${{ steps.app-token.outputs.token }}
+          SHA: ${{ github.sha }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice::No app token was minted; skipping. Check that CB_SDK_BOT_APP_ID and CB_SDK_BOT_PEM_KEY are granted to this repository. The Postman pipeline polls hourly and will pick this up regardless."
+            exit 0
+          fi
+
+          status=$(curl -sS -o /tmp/dispatch.out -w '%{http_code}' \
+            -X POST "https://api.github.com/repos/chargebee/cb-openapi-generator/dispatches" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d "{\"event_type\":\"openapi-spec-published\",\"client_payload\":{\"sha\":\"$SHA\"}}")
+
+          if [ "$status" = "204" ]; then
+            echo "Notified cb-openapi-generator of ${SHA}."
+          else
+            # Soft failure on purpose: see the note at the top of this file.
+            echo "::warning::Dispatch returned HTTP ${status}. The Postman pipeline polls hourly, so this delays regeneration rather than preventing it."
+            cat /tmp/dispatch.out
+          fi
