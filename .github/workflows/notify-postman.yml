@@ -31,16 +31,37 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      # Same identity cb-sdk-gen releases specs with (chargebee-sdk-release-bot),
+      # so no separate personal access token needs minting or rotating: the
+      # installation token below lives for an hour.
+      #
+      # continue-on-error is what keeps this workflow failing soft. Without it
+      # this step hard-fails when the private key is absent or malformed, before
+      # the empty-token check in the next step can report the skip and exit 0.
+      #
+      # repositories: narrows the token to the one repository being dispatched
+      # to, rather than every repository in the installation.
+      - name: Generate GitHub App token
+        id: app-token
+        continue-on-error: true
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CB_SDK_BOT_APP_ID }}
+          private-key: ${{ secrets.CB_SDK_BOT_PEM_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: cb-openapi-generator
+          permission-contents: write
+
       - name: Dispatch to cb-openapi-generator
         env:
-          # Fine-grained token with Contents: read and write on
+          # Short-lived installation token carrying Contents: write on
           # chargebee/cb-openapi-generator — the permission repository_dispatch
           # requires. Nothing else.
-          TOKEN: ${{ secrets.POSTMAN_REGEN_DISPATCH_TOKEN }}
+          TOKEN: ${{ steps.app-token.outputs.token }}
           SHA: ${{ github.sha }}
         run: |
           if [ -z "$TOKEN" ]; then
-            echo "::notice::POSTMAN_REGEN_DISPATCH_TOKEN is not set; skipping. The Postman pipeline polls hourly and will pick this up regardless."
+            echo "::notice::No app token was minted; skipping. Check that CB_SDK_BOT_APP_ID and CB_SDK_BOT_PEM_KEY are granted to this repository. The Postman pipeline polls hourly and will pick this up regardless."
             exit 0
           fi
 
