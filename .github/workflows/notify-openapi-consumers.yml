@@ -1,0 +1,85 @@
+# Announces the newest immutable spec/ commit after the public OpenAPI source
+# changes. Each consumer independently generates a human-reviewed pull request;
+# this producer never writes consumer branches or merges their changes.
+name: Notify OpenAPI consumers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "spec/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Notify ${{ matrix.consumer }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - consumer: Postman publisher
+            owner: chargebee-tech
+            repository: cb-openapi-generator
+          - consumer: Chargebee CLI
+            owner: chargebee
+            repository: cli
+
+    steps:
+      # The push SHA is commonly the merge commit. Consumers need the newest
+      # commit that actually changed spec/, which is also what their no-op gates
+      # and immutable raw.githubusercontent.com URLs use.
+      - name: Resolve public spec commit
+        id: spec
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          SPEC_SHA=$(gh api --method GET "repos/${GITHUB_REPOSITORY}/commits" \
+            -f path=spec \
+            -f per_page=1 \
+            --jq '.[0].sha')
+          if [[ ! "$SPEC_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Could not resolve the newest commit touching spec/"
+            exit 1
+          fi
+          gh api "repos/${GITHUB_REPOSITORY}/commits/${SPEC_SHA}" --jq '.sha' >/dev/null
+          echo "sha=${SPEC_SHA}" >> "$GITHUB_OUTPUT"
+          echo "Publishing chargebee/openapi@${SPEC_SHA}"
+
+      # One GitHub App may have installations in both organizations. The
+      # installation must include each matrix repository with Contents: write,
+      # which is the permission repository_dispatch requires.
+      - name: Create consumer dispatch token
+        id: app-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        with:
+          app-id: ${{ secrets.POSTMAN_DISPATCH_APP_ID }}
+          private-key: ${{ secrets.POSTMAN_DISPATCH_PEM_KEY }}
+          owner: ${{ matrix.owner }}
+          repositories: ${{ matrix.repository }}
+
+      - name: Dispatch immutable spec release
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          SPEC_SHA: ${{ steps.spec.outputs.sha }}
+          TARGET_OWNER: ${{ matrix.owner }}
+          TARGET_REPOSITORY: ${{ matrix.repository }}
+        run: |
+          jq -n \
+            --arg source_repo "$GITHUB_REPOSITORY" \
+            --arg source_sha "$SPEC_SHA" \
+            '{
+              event_type: "openapi-spec-published",
+              client_payload: {
+                source_repo: $source_repo,
+                source_sha: $source_sha,
+                source_ref: "main",
+                versions: ["v1", "v2-pcv1", "v2-pcv2"]
+              }
+            }' | gh api --method POST \
+              "repos/${TARGET_OWNER}/${TARGET_REPOSITORY}/dispatches" \
+              --input -
+          echo "Notified ${TARGET_OWNER}/${TARGET_REPOSITORY} of ${SPEC_SHA}."
