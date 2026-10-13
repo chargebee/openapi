@@ -14,25 +14,18 @@ permissions:
   contents: read
 
 jobs:
-  notify:
-    name: Notify ${{ matrix.consumer }}
+  resolve:
+    name: Resolve public spec commit
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - consumer: Postman publisher
-            owner: chargebee-tech
-            repository: cb-openapi-generator
-          - consumer: Chargebee CLI
-            owner: chargebee
-            repository: cli
-
+    outputs:
+      spec_sha: ${{ steps.spec.outputs.sha }}
     steps:
       # The push SHA is commonly the merge commit. Consumers need the newest
       # commit that actually changed spec/, which is also what their no-op gates
-      # and immutable raw.githubusercontent.com URLs use.
+      # and immutable raw.githubusercontent.com URLs use. Resolve it once so
+      # every consumer receives the same revision even if another push lands
+      # while the matrix is running.
       - name: Resolve public spec commit
         id: spec
         env:
@@ -50,6 +43,23 @@ jobs:
           echo "sha=${SPEC_SHA}" >> "$GITHUB_OUTPUT"
           echo "Publishing chargebee/openapi@${SPEC_SHA}"
 
+  notify:
+    name: Notify ${{ matrix.consumer }}
+    needs: resolve
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - consumer: Postman publisher
+            owner: chargebee-tech
+            repository: cb-openapi-generator
+          - consumer: Chargebee CLI
+            owner: chargebee
+            repository: cli
+
+    steps:
       # One GitHub App may have installations in both organizations. The
       # installation must include each matrix repository with Contents: write,
       # which is the permission repository_dispatch requires.
@@ -66,7 +76,7 @@ jobs:
       - name: Dispatch immutable spec release
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          SPEC_SHA: ${{ steps.spec.outputs.sha }}
+          SPEC_SHA: ${{ needs.resolve.outputs.spec_sha }}
           TARGET_OWNER: ${{ matrix.owner }}
           TARGET_REPOSITORY: ${{ matrix.repository }}
         run: |
