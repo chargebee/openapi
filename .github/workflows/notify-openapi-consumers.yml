@@ -17,6 +17,7 @@ jobs:
   notify:
     name: Notify ${{ matrix.consumer }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
@@ -60,6 +61,7 @@ jobs:
           private-key: ${{ secrets.POSTMAN_DISPATCH_PEM_KEY }}
           owner: ${{ matrix.owner }}
           repositories: ${{ matrix.repository }}
+          permission-contents: write
 
       - name: Dispatch immutable spec release
         env:
