@@ -7,10 +7,10 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2026-09-24.553c79154f0075cfbab35271eeff8b63a3ed6a86",
-    "x-cb-product-catalog-version" : 1,
+    "version" : "2026-10-30.cb3d093ad931f2f4afcb3dcfd76caf9b6db37f79",
     "x-cb-api-version" : 1,
-    "x-generated-on" : 1790227819488
+    "x-cb-product-catalog-version" : 1,
+    "x-generated-on" : 1793346163267
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
@@ -12651,7 +12651,7 @@
       "post" : {
         "tags" : [ "invoices" ],
         "summary" : "Void an invoice",
-        "description" : "This API voids the specified invoice. If the invoice has been successfully voided using this API, the response will contain the voided 'invoice' object and 'Invoice Updated' event will be triggered. If the void has not been successful, a corresponding error message would be returned.\n\nVoiding an invoice is not possible\n\n* If the invoice has successful payment(s)\n* If the invoice has credit adjustment(s)\n\n* Please note that, if the current term invoice is voided and if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.\n* If the invoice that is voided has [Promotional Credits](https://www.chargebee.com/docs/account-credits.html) applied to it, the same will be reclaimed.\n",
+        "description" : "This API voids the specified invoice. If the invoice has been successfully voided using this API, the response will contain the voided 'invoice' object and 'Invoice Updated' event will be triggered. If the void has not been successful, a corresponding error message would be returned.\n\nVoiding an invoice is not possible\n\n* If the invoice has successful payment(s)\n* If the invoice has credit adjustment(s)\n\n* Please note that, if the current term invoice is voided and if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.\n* If the invoice that is voided has [Promotional Credits](https://www.chargebee.com/docs/account-credits.html) applied to it, the same will be reclaimed.\n* Voiding does not send a customer email. After the invoice is voided, you can email it from invoice details (**Send Email**) or from the Invoices index (bulk custom email).\n",
         "operationId" : "void_an_invoice",
         "parameters" : [ {
           "name" : "chargebee-request-origin-device",
@@ -32514,6 +32514,49 @@
         "required" : [ "api_version", "content", "event_type", "id", "object", "occurred_at", "source", "webhook_status" ],
         "example" : null
       },
+      "Citation" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "deprecated" : false,
+            "maxLength" : 40,
+            "example" : null
+          },
+          "param_name" : {
+            "type" : "string",
+            "deprecated" : false,
+            "maxLength" : 100,
+            "example" : null
+          },
+          "author_name" : {
+            "type" : "string",
+            "deprecated" : false,
+            "maxLength" : 150,
+            "example" : null
+          },
+          "confidence_level" : {
+            "type" : "string",
+            "deprecated" : false,
+            "enum" : [ "low", "medium", "high", "not_provided" ],
+            "example" : null
+          },
+          "created_at" : {
+            "type" : "integer",
+            "format" : "unix-time",
+            "deprecated" : false,
+            "example" : null
+          },
+          "content" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "deprecated" : false,
+            "example" : null
+          }
+        },
+        "required" : [ "author_name", "content", "created_at", "id" ],
+        "example" : null
+      },
       "Comment" : {
         "type" : "object",
         "description" : "Comments are additional information that you can add to your resources. Comments can be added to provide context for any operation that was performed.\n\nWhen you make an API call on any resource, for example, Subscriptions -\\> Change term end, you can add more context to that operation by calling the comments API as a follow up call.\n\nBesides the user generated comments, Chargebee also generates \"System\" comments when a change for a resource happens at the backend. These comments are all read-only.\n",
@@ -33618,6 +33661,49 @@
         "required" : [ "download_url", "valid_till" ],
         "example" : null
       },
+      "DraftEstimate" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "deprecated" : false,
+            "enum" : [ "success", "failed" ],
+            "example" : null
+          },
+          "http_status" : {
+            "type" : "integer",
+            "format" : "int32",
+            "deprecated" : false,
+            "example" : null
+          },
+          "created_at" : {
+            "type" : "integer",
+            "format" : "unix-time",
+            "deprecated" : false,
+            "example" : null
+          },
+          "result" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "deprecated" : false,
+            "example" : null
+          },
+          "error_detail" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "deprecated" : false,
+            "example" : null
+          },
+          "revision_version" : {
+            "type" : "integer",
+            "format" : "unix-time",
+            "deprecated" : false,
+            "example" : null
+          }
+        },
+        "required" : [ "created_at", "status" ],
+        "example" : null
+      },
       "EntityType" : {
         "type" : "string",
         "deprecated" : false,
@@ -33921,7 +34007,7 @@
             "default" : "none",
             "deprecated" : false,
             "description" : "Source of the event\n\n* hosted_page - Operation made through the Hosted Pages\n* admin_console - Operation made through the Chargebee admin UI\n* portal - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* system - Operation that are triggered by ChargeBee System\n* scheduled_job - Operation made through the Scheduled Jobs\n* none - If no source can be identified for an operation\n* api - Operation made through the API\n* bulk_operation - Operation that are triggerd through bulk operation.\n* migration - Deprecated\n* js_api - Operation made through the JS API\n",
-            "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation" ],
+            "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation", "mcp", "copilot", "agent" ],
             "example" : null
           },
           "user" : {
@@ -33996,6 +34082,43 @@
         "type" : "string",
         "deprecated" : false,
         "enum" : [ "customer_created", "customer_changed", "customer_deleted", "subscription_created", "subscription_started", "subscription_trial_ending", "subscription_activated", "subscription_changed", "subscription_trial_extended", "subscription_cancellation_scheduled", "subscription_cancelling", "subscription_cancelled", "subscription_reactivated", "subscription_renewed", "subscription_scheduled_cancellation_removed", "subscription_shipping_address_updated", "subscription_deleted", "invoice_created", "invoice_generated", "invoice_updated", "invoice_deleted", "subscription_renewal_reminder", "transaction_created", "transaction_updated", "transaction_deleted", "payment_succeeded", "payment_failed", "payment_refunded", "payment_initiated", "refund_initiated", "card_added", "card_updated", "card_expiring", "card_expired", "card_deleted" ],
+        "example" : null
+      },
+      "Execution" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "deprecated" : false,
+            "enum" : [ "success", "failed" ],
+            "example" : null
+          },
+          "created_at" : {
+            "type" : "integer",
+            "format" : "unix-time",
+            "deprecated" : false,
+            "example" : null
+          },
+          "result" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "deprecated" : false,
+            "example" : null
+          },
+          "error_detail" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "deprecated" : false,
+            "example" : null
+          },
+          "revision_version" : {
+            "type" : "integer",
+            "format" : "unix-time",
+            "deprecated" : false,
+            "example" : null
+          }
+        },
+        "required" : [ "created_at", "status" ],
         "example" : null
       },
       "Gateway" : {
@@ -34080,7 +34203,7 @@
             "example" : null
           }
         },
-        "required" : [ "content", "embed" ],
+        "required" : [ "embed" ],
         "example" : null
       },
       "Invoice" : {
@@ -35951,7 +36074,7 @@
         "type" : "string",
         "default" : "none",
         "deprecated" : false,
-        "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation" ],
+        "enum" : [ "admin_console", "api", "scheduled_job", "hosted_page", "portal", "system", "none", "js_api", "migration", "bulk_operation", "mcp", "copilot", "agent" ],
         "example" : null
       },
       "Subscription" : {
@@ -37717,7 +37840,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "reason_code",
+            "attribute" : "id"
+          }
         }
       },
       "invoice-id" : {
@@ -37727,7 +37854,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "invoice",
+            "attribute" : "id"
+          }
         }
       },
       "transaction-id" : {
@@ -37737,7 +37868,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "transaction",
+            "attribute" : "id"
+          }
         }
       },
       "limit" : {
@@ -37790,7 +37925,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "coupon_code",
+            "attribute" : "code"
+          }
         }
       },
       "comment-id" : {
@@ -37800,7 +37939,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "comment",
+            "attribute" : "id"
+          }
         }
       },
       "coupon-id" : {
@@ -37810,7 +37953,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "coupon",
+            "attribute" : "id"
+          }
         }
       },
       "offset" : {
@@ -37848,7 +37995,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "subscription",
+            "attribute" : "id"
+          }
         }
       },
       "payment-intent-id" : {
@@ -37858,7 +38009,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "payment_intent",
+            "attribute" : "id"
+          }
         }
       },
       "hosted-page-id" : {
@@ -37868,7 +38023,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "hosted_page",
+            "attribute" : "id"
+          }
         }
       },
       "chargebee-request-id" : {
@@ -37893,7 +38052,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "order",
+            "attribute" : "id"
+          }
         }
       },
       "chargebee-event-webhook" : {
@@ -37916,7 +38079,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "portal_session",
+            "attribute" : "id"
+          }
         }
       },
       "plan-id" : {
@@ -37926,7 +38093,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "plan",
+            "attribute" : "id"
+          }
         }
       },
       "chargebee-request-origin-user-encoded" : {
@@ -37977,7 +38148,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "customer",
+            "attribute" : "id"
+          }
         }
       },
       "chargebee-request-origin-device" : {
@@ -38000,7 +38175,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "addon",
+            "attribute" : "id"
+          }
         }
       },
       "event-id" : {
@@ -38010,7 +38189,11 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cb-references" : {
+            "resource" : "event",
+            "attribute" : "id"
+          }
         }
       }
     },

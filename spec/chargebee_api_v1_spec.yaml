@@ -5,10 +5,10 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-24.553c79154f0075cfbab35271eeff8b63a3ed6a86
-  x-cb-product-catalog-version: 1
+  version: 2026-10-30.cb3d093ad931f2f4afcb3dcfd76caf9b6db37f79
   x-cb-api-version: 1
-  x-generated-on: 1790227819488
+  x-cb-product-catalog-version: 1
+  x-generated-on: 1793346163267
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v1"
   variables:
@@ -11878,6 +11878,7 @@ paths:
 
         * Please note that, if the current term invoice is voided and if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.
         * If the invoice that is voided has [Promotional Credits](https://www.chargebee.com/docs/account-credits.html) applied to it, the same will be reclaimed.
+        * Voiding does not send a customer email. After the invoice is voided, you can email it from invoice details (**Send Email**) or from the Invoices index (bulk custom email).
       operationId: void_an_invoice
       parameters:
       - name: chargebee-request-origin-device
@@ -29952,6 +29953,49 @@ components:
       - source
       - webhook_status
       example: null
+    Citation:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        param_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        author_name:
+          type: string
+          deprecated: false
+          maxLength: 150
+          example: null
+        confidence_level:
+          type: string
+          deprecated: false
+          enum:
+          - low
+          - medium
+          - high
+          - not_provided
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        content:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+      required:
+      - author_name
+      - content
+      - created_at
+      - id
+      example: null
     Comment:
       type: object
       description: |
@@ -31299,6 +31343,45 @@ components:
       - download_url
       - valid_till
       example: null
+    DraftEstimate:
+      type: object
+      properties:
+        status:
+          type: string
+          deprecated: false
+          enum:
+          - success
+          - failed
+          example: null
+        http_status:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        result:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        error_detail:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        revision_version:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+      - created_at
+      - status
+      example: null
     EntityType:
       type: string
       deprecated: false
@@ -31718,6 +31801,9 @@ components:
           - js_api
           - migration
           - bulk_operation
+          - mcp
+          - copilot
+          - agent
           example: null
         user:
           type: string
@@ -31937,6 +32023,40 @@ components:
       - card_expired
       - card_deleted
       example: null
+    Execution:
+      type: object
+      properties:
+        status:
+          type: string
+          deprecated: false
+          enum:
+          - success
+          - failed
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        result:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        error_detail:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        revision_version:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+      - created_at
+      - status
+      example: null
     Gateway:
       type: string
       deprecated: false
@@ -32107,7 +32227,6 @@ components:
             If hosted page is state is "cancelled", then it will be empty i.e no information about checkout.
           example: null
       required:
-      - content
       - embed
       example: null
     Invoice:
@@ -34325,6 +34444,9 @@ components:
       - js_api
       - migration
       - bulk_operation
+      - mcp
+      - copilot
+      - agent
       example: null
     Subscription:
       type: object
@@ -36288,6 +36410,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: reason_code
+          attribute: id
     invoice-id:
       name: invoice-id
       in: path
@@ -36296,6 +36421,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: invoice
+          attribute: id
     transaction-id:
       name: transaction-id
       in: path
@@ -36304,6 +36432,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: transaction
+          attribute: id
     limit:
       name: limit
       in: query
@@ -36358,6 +36489,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon_code
+          attribute: code
     comment-id:
       name: comment-id
       in: path
@@ -36366,6 +36500,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: comment
+          attribute: id
     coupon-id:
       name: coupon-id
       in: path
@@ -36374,6 +36511,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon
+          attribute: id
     offset:
       name: offset
       in: query
@@ -36410,6 +36550,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: subscription
+          attribute: id
     payment-intent-id:
       name: payment-intent-id
       in: path
@@ -36418,6 +36561,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_intent
+          attribute: id
     hosted-page-id:
       name: hosted-page-id
       in: path
@@ -36426,6 +36572,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: hosted_page
+          attribute: id
     chargebee-request-id:
       name: chargebee-request-id
       in: header
@@ -36451,6 +36600,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: order
+          attribute: id
     chargebee-event-webhook:
       name: chargebee-event-webhook
       in: header
@@ -36471,6 +36623,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: portal_session
+          attribute: id
     plan-id:
       name: plan-id
       in: path
@@ -36479,6 +36634,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: plan
+          attribute: id
     chargebee-request-origin-user-encoded:
       name: chargebee-request-origin-user-encoded
       in: header
@@ -36529,6 +36687,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: customer
+          attribute: id
     chargebee-request-origin-device:
       name: chargebee-request-origin-device
       in: header
@@ -36548,6 +36709,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: addon
+          attribute: id
     event-id:
       name: event-id
       in: path
@@ -36556,6 +36720,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: event
+          attribute: id
   securitySchemes:
     BasicAuth:
       type: http
