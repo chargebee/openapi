@@ -5,10 +5,10 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-30.cb3d093ad931f2f4afcb3dcfd76caf9b6db37f79
+  version: 2026-11-11.a4dc98892f7c1caae57221a637475dc29284d843
   x-cb-product-catalog-version: 1
   x-cb-api-version: 2
-  x-generated-on: 1793346170546
+  x-generated-on: 1794408393062
 servers:
 - url: "{protocol}://{site}.{environment}:{port}/api/v2"
   variables:
@@ -102,6 +102,10 @@ tags:
 - name: full_exports
   description: The Full Export API allows bulk download of various datasets from a
     secure location where data is loaded daily on a predefined schedule.
+- name: gateway_request_logs
+  description: Operations on the `gateway_request_logs` resource.
+- name: gateway_webhook_logs
+  description: Operations on the `gateway_webhook_logs` resource.
 - name: gifts
   description: Gift represents a subscription of a customer(**recipient** ) to a 'gift
     plan' which has been gifted by another customer(**gifter**).
@@ -5909,12 +5913,6 @@ paths:
                       - bank_transfer
                       - other
                       - custom
-                      - tamara
-                      - qpay
-                      - blik
-                      - fpx
-                      - wero
-                      - p24
                       example: null
                     reference_number:
                       type: string
@@ -11642,12 +11640,6 @@ paths:
                       - bank_transfer
                       - other
                       - custom
-                      - tamara
-                      - qpay
-                      - blik
-                      - fpx
-                      - wero
-                      - p24
                       example: null
                     reference_number:
                       type: string
@@ -23090,12 +23082,6 @@ paths:
                       - bank_transfer
                       - other
                       - custom
-                      - tamara
-                      - qpay
-                      - blik
-                      - fpx
-                      - wero
-                      - p24
                       example: null
                     reference_number:
                       type: string
@@ -39434,6 +39420,1639 @@ paths:
       deprecated: false
       security:
       - BasicAuth: []
+  /gateway_request_logs/{gateway-request-log-log-id}:
+    get:
+      tags:
+      - gateway_request_logs
+      summary: Retrieve a gateway request log
+      operationId: retrieve_a_gateway_request_log
+      parameters:
+      - name: chargebee-request-origin-device
+        in: header
+        description: The device from which the customer has made the request
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-device"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The device from which the customer has made the request
+          example: Android
+      - name: chargebee-request-origin-user
+        in: header
+        description: The email address of your customer/user. Use this when the email
+          address has only ASCII characters.
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: The email address of your customer/user. Use this when the
+            email address has only ASCII characters.
+          example: user@example.com
+      - name: chargebee-request-origin-user-encoded
+        in: header
+        description: "The Base64-encoded email address of your customer/user. Use\
+          \ this if the email address has UTF-8 characters. When this header is provided,\
+          \ the header chargebee-request-origin-user is ignored."
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user-encoded"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: "The Base64-encoded email address of your customer/user. Use\
+            \ this if the email address has UTF-8 characters. When this header is\
+            \ provided, the header chargebee-request-origin-user is ignored."
+          example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+      - name: chargebee-request-origin-ip
+        in: header
+        description: The IP address of the customer where the request originated
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-ip"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The IP address of the customer where the request originated
+          example: 192.168.1.2
+          pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
+            -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+      - name: gateway-request-log-log-id
+        in: path
+        required: true
+        deprecated: false
+        $ref: "#/components/parameters/gateway-request-log-log-id"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gateway_request_log:
+                    $ref: "#/components/schemas/GatewayRequestLog"
+                    description: Resource object representing gateway_request_log
+                required:
+                - gateway_request_log
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/400"
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/403"
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/404"
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/405"
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/409"
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/422"
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/429"
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/503"
+      deprecated: false
+      security:
+      - BasicAuth: []
+  /gateway_request_logs:
+    get:
+      tags:
+      - gateway_request_logs
+      summary: List gateway request logs
+      operationId: list_gateway_request_logs
+      parameters:
+      - name: chargebee-request-origin-device
+        in: header
+        description: The device from which the customer has made the request
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-device"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The device from which the customer has made the request
+          example: Android
+      - name: chargebee-request-origin-user
+        in: header
+        description: The email address of your customer/user. Use this when the email
+          address has only ASCII characters.
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: The email address of your customer/user. Use this when the
+            email address has only ASCII characters.
+          example: user@example.com
+      - name: chargebee-request-origin-user-encoded
+        in: header
+        description: "The Base64-encoded email address of your customer/user. Use\
+          \ this if the email address has UTF-8 characters. When this header is provided,\
+          \ the header chargebee-request-origin-user is ignored."
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user-encoded"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: "The Base64-encoded email address of your customer/user. Use\
+            \ this if the email address has UTF-8 characters. When this header is\
+            \ provided, the header chargebee-request-origin-user is ignored."
+          example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+      - name: chargebee-request-origin-ip
+        in: header
+        description: The IP address of the customer where the request originated
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-ip"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The IP address of the customer where the request originated
+          example: 192.168.1.2
+          pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
+            -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+      - name: limit
+        in: query
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/limit"
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+          description: The number of resources to be returned.
+          maximum: 100
+          minimum: 1
+          example: null
+      - name: offset
+        in: query
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/offset"
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "Determines your position in the list for pagination. To ensure\
+            \ that the next page is retrieved correctly, always set 'offset' to the\
+            \ value of 'next_offset' obtained in the previous iteration of the API\
+            \ call."
+          maxLength: 1000
+          example: null
+      - name: log_id
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: This is a unique identifier assigned by open search. It is
+            used to track the request within the Chargebee open search system
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: gateway
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment Gateway through which the API call was made.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: status_code
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Http status code of the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: method
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Http Method of the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: url
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Third Party Gateway URL that was invoked.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: customer_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Customer handle used in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: invoice_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Invoice handle used in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: transaction_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Transaction handle used in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: payment_method_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment Method handle used in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: gateway_credential_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Gateway Credential used for the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: payment_attempt_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment Attempt handle used in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: payment_intent_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment Intent handle used in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: operation_name
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Name of the operation performed in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: operation_type
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Type of the operation performed in the API call.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: source
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: "Source of the API call (e.g., Chargebee App, OpenPay, etc.)."
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: invocation_time
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: API invocation time in milliseconds.
+          properties:
+            after:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            before:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            "on":
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            between:
+              type: string
+              pattern: "^\\[\\d{10},\\d{10}\\]$"
+              example: null
+          example: null
+      - name: response_received_at
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Timestamp when response was received from Gateway.
+          properties:
+            after:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            before:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            "on":
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            between:
+              type: string
+              pattern: "^\\[\\d{10},\\d{10}\\]$"
+              example: null
+          example: null
+      - name: sort_by
+        in: query
+        required: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          additionalProperties: true
+          properties:
+            asc:
+              type: string
+              enum:
+              - invocation_time
+              example: null
+            desc:
+              type: string
+              enum:
+              - invocation_time
+              example: null
+          example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        gateway_request_log:
+                          $ref: "#/components/schemas/GatewayRequestLog"
+                          description: Resource object representing gateway_request_log
+                      required:
+                      - gateway_request_log
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources
+                      are present. To fetch the next set of resources use this value
+                      for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/400"
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/403"
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/404"
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/405"
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/409"
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/422"
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/429"
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/503"
+      deprecated: false
+      security:
+      - BasicAuth: []
+  /gateway_webhook_logs/{gateway-webhook-log-webhook-id}:
+    get:
+      tags:
+      - gateway_webhook_logs
+      summary: Retrieve a gateway webhook log
+      operationId: retrieve_a_gateway_webhook_log
+      parameters:
+      - name: chargebee-request-origin-device
+        in: header
+        description: The device from which the customer has made the request
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-device"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The device from which the customer has made the request
+          example: Android
+      - name: chargebee-request-origin-user
+        in: header
+        description: The email address of your customer/user. Use this when the email
+          address has only ASCII characters.
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: The email address of your customer/user. Use this when the
+            email address has only ASCII characters.
+          example: user@example.com
+      - name: chargebee-request-origin-user-encoded
+        in: header
+        description: "The Base64-encoded email address of your customer/user. Use\
+          \ this if the email address has UTF-8 characters. When this header is provided,\
+          \ the header chargebee-request-origin-user is ignored."
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user-encoded"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: "The Base64-encoded email address of your customer/user. Use\
+            \ this if the email address has UTF-8 characters. When this header is\
+            \ provided, the header chargebee-request-origin-user is ignored."
+          example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+      - name: chargebee-request-origin-ip
+        in: header
+        description: The IP address of the customer where the request originated
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-ip"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The IP address of the customer where the request originated
+          example: 192.168.1.2
+          pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
+            -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+      - name: gateway-webhook-log-webhook-id
+        in: path
+        required: true
+        deprecated: false
+        $ref: "#/components/parameters/gateway-webhook-log-webhook-id"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gateway_webhook_log:
+                    $ref: "#/components/schemas/GatewayWebhookLog"
+                    description: Resource object representing gateway_webhook_log
+                required:
+                - gateway_webhook_log
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/400"
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/403"
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/404"
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/405"
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/409"
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/422"
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/429"
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/503"
+      deprecated: false
+      security:
+      - BasicAuth: []
+  /gateway_webhook_logs:
+    get:
+      tags:
+      - gateway_webhook_logs
+      summary: List gateway webhook logs
+      operationId: list_gateway_webhook_logs
+      parameters:
+      - name: chargebee-request-origin-device
+        in: header
+        description: The device from which the customer has made the request
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-device"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The device from which the customer has made the request
+          example: Android
+      - name: chargebee-request-origin-user
+        in: header
+        description: The email address of your customer/user. Use this when the email
+          address has only ASCII characters.
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: The email address of your customer/user. Use this when the
+            email address has only ASCII characters.
+          example: user@example.com
+      - name: chargebee-request-origin-user-encoded
+        in: header
+        description: "The Base64-encoded email address of your customer/user. Use\
+          \ this if the email address has UTF-8 characters. When this header is provided,\
+          \ the header chargebee-request-origin-user is ignored."
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-user-encoded"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: email
+          description: "The Base64-encoded email address of your customer/user. Use\
+            \ this if the email address has UTF-8 characters. When this header is\
+            \ provided, the header chargebee-request-origin-user is ignored."
+          example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+      - name: chargebee-request-origin-ip
+        in: header
+        description: The IP address of the customer where the request originated
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/chargebee-request-origin-ip"
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The IP address of the customer where the request originated
+          example: 192.168.1.2
+          pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
+            -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+            .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+      - name: limit
+        in: query
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/limit"
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+          description: The number of resources to be returned.
+          maximum: 100
+          minimum: 1
+          example: null
+      - name: offset
+        in: query
+        required: false
+        deprecated: false
+        $ref: "#/components/parameters/offset"
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "Determines your position in the list for pagination. To ensure\
+            \ that the next page is retrieved correctly, always set 'offset' to the\
+            \ value of 'next_offset' obtained in the previous iteration of the API\
+            \ call."
+          maxLength: 1000
+          example: null
+      - name: webhook_id
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Unique identifier for the webhook log in OpenSearch.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: gateway
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment gateway that sent the webhook.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: status_code
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: HTTP status code returned in the webhook response.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: method
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: HTTP method of the incoming webhook request.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: url
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: URL from which the webhook request was received.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: id_at_gateway
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Gateway transaction reference from webhook metadata (e.g. Adyen
+            originalReference or pspReference) for linking to transactions.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: customer_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Customer handle resolved from the matched transaction or payment
+            intent for UI deep links.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: invoice_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Invoice number from the matched transaction when available.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: transaction_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Chargebee transaction external_id resolved from id_at_gateway
+            for UI deep links.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: payment_method_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment method external id from the matched transaction when
+            available.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: gateway_credential_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Gateway credential external id from the matched transaction
+            or payment intent.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: payment_attempt_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment attempt token or id resolved from id_at_gateway when
+            no transaction match.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: payment_intent_handle
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Payment intent external id from the matched payment attempt
+            when available.
+          properties:
+            is:
+              type: string
+              minLength: 1
+              example: null
+            is_not:
+              type: string
+              minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+            not_in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
+              example: null
+          example: null
+      - name: received_at
+        in: query
+        required: false
+        deprecated: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          deprecated: false
+          description: Timestamp when the webhook was received.
+          properties:
+            after:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            before:
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            "on":
+              type: string
+              format: unix-time
+              pattern: "^\\d{10}$"
+              example: null
+            between:
+              type: string
+              pattern: "^\\[\\d{10},\\d{10}\\]$"
+              example: null
+          example: null
+      - name: sort_by
+        in: query
+        required: false
+        style: deepObject
+        explode: true
+        schema:
+          type: object
+          additionalProperties: true
+          properties:
+            asc:
+              type: string
+              enum:
+              - received_at
+              example: null
+            desc:
+              type: string
+              enum:
+              - received_at
+              example: null
+          example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        gateway_webhook_log:
+                          $ref: "#/components/schemas/GatewayWebhookLog"
+                          description: Resource object representing gateway_webhook_log
+                      required:
+                      - gateway_webhook_log
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources
+                      are present. To fetch the next set of resources use this value
+                      for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/400"
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401"
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/403"
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/404"
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/405"
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/409"
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/422"
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/429"
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500"
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/503"
+      deprecated: false
+      security:
+      - BasicAuth: []
   /invoices/{invoice-id}/delete_line_items:
     post:
       tags:
@@ -46308,6 +47927,23 @@ paths:
                         maxLength: 50
                         example: null
                       example: null
+                    amount:
+                      type: array
+                      items:
+                        type: integer
+                        format: int64
+                        deprecated: false
+                        minimum: 1
+                        example: null
+                      example: null
+                    applied_at:
+                      type: array
+                      items:
+                        type: integer
+                        format: unix-time
+                        deprecated: false
+                        example: null
+                      example: null
                   example: null
               example: null
             encoding:
@@ -47997,12 +49633,6 @@ paths:
                       - bank_transfer
                       - other
                       - custom
-                      - tamara
-                      - qpay
-                      - blik
-                      - fpx
-                      - wero
-                      - p24
                       example: null
                     reference_number:
                       type: string
@@ -48393,7 +50023,18 @@ paths:
         \ current term invoice. Chargebee considers only the first imported invoice\
         \ for the current term when calculating proration. If there are multiple invoices\
         \ for the current term in the source system, consolidate them into a single\
-        \ invoice before importing it into Chargebee.\n"
+        \ invoice before importing it into Chargebee.  \n\n### Implementation Notes\n\
+        \n* To exempt one line, pass `line_items[tax_exempt_reason][]` and omit taxes\
+        \ for that line. Do not pass it together with `tax_override_reason`. `reverse_charge`\
+        \ requires `vat_number`. Omit this parameter when `status` is `pending`. Do\
+        \ not send `tax_not_configured`.\n* `zero_rated` may include line item taxes\
+        \ only when every matching `taxes[rate]` and `line_items[tax*_amount]` is\
+        \ `0`.\n* `line_items.is_taxed` depends on where `zero_rated` is set:\n  *\
+        \ `line_items[tax_exempt_reason][]` of `zero_rated` stores the line with tax\
+        \ rate `0`, tax amount `0`, and [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+        \ set to `true`.\n  * `tax_override_reason` of `zero_rated` stores each line\
+        \ with [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+        \ set to `false`.\n"
       operationId: import_invoice
       parameters:
       - name: chargebee-request-origin-device
@@ -48561,23 +50202,33 @@ paths:
                 tax_override_reason:
                   type: string
                   deprecated: false
-                  description: |
-                    The reason for exempting the invoice from tax. (Applicable only for exempted invoices.).
-
-                    * zero_rated - If the rate of tax is 0% and no Sales/ GST tax is collectable for that line item
-                    * export - The customer is from a non-taxable region or the billing address and shipping address are unavailable.
-                    * customer_exempt -
-                      The customer is [exempted](/docs/api/customers/customer-object#taxability)
-                      from tax.
-                    * tax_not_configured_external_provider - If the tax is not configured for the country in 3rd party tax provider.
-                    * id_exempt -
-                      The customer is from a different country than your business and they have a valid VAT number or, the customer is a business entity. (This reason is only applicable when [EU VAT](https://www.chargebee.com/docs/eu-vat.html)
-                      or [UK VAT](https://www.chargebee.com/docs/uk-vat.html)
-                      is enabled.)
-                    * high_value_physical_goods - If physical goods are sold from outside Australia to customers in Australia, and the price of all the physical good line items is greater than AUD 1000, then tax will not be applied
-                    * product_exempt - If the Plan or Addon is marked as Tax exempt
-                    * region_non_taxable - If the product sold is not taxable in this region, but it is taxable in other regions, hence this region is not part of the Taxable jurisdiction
-                    * zero_value_item - If the total invoice value/amount is equal to zero. E.g., If the total order value is $10 and a $10 coupon has been applied against that order, the total order value becomes $0. Hence the invoice value also becomes $0.
+                  description: "The reason for exempting the invoice from tax. The\
+                    \ reason applies to every line item. Applicable only for exempt\
+                    \ invoices.  \n**Constraints**\n\n* Must not be sent when `line_items[tax_exempt_reason]`\
+                    \ is sent.\n\n* zero_rated -\n  If the rate of tax is 0% and no\
+                    \ Sales/ GST tax is collectable for that line item.\n  Each line\
+                    \ is stored with [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+                    \ set to `false`.\n* export - The customer is from a non-taxable\
+                    \ region or the billing address and shipping address are unavailable.\n\
+                    * customer_exempt -\n  The customer is [exempted](/docs/api/customers/customer-object#taxability)\n\
+                    \  from tax.\n* tax_not_configured_external_provider - If the\
+                    \ tax is not configured for the country in 3rd party tax provider.\n\
+                    * id_exempt -\n  The customer is from a different country than\
+                    \ your business and they have a valid VAT number or, the customer\
+                    \ is a business entity. (This reason is only applicable when [EU\
+                    \ VAT](https://www.chargebee.com/docs/eu-vat.html)\n  or [UK VAT](https://www.chargebee.com/docs/uk-vat.html)\n\
+                    \  is enabled.)\n* high_value_physical_goods - If physical goods\
+                    \ are sold from outside Australia to customers in Australia, and\
+                    \ the price of all the physical good line items is greater than\
+                    \ AUD 1000, then tax will not be applied\n* product_exempt - If\
+                    \ the Plan or Addon is marked as Tax exempt\n* region_non_taxable\
+                    \ - If the product sold is not taxable in this region, but it\
+                    \ is taxable in other regions, hence this region is not part of\
+                    \ the Taxable jurisdiction\n* zero_value_item - If the total invoice\
+                    \ value/amount is equal to zero. E.g., If the total order value\
+                    \ is $10 and a $10 coupon has been applied against that order,\
+                    \ the total order value becomes $0. Hence the invoice value also\
+                    \ becomes $0.\n"
                   enum:
                   - zero_rated
                   - id_exempt
@@ -48593,7 +50244,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Vat Number. Required if this invoice is VAT exempted.
+                    VAT number. Required when `tax_override_reason` is `id_exempt`. Also required when `line_items[tax_exempt_reason]` is `reverse_charge`.
                   maxLength: 20
                   example: null
                 vat_number_prefix:
@@ -49448,7 +51099,8 @@ paths:
                       type: array
                       description: "Indicates whether tax is applied only to a portion\
                         \ of the line item amount.  \n**Constraints**\n\n* Must not\
-                        \ be provided when the line item has no taxes.\n"
+                        \ be provided when the line item has no taxes.\n* Must not\
+                        \ be sent when `line_items[tax_exempt_reason]` is sent.\n"
                       items:
                         type: boolean
                         deprecated: false
@@ -49461,7 +51113,8 @@ paths:
                         \ credit notes tax this amount instead of the full line item\
                         \ amount.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]`\
                         \ is `true`.  \n**Constraints**\n\n* Must not be provided\
-                        \ when the line item has no taxes.\n"
+                        \ when the line item has no taxes.\n* Must not be sent when\
+                        \ `line_items[tax_exempt_reason]` is sent.\n"
                       items:
                         type: integer
                         format: int64
@@ -49474,6 +51127,54 @@ paths:
                       items:
                         type: string
                         deprecated: false
+                        description: "The reason this line item is exempt from tax.\
+                          \ Accepts the same values as [`line_items.tax_exempt_reason`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_tax_exempt_reason),\
+                          \ including `reverse_charge`. Do not send `tax_not_configured`.\
+                          \ That value is returned on invoices, and import invoice\
+                          \ does not accept it.\n\nOmit line item taxes for this line.\
+                          \ Use `tax_override_reason` when every line is exempt for\
+                          \ the same reason other than `zero_rated`. For `zero_rated`,\
+                          \ pass this parameter on each line to store [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+                          \ as `true`. Invoice-level `tax_override_reason` of `zero_rated`\
+                          \ stores [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+                          \ as `false`. Line item taxes are allowed with `zero_rated`\
+                          \ only when every matching `taxes[rate]` and `line_items[tax*_amount]`\
+                          \ is `0`.  \n**Constraints**\n\n* Must not be sent when\
+                          \ `tax_override_reason` is sent.\n* Must not be sent when\
+                          \ `status` is `pending`.\n* Must not be sent with line item\
+                          \ taxes (`line_items[tax*_name]` and `line_items[tax*_amount]`),\
+                          \ except `zero_rated` when every matching `taxes[rate]`\
+                          \ and `line_items[tax*_amount]` is `0`.\n* Must not be sent\
+                          \ when `line_items[is_partial_tax_applied]` or `line_items[taxable_amount]`\
+                          \ is sent.\n* `reverse_charge` requires `vat_number`.  \n\
+                          **Impacts**\n\n* When this value is `zero_rated`, the line\
+                          \ is stored with tax rate `0`, tax amount `0`, and [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+                          \ set to `true`. This matches a normal zero-rate tax calculation.\n\
+                          * When the invoice is exempted with `tax_override_reason`\
+                          \ set to `zero_rated`, [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+                          \ is `false`.\n\n* zero_value_item - The total invoice amount\
+                          \ is zero. For example, a $10 order with a $10 coupon applied\
+                          \ has an invoice total of $0.\n* reverse_charge - The customer\
+                          \ is a B2B customer identified by a VAT number. Applicable\
+                          \ for EU VAT. Requires `vat_number`.\n* high_value_physical_goods\
+                          \ - Physical goods are sold from outside Australia to customers\
+                          \ in Australia, and the price of all physical-goods line\
+                          \ items is greater than AUD 1000, so tax is not applied.\n\
+                          * tax_not_configured_external_provider - Tax is not configured\
+                          \ for the country in the third-party tax provider.\n* customer_exempt\
+                          \ - The customer is marked as tax exempt.\n* region_non_taxable\
+                          \ - The product is not taxable in this region, so this region\
+                          \ is outside the taxable jurisdiction.\n* product_exempt\
+                          \ - The plan or addon is marked as tax exempt.\n* zero_rated\
+                          \ -\n  The tax rate is 0% and no sales or GST tax is collectable\
+                          \ for this line item.\n  Line item taxes are allowed only\
+                          \ when every matching `taxes[rate]` and `line_items[tax*_amount]`\
+                          \ is `0`.\n  The line is stored with tax rate `0`, tax amount\
+                          \ `0`, and [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed)\
+                          \ set to `true`.\n* export - You are not registered for\
+                          \ tax in the customer's region. This is also the reason\
+                          \ when both `billing_address` and `shipping_address` are\
+                          \ missing.\n"
                         enum:
                         - region_non_taxable
                         - export
@@ -49928,12 +51629,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                         example: null
                       example: null
                     date:
@@ -51376,13 +53071,13 @@ paths:
           deprecated: false
           example: old_inv_001
           properties:
-            in:
-              type: string
-              pattern: "^\\[(.*)(,.*)*\\]$"
-              example: null
             is:
               type: string
               minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
               example: null
       - name: payment_reference_number
         in: query
@@ -51405,13 +53100,13 @@ paths:
                 To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
               example: "001234"
               properties:
-                in:
-                  type: string
-                  pattern: "^\\[(.*)(,.*)*\\]$"
-                  example: null
                 is:
                   type: string
                   minLength: 1
+                  example: null
+                in:
+                  type: string
+                  pattern: "^\\[(.*)(,.*)*\\]$"
                   example: null
           example: null
       responses:
@@ -52476,12 +54171,6 @@ paths:
                       - bank_transfer
                       - other
                       - custom
-                      - tamara
-                      - qpay
-                      - blik
-                      - fpx
-                      - wero
-                      - p24
                       example: null
                     reference_number:
                       type: string
@@ -53240,12 +54929,6 @@ paths:
                       - bank_transfer
                       - other
                       - custom
-                      - tamara
-                      - qpay
-                      - blik
-                      - fpx
-                      - wero
-                      - p24
                       example: null
                     reference_number:
                       type: string
@@ -53368,6 +55051,13 @@ paths:
       summary: Import credit note
       description: |
         Use this api to import credit notes into your Chargebee site. Billing address, Shipping Address, Vat number will be copied from the reference invoice.
+
+        `line_items[tax_exempt_reason]` is not accepted. Chargebee copies the tax-exempt reason from the reference [invoice](/docs/api/v2/pcv-1/invoices).
+
+        * When every invoice line has the same tax-exempt reason, that reason applies to the credit note.
+        * Pass `line_items[reference_line_item_id][]` on every credit note line to keep each invoice line's tax-exempt reason. Chargebee copies each line's reason from that invoice line. If any tax on the invoice line has no exempt reason, the credit note line is not treated as exempt. By default, import fails when the invoice lines have different reasons and any credit note line omits that reference. When `app.tax.allow_multiple_tax_override_reason_on_cn_import` is enabled, that import is allowed and every credit note line uses the first invoice line's tax-exempt reason.
+        * For `zero_rated`, pass `line_items[reference_line_item_id][]` so [`line_items.is_taxed`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#line_items_is_taxed) matches the invoice line. A line imported with [`line_items[tax_exempt_reason]`](/docs/api/v2/pcv-1/invoices/import-invoice) of `zero_rated` has `is_taxed` set to `true`. The credit note line that references it does too, including when every invoice line is `zero_rated`. If that reference is omitted, the credit note line is stored with `is_taxed` set to `false`. An invoice imported with `tax_override_reason` of `zero_rated` has `is_taxed` set to `false`, and the credit note line does too.
+        * The reference invoice must already have `vat_number` when a copied reason is `reverse_charge`. Chargebee copies that number onto the credit note. This operation does not accept `vat_number`.
       operationId: import_credit_note
       parameters:
       - name: chargebee-request-origin-device
@@ -54515,12 +56205,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                         example: null
                       example: null
                     date:
@@ -69491,12 +71175,6 @@ paths:
                   - bank_transfer
                   - other
                   - custom
-                  - tamara
-                  - qpay
-                  - blik
-                  - fpx
-                  - wero
-                  - p24
                   example: null
                 date:
                   type: integer
@@ -99801,13 +101479,13 @@ paths:
           deprecated: false
           example: day-pass-USD
           properties:
-            in:
-              type: string
-              pattern: "^\\[(.*)(,.*)*\\]$"
-              example: null
             is:
               type: string
               minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
               example: null
       responses:
         "200":
@@ -120132,13 +121810,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: "^\\[(.*)(,.*)*\\]$"
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: "^\\[(.*)(,.*)*\\]$"
                       example: null
                 coupon:
                   type: object
@@ -135077,13 +136755,13 @@ paths:
           deprecated: false
           example: HmaT0avT2mtbTL3mR
           properties:
-            in:
-              type: string
-              pattern: "^\\[(.*)(,.*)*\\]$"
-              example: null
             is:
               type: string
               minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
               example: null
       - name: reference_id
         in: query
@@ -135105,13 +136783,13 @@ paths:
           deprecated: false
           example: einvoice_ref_123
           properties:
-            in:
-              type: string
-              pattern: "^\\[(.*)(,.*)*\\]$"
-              example: null
             is:
               type: string
               minLength: 1
+              example: null
+            in:
+              type: string
+              pattern: "^\\[(.*)(,.*)*\\]$"
               example: null
       - name: updated_at
         in: query
@@ -142060,6 +143738,58 @@ components:
       enum:
       - using_defaults
       - manually_set
+      example: null
+    BillingLineItem:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        invoice_number:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        quantity:
+          type: number
+          format: decimal
+          deprecated: false
+          example: null
+      example: null
+    BillingMetadata:
+      type: object
+      properties:
+        item_price_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        line_items:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              id:
+                type: string
+                deprecated: false
+                maxLength: 40
+                example: null
+              invoice_number:
+                type: string
+                deprecated: false
+                maxLength: 50
+                example: null
+              quantity:
+                type: number
+                format: decimal
+                deprecated: false
+                example: null
+            example: null
+          example: null
       example: null
     BillingPeriodUnit:
       type: string
@@ -158520,6 +160250,239 @@ components:
       - id
       - status
       example: null
+    GatewayRequestLog:
+      type: object
+      properties:
+        log_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        url:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        status_code:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        method:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        request_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        request_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        gateway:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        customer_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        invoice_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        transaction_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        gateway_credential_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_attempt_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_intent_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        operation_name:
+          type: string
+          deprecated: false
+          maxLength: 200
+          example: null
+        operation_type:
+          type: string
+          deprecated: false
+          maxLength: 200
+          example: null
+        action_type:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        source:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        trace_id_hash:
+          type: string
+          deprecated: false
+          maxLength: 300
+          example: null
+        invocation_time:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        response_received_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        response_time:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+      example: null
+    GatewayWebhookLog:
+      type: object
+      properties:
+        webhook_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        url:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        method:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        status_code:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        gateway:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        id_at_gateway:
+          type: string
+          deprecated: false
+          maxLength: 200
+          example: null
+        customer_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        invoice_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        transaction_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        gateway_credential_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_attempt_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_intent_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        request_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        request_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        received_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        response_time:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+      example: null
     Gift:
       type: object
       description: |
@@ -159208,6 +161171,40 @@ components:
               example: null
           required:
           - is_unlimited
+          example: null
+        billing_metadata:
+          type: object
+          deprecated: false
+          properties:
+            item_price_id:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            line_items:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  id:
+                    type: string
+                    deprecated: false
+                    maxLength: 40
+                    example: null
+                  invoice_number:
+                    type: string
+                    deprecated: false
+                    maxLength: 50
+                    example: null
+                  quantity:
+                    type: number
+                    format: decimal
+                    deprecated: false
+                    example: null
+                example: null
+              example: null
           example: null
       required:
       - account_type
@@ -160139,6 +162136,24 @@ components:
           deprecated: false
           description: |
             Boolean indicating any advance charge is present in this invoice.
+          example: null
+        offline_payment_method:
+          type: string
+          deprecated: false
+          enum:
+          - no_preference
+          - cash
+          - check
+          - bank_transfer
+          - ach_credit
+          - sepa_credit
+          - boleto
+          - us_automated_bank_transfer
+          - eu_automated_bank_transfer
+          - uk_automated_bank_transfer
+          - jp_automated_bank_transfer
+          - mx_automated_bank_transfer
+          - custom
           example: null
         term_finalized:
           type: boolean
@@ -166921,12 +168936,6 @@ components:
       - bank_transfer
       - other
       - custom
-      - tamara
-      - qpay
-      - blik
-      - fpx
-      - wero
-      - p24
       - chargeback
       - card
       - amazon_payments
@@ -166982,6 +168991,8 @@ components:
       - promptpay
       - dana
       - touch_n_go
+      - tamara
+      - qpay
       - ovo
       - momo
       - mercado_pago
@@ -166989,6 +169000,10 @@ components:
       - nupay
       - picpay
       - thai_qr
+      - blik
+      - fpx
+      - wero
+      - p24
       - affirm_pay
       - rakuten_pay
       example: null
@@ -185467,17 +187482,6 @@ components:
       schema:
         type: string
         example: null
-    task-action-id:
-      name: task-action-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: task_action
-          attribute: id
     reason-code-id:
       name: reason-code-id
       in: path
@@ -185489,24 +187493,6 @@ components:
         x-cb-references:
           resource: reason_code
           attribute: id
-    metered-feature-id:
-      name: metered-feature-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    differential-price-id:
-      name: differential-price-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
     tax-withheld-id:
       name: tax-withheld-id
       in: path
@@ -185529,17 +187515,6 @@ components:
         x-cb-references:
           resource: custom_data_schema
           attribute: id
-    billing-desk-email-attachment-id:
-      name: billing-desk-email-attachment-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: email_attachment
-          attribute: id
     draft-request-id:
       name: draft-request-id
       in: path
@@ -185551,49 +187526,6 @@ components:
         x-cb-references:
           resource: draft_request
           attribute: id
-    sales-order-id:
-      name: sales-order-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    in-app-subscription-app-id:
-      name: in-app-subscription-app-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    quote-id:
-      name: quote-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: quote
-          attribute: id
-    limit:
-      name: limit
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: integer
-        format: int32
-        default: 10
-        description: The number of resources to be returned.
-        x-cb-is-pagination-parameter: true
-        maximum: 100
-        minimum: 1
     task-dependency-id:
       name: task-dependency-id
       in: path
@@ -185605,17 +187537,6 @@ components:
         x-cb-references:
           resource: task_dependency
           attribute: id
-    include_deleted:
-      name: include_deleted
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: boolean
-        default: false
-        description: Indicates whether to include deleted objects in the list. The
-          deleted objects have the attribute `deleted` as `true`.
     credit-unit-id:
       name: credit-unit-id
       in: path
@@ -185625,37 +187546,6 @@ components:
       schema:
         type: string
         example: null
-    chargebee-request-origin-ip:
-      name: chargebee-request-origin-ip
-      in: header
-      description: The IP address of the customer where the request originated
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: The IP address of the customer where the request originated
-        example: 192.168.1.2
-        pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
-          -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
-          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
-    coupon-code-code:
-      name: coupon-code-code
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: coupon_code
-          attribute: code
     dispute-id:
       name: dispute-id
       in: path
@@ -185678,41 +187568,6 @@ components:
         x-cb-references:
           resource: integration
           attribute: integration_name
-    pc2-migration-item-family-id:
-      name: pc2-migration-item-family-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: pc2_migration_item_family
-          attribute: id
-    vaulted-payment-method-id:
-      name: vaulted-payment-method-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: vaulted_payment_method
-          attribute: id
-    offset:
-      name: offset
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: string
-        description: "Determines your position in the list for pagination. To ensure\
-          \ that the next page is retrieved correctly, always set 'offset' to the\
-          \ value of 'next_offset' obtained in the previous iteration of the API call."
-        x-cb-is-pagination-parameter: true
-        maxLength: 1000
     chargebee-async-callback-url:
       name: chargebee-async-callback-url
       in: header
@@ -185739,26 +187594,6 @@ components:
         x-cb-references:
           resource: collections_dispute
           attribute: id
-    entitlement-override-id:
-      name: entitlement-override-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    subscription-id:
-      name: subscription-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: subscription
-          attribute: id
     hosted-page-id:
       name: hosted-page-id
       in: path
@@ -185781,29 +187616,6 @@ components:
         x-cb-references:
           resource: credit_note
           attribute: id
-    virtual-bank-account-id:
-      name: virtual-bank-account-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: virtual_bank_account
-          attribute: id
-    chargebee-event-webhook:
-      name: chargebee-event-webhook
-      in: header
-      description: ' skip only webhooks'
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: ' skip only webhooks'
-        enum:
-        - all-disabled
     e-invoicing-country-country:
       name: e-invoicing-country-country
       in: path
@@ -185815,17 +187627,6 @@ components:
         x-cb-references:
           resource: e_invoicing_country
           attribute: country
-    coupon-set-id:
-      name: coupon-set-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: coupon_set
-          attribute: id
     non-subscription-app-id:
       name: non-subscription-app-id
       in: path
@@ -185855,17 +187656,6 @@ components:
       schema:
         type: string
         example: null
-    plan-id:
-      name: plan-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: plan
-          attribute: id
     chargebee-request-origin-user-encoded:
       name: chargebee-request-origin-user-encoded
       in: header
@@ -185882,26 +187672,6 @@ components:
           \ this if the email address has UTF-8 characters. When this header is provided,\
           \ the header chargebee-request-origin-user is ignored."
         example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
-    tag-config-id:
-      name: tag-config-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: tag_config
-          attribute: id
-    meter-id:
-      name: meter-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
     business-entity-id:
       name: business-entity-id
       in: path
@@ -185913,15 +187683,6 @@ components:
         example: null
     item-id:
       name: item-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    subscription-entitlement-id:
-      name: subscription-entitlement-id
       in: path
       required: true
       style: simple
@@ -185973,37 +187734,6 @@ components:
         type: string
         description: The device from which the customer has made the request
         example: Android
-    collections-reminder-sequence-id:
-      name: collections-reminder-sequence-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: collections_reminder_sequence
-          attribute: id
-    thunking-plan-id:
-      name: thunking-plan-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: thunking_plan
-          attribute: id
-    tp-site-user-domain:
-      name: tp-site-user-domain
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
     task-id:
       name: task-id
       in: path
@@ -186014,28 +187744,6 @@ components:
         type: string
         x-cb-references:
           resource: task
-          attribute: id
-    event-id:
-      name: event-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: event
-          attribute: id
-    async-response-id:
-      name: async-response-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: async_job
           attribute: id
     site-owner-id:
       name: site-owner-id
@@ -186048,28 +187756,6 @@ components:
         x-cb-references:
           resource: site_owner
           attribute: id
-    rule-id:
-      name: rule-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: rule
-          attribute: id
-    time-machine-name:
-      name: time-machine-name
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: time_machine
-          attribute: name
     item-family-id:
       name: item-family-id
       in: path
@@ -186079,29 +187765,6 @@ components:
       schema:
         type: string
         example: null
-    product-id:
-      name: product-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    Prefer:
-      name: Prefer
-      in: header
-      description: Must be set to `respond-async`. Instructs Chargebee to process
-        the request asynchronously and return `202 Accepted` immediately.
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: Must be set to `respond-async`. Instructs Chargebee to process
-          the request asynchronously and return `202 Accepted` immediately.
-        example: respond-async
-      x-cb-async-header: true
     site-id:
       name: site-id
       in: path
@@ -186112,28 +187775,6 @@ components:
         type: string
         x-cb-references:
           resource: site
-          attribute: id
-    einvoice-id:
-      name: einvoice-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: einvoice
-          attribute: id
-    collections-payment-promise-id:
-      name: collections-payment-promise-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: collections_payment_promise
           attribute: id
     invoice-id:
       name: invoice-id
@@ -186188,17 +187829,6 @@ components:
         x-cb-references:
           resource: offer_fulfillment
           attribute: id
-    cb-token-id:
-      name: cb-token-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: token
-          attribute: id
     ledger-operation-id:
       name: ledger-operation-id
       in: path
@@ -186208,18 +187838,6 @@ components:
       schema:
         type: string
         example: null
-    chargebee-event-email:
-      name: chargebee-event-email
-      in: header
-      description: skip only emails
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: skip only emails
-        enum:
-        - all-disabled
     billing-desk-email-conversation-id:
       name: billing-desk-email-conversation-id
       in: path
@@ -186230,17 +187848,6 @@ components:
         type: string
         x-cb-references:
           resource: email_conversation
-          attribute: id
-    comment-id:
-      name: comment-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: comment
           attribute: id
     webhook-endpoint-id:
       name: webhook-endpoint-id
@@ -186253,17 +187860,6 @@ components:
         x-cb-references:
           resource: webhook_endpoint
           attribute: id
-    pc2-migration-item-id:
-      name: pc2-migration-item-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: pc2_migration_item
-          attribute: id
     usage-file-id:
       name: usage-file-id
       in: path
@@ -186273,17 +187869,6 @@ components:
       schema:
         type: string
         example: null
-    coupon-id:
-      name: coupon-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: coupon
-          attribute: id
     alert-id:
       name: alert-id
       in: path
@@ -186304,6 +187889,533 @@ components:
         x-cb-references:
           resource: custom_data
           attribute: id
+    order-id:
+      name: order-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: order
+          attribute: id
+    product-variant-id:
+      name: product-variant-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    account-credit-id:
+      name: account-credit-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: promotional_credit
+          attribute: id
+    pc2-migration-id:
+      name: pc2-migration-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: pc2_migration
+          attribute: id
+    async-api-request-id:
+      name: async-api-request-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: async_request
+          attribute: id
+    gift-id:
+      name: gift-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: gift
+          attribute: id
+    unbilled-charge-id:
+      name: unbilled-charge-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: unbilled_charge
+          attribute: id
+    task-action-id:
+      name: task-action-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: task_action
+          attribute: id
+    metered-feature-id:
+      name: metered-feature-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    differential-price-id:
+      name: differential-price-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    gateway-request-log-log-id:
+      name: gateway-request-log-log-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: gateway_request_log
+          attribute: log_id
+    billing-desk-email-attachment-id:
+      name: billing-desk-email-attachment-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: email_attachment
+          attribute: id
+    sales-order-id:
+      name: sales-order-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    in-app-subscription-app-id:
+      name: in-app-subscription-app-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    quote-id:
+      name: quote-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: quote
+          attribute: id
+    limit:
+      name: limit
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 10
+        description: The number of resources to be returned.
+        x-cb-is-pagination-parameter: true
+        maximum: 100
+        minimum: 1
+    include_deleted:
+      name: include_deleted
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: boolean
+        default: false
+        description: Indicates whether to include deleted objects in the list. The
+          deleted objects have the attribute `deleted` as `true`.
+    chargebee-request-origin-ip:
+      name: chargebee-request-origin-ip
+      in: header
+      description: The IP address of the customer where the request originated
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: The IP address of the customer where the request originated
+        example: 192.168.1.2
+        pattern: "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\\
+          -]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\\
+          .){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+    coupon-code-code:
+      name: coupon-code-code
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: coupon_code
+          attribute: code
+    pc2-migration-item-family-id:
+      name: pc2-migration-item-family-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: pc2_migration_item_family
+          attribute: id
+    vaulted-payment-method-id:
+      name: vaulted-payment-method-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: vaulted_payment_method
+          attribute: id
+    offset:
+      name: offset
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        description: "Determines your position in the list for pagination. To ensure\
+          \ that the next page is retrieved correctly, always set 'offset' to the\
+          \ value of 'next_offset' obtained in the previous iteration of the API call."
+        x-cb-is-pagination-parameter: true
+        maxLength: 1000
+    entitlement-override-id:
+      name: entitlement-override-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    subscription-id:
+      name: subscription-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: subscription
+          attribute: id
+    virtual-bank-account-id:
+      name: virtual-bank-account-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: virtual_bank_account
+          attribute: id
+    chargebee-event-webhook:
+      name: chargebee-event-webhook
+      in: header
+      description: ' skip only webhooks'
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: ' skip only webhooks'
+        enum:
+        - all-disabled
+    coupon-set-id:
+      name: coupon-set-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: coupon_set
+          attribute: id
+    plan-id:
+      name: plan-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: plan
+          attribute: id
+    tag-config-id:
+      name: tag-config-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: tag_config
+          attribute: id
+    meter-id:
+      name: meter-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    subscription-entitlement-id:
+      name: subscription-entitlement-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    collections-reminder-sequence-id:
+      name: collections-reminder-sequence-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: collections_reminder_sequence
+          attribute: id
+    thunking-plan-id:
+      name: thunking-plan-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: thunking_plan
+          attribute: id
+    tp-site-user-domain:
+      name: tp-site-user-domain
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    event-id:
+      name: event-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: event
+          attribute: id
+    async-response-id:
+      name: async-response-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: async_job
+          attribute: id
+    rule-id:
+      name: rule-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: rule
+          attribute: id
+    time-machine-name:
+      name: time-machine-name
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: time_machine
+          attribute: name
+    product-id:
+      name: product-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: null
+    Prefer:
+      name: Prefer
+      in: header
+      description: Must be set to `respond-async`. Instructs Chargebee to process
+        the request asynchronously and return `202 Accepted` immediately.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: Must be set to `respond-async`. Instructs Chargebee to process
+          the request asynchronously and return `202 Accepted` immediately.
+        example: respond-async
+      x-cb-async-header: true
+    einvoice-id:
+      name: einvoice-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: einvoice
+          attribute: id
+    collections-payment-promise-id:
+      name: collections-payment-promise-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: collections_payment_promise
+          attribute: id
+    cb-token-id:
+      name: cb-token-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: token
+          attribute: id
+    chargebee-event-email:
+      name: chargebee-event-email
+      in: header
+      description: skip only emails
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: skip only emails
+        enum:
+        - all-disabled
+    comment-id:
+      name: comment-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: comment
+          attribute: id
+    pc2-migration-item-id:
+      name: pc2-migration-item-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: pc2_migration_item
+          attribute: id
+    coupon-id:
+      name: coupon-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: coupon
+          attribute: id
+    gateway-webhook-log-webhook-id:
+      name: gateway-webhook-log-webhook-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: gateway_webhook_log
+          attribute: webhook_id
     payment-intent-id:
       name: payment-intent-id
       in: path
@@ -186341,17 +188453,6 @@ components:
       schema:
         type: string
         example: null
-    order-id:
-      name: order-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: order
-          attribute: id
     pc2-migration-item-price-id:
       name: pc2-migration-item-price-id
       in: path
@@ -186362,26 +188463,6 @@ components:
         type: string
         x-cb-references:
           resource: pc2_migration_item_price
-          attribute: id
-    product-variant-id:
-      name: product-variant-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: null
-    account-credit-id:
-      name: account-credit-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: promotional_credit
           attribute: id
     chargebee-event-actions:
       name: chargebee-event-actions
@@ -186395,28 +188476,6 @@ components:
         description: skip all actions to be done on the events
         enum:
         - all-disabled
-    pc2-migration-id:
-      name: pc2-migration-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: pc2_migration
-          attribute: id
-    async-api-request-id:
-      name: async-api-request-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: async_request
-          attribute: id
     chargebee-request-origin-user:
       name: chargebee-request-origin-user
       in: header
@@ -186461,28 +188520,6 @@ components:
         type: string
         x-cb-references:
           resource: retry_segment
-          attribute: id
-    gift-id:
-      name: gift-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: gift
-          attribute: id
-    unbilled-charge-id:
-      name: unbilled-charge-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        x-cb-references:
-          resource: unbilled_charge
           attribute: id
     addon-id:
       name: addon-id

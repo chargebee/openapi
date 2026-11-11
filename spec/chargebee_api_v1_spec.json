@@ -7,10 +7,10 @@
       "url" : "https://www.chargebee.com",
       "email" : "support@chargebee.com"
     },
-    "version" : "2026-10-30.cb3d093ad931f2f4afcb3dcfd76caf9b6db37f79",
+    "version" : "2026-11-11.a4dc98892f7c1caae57221a637475dc29284d843",
     "x-cb-api-version" : 1,
     "x-cb-product-catalog-version" : 1,
-    "x-generated-on" : 1793346163267
+    "x-generated-on" : 1794408385919
   },
   "servers" : [ {
     "url" : "{protocol}://{site}.{environment}:{port}/api/v1",
@@ -32514,49 +32514,6 @@
         "required" : [ "api_version", "content", "event_type", "id", "object", "occurred_at", "source", "webhook_status" ],
         "example" : null
       },
-      "Citation" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 40,
-            "example" : null
-          },
-          "param_name" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 100,
-            "example" : null
-          },
-          "author_name" : {
-            "type" : "string",
-            "deprecated" : false,
-            "maxLength" : 150,
-            "example" : null
-          },
-          "confidence_level" : {
-            "type" : "string",
-            "deprecated" : false,
-            "enum" : [ "low", "medium", "high", "not_provided" ],
-            "example" : null
-          },
-          "created_at" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          },
-          "content" : {
-            "type" : "object",
-            "additionalProperties" : true,
-            "deprecated" : false,
-            "example" : null
-          }
-        },
-        "required" : [ "author_name", "content", "created_at", "id" ],
-        "example" : null
-      },
       "Comment" : {
         "type" : "object",
         "description" : "Comments are additional information that you can add to your resources. Comments can be added to provide context for any operation that was performed.\n\nWhen you make an API call on any resource, for example, Subscriptions -\\> Change term end, you can add more context to that operation by calling the comments API as a follow up call.\n\nBesides the user generated comments, Chargebee also generates \"System\" comments when a change for a resource happens at the backend. These comments are all read-only.\n",
@@ -33661,49 +33618,6 @@
         "required" : [ "download_url", "valid_till" ],
         "example" : null
       },
-      "DraftEstimate" : {
-        "type" : "object",
-        "properties" : {
-          "status" : {
-            "type" : "string",
-            "deprecated" : false,
-            "enum" : [ "success", "failed" ],
-            "example" : null
-          },
-          "http_status" : {
-            "type" : "integer",
-            "format" : "int32",
-            "deprecated" : false,
-            "example" : null
-          },
-          "created_at" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          },
-          "result" : {
-            "type" : "object",
-            "additionalProperties" : true,
-            "deprecated" : false,
-            "example" : null
-          },
-          "error_detail" : {
-            "type" : "object",
-            "additionalProperties" : true,
-            "deprecated" : false,
-            "example" : null
-          },
-          "revision_version" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          }
-        },
-        "required" : [ "created_at", "status" ],
-        "example" : null
-      },
       "EntityType" : {
         "type" : "string",
         "deprecated" : false,
@@ -34082,43 +33996,6 @@
         "type" : "string",
         "deprecated" : false,
         "enum" : [ "customer_created", "customer_changed", "customer_deleted", "subscription_created", "subscription_started", "subscription_trial_ending", "subscription_activated", "subscription_changed", "subscription_trial_extended", "subscription_cancellation_scheduled", "subscription_cancelling", "subscription_cancelled", "subscription_reactivated", "subscription_renewed", "subscription_scheduled_cancellation_removed", "subscription_shipping_address_updated", "subscription_deleted", "invoice_created", "invoice_generated", "invoice_updated", "invoice_deleted", "subscription_renewal_reminder", "transaction_created", "transaction_updated", "transaction_deleted", "payment_succeeded", "payment_failed", "payment_refunded", "payment_initiated", "refund_initiated", "card_added", "card_updated", "card_expiring", "card_expired", "card_deleted" ],
-        "example" : null
-      },
-      "Execution" : {
-        "type" : "object",
-        "properties" : {
-          "status" : {
-            "type" : "string",
-            "deprecated" : false,
-            "enum" : [ "success", "failed" ],
-            "example" : null
-          },
-          "created_at" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          },
-          "result" : {
-            "type" : "object",
-            "additionalProperties" : true,
-            "deprecated" : false,
-            "example" : null
-          },
-          "error_detail" : {
-            "type" : "object",
-            "additionalProperties" : true,
-            "deprecated" : false,
-            "example" : null
-          },
-          "revision_version" : {
-            "type" : "integer",
-            "format" : "unix-time",
-            "deprecated" : false,
-            "example" : null
-          }
-        },
-        "required" : [ "created_at", "status" ],
         "example" : null
       },
       "Gateway" : {
